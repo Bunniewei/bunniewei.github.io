@@ -590,26 +590,22 @@ body{
             <div class="clause-num">08</div>
             <div class="clause-body">
               <div class="clause-heading">cautions</div>
-              <div class="clause-text">作為朋友及好旅伴，在這次旅行中承諾互相支持、尊重彼此，珍惜每一刻美好時光，分享快樂，遇到狀況時一同面對解決，以理解為基礎，不衝動、不急躁、不掃興、不擺臉色，愉快地完成這趟旅程，開心出門，平安回家<div class="clause" onclick="toggleClause(this)">
-          </div>
-            </div>
+              <div class="clause-text">作為朋友及好旅伴，在這次旅行中承諾互相支持、尊重彼此，珍惜每一刻美好時光，分享快樂，遇到狀況時一同面對解決，以理解為基礎，不衝動、不急躁、不掃興、不擺臉色，愉快地完成這趟旅程，開心出門，平安回家
+            <div class="clause" onclick="toggleClause(this)">
+             </div>
             <div class="clause-check">✓</div>
           </div>
         </div>
 
         <div class="decl-divider"></div>
         <div class="sign-section">
-          <p class="sign-hint">請雙方填入姓名並點擊「我同意」完成簽署</p>
+          <p class="sign-hint">請填入姓名並點擊「我同意」完成簽署</p>
           <div class="sign-boxes">
-            <div class="sign-box">
-              <input class="sign-name" type="text" placeholder="姓名" id="sign"/>
-              <span class="sign-label">簽署人</span>
-            </div>
-            <div class="sign-box">
-              <input class="sign-name" type="text" placeholder="姓名" id="sign"/>
-              <span class="sign-label">簽署人</span>
-            </div>
-          </div>
+  <div class="sign-box">
+    <input class="sign-name" type="text" placeholder="請輸入你的名字" id="sign-a"/>
+    <span class="sign-label">簽署人</span>
+  </div>
+</div>
           <button class="agree-btn" id="agree-btn" onclick="signDecl()">✓ &nbsp;我們同意，出發去東京！</button>
           <div id="decl-result"></div>
         </div>
@@ -1234,12 +1230,12 @@ function checkAllAgreed(){
   btn.disabled=!allDone;
   btn.textContent=allDone?'✓  全部同意，出發去東京！':'請先勾選所有條款';
 }
+
 function signDecl(){
-  const a=document.getElementById('sign-a').value.trim()||'旅伴A';
-  const b=document.getElementById('sign-b').value.trim()||'旅伴B';
+  const a=document.getElementById('sign-a').value.trim()||'旅人';
   const result=document.getElementById('decl-result');
   result.style.display='block';
-  result.innerHTML=`🌸 &nbsp;${a} 與 ${b} 已完成簽署！東京之旅正式啟動，祝旅途愉快、不吵架、買到爽！<br><small style="color:var(--mid)">簽署日期：${new Date().toLocaleDateString('zh-TW')}</small>`;
+  result.innerHTML=`🌸 &nbsp;${a} 已完成簽署！東京之旅正式啟動，祝ㄑ旅途愉快、不吵架、買到爽！<br><small style="color:var(--mid)">簽署日期：${new Date().toLocaleDateString('zh-TW')}</small>`;
   document.getElementById('agree-btn').textContent='✓ 已簽署完成';
   document.getElementById('agree-btn').disabled=true;
 }

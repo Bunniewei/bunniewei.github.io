@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>東京 · 五天四夜之旅</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --sky:   #daeef5;
+  --frost: #eef7fa;
+  --mist:  #f5fbfd;
+  --deep:  #2c5f72;
+  --ink:   #1e3a45;
+  --mid:   #5b8fa0;
+  --soft:  #8dbfce;
+  --cream: #faf8f4;
+  --blush: #f0e6e0;
+  --gold:  #c9a96e;
+  --white: #ffffff;
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Noto Sans TC',sans-serif;
+  background:var(--mist);
+  color:var(--ink);
+  overflow-x:hidden;
+  min-height:100vh;
+}
+
+/* ═══ PROGRESS ═══ */
+#progress{position:fixed;top:0;left:0;height:2px;background:var(--deep);z-index:9999;width:0;transition:width .1s;}
+
+/* ═══ TOP NAV ═══ */
+.topnav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 2rem;
+  background:rgba(234,247,252,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(141,191,206,.3);
+  transition:transform .4s;
+}
+.topnav.hide{transform:translateY(-100%);}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;font-weight:600;
+  color:var(--deep);letter-spacing:.05em;cursor:pointer;
+}
+.nav-links{display:flex;gap:.3rem;flex-wrap:wrap;justify-content:flex-end;}
+.nav-link{
+  padding:.35rem .9rem;font-size:.7rem;letter-spacing:.12em;
+  border:1px solid transparent;color:var(--mid);cursor:pointer;
+  transition:all .25s;background:none;font-family:'Noto Sans TC',sans-serif;
+  white-space:nowrap;
+}
+.nav-link:hover{border-color:var(--soft);color:var(--deep);}
+.nav-link.active{background:var(--deep);color:#fff;border-color:var(--deep);}
+
+/* ═══ PAGES ═══ */
+.page{display:none;min-height:100vh;padding-top:56px;animation:fadeIn .5s ease;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ════════════════════════════
+   PAGE 1 — COVER
+════════════════════════════ */
+.cover{
+  min-height:100vh;padding-top:0!important;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  position:relative;overflow:hidden;
+  background: linear-gradient(160deg,#daeef5 0%,#eef7fa 40%,#faf8f4 100%);
+}
+.cover-circles{position:absolute;inset:0;pointer-events:none;}
+.circle{position:absolute;border-radius:50%;opacity:.18;}
+.c1{width:600px;height:600px;background:radial-gradient(circle,var(--sky),transparent);top:-200px;right:-150px;}
+.c2{width:400px;height:400px;background:radial-gradient(circle,var(--soft),transparent);bottom:-100px;left:-100px;}
+.c3{width:200px;height:200px;background:radial-gradient(circle,var(--blush),transparent);top:30%;left:10%;}
+
+.cover-content{position:relative;z-index:1;padding:2rem;}
+.cover-jp{
+  font-family:'Noto Serif TC',serif;
+  font-size:clamp(3.5rem,10vw,7rem);
+  font-weight:600;color:var(--deep);
+  line-height:1;letter-spacing:.15em;
+  opacity:0;animation:riseUp 1s .3s forwards;
+}
+.cover-en{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:clamp(1.2rem,3vw,2rem);
+  color:var(--soft);letter-spacing:.3em;margin:.6rem 0 2rem;
+  opacity:0;animation:riseUp 1s .5s forwards;
+}
+.cover-divider{
+  width:80px;height:1px;background:var(--soft);
+  margin:.8rem auto;opacity:0;animation:riseUp 1s .6s forwards;
+}
+.cover-sub{
+  font-size:.85rem;font-weight:300;letter-spacing:.2em;
+  color:var(--mid);margin-bottom:.5rem;
+  opacity:0;animation:riseUp 1s .7s forwards;
+}
+.cover-date{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;color:var(--deep);letter-spacing:.1em;
+  opacity:0;animation:riseUp 1s .8s forwards;
+  margin-bottom:3rem;
+}
+.cover-stats{
+  display:flex;gap:3rem;justify-content:center;
+  opacity:0;animation:riseUp 1s .95s forwards;
+  margin-bottom:3.5rem;
+}
+.cstat{text-align:center;}
+.cstat-n{
+  font-family:'Cormorant Garamond',serif;font-size:2.8rem;
+  color:var(--deep);line-height:1;display:block;
+}
+.cstat-l{font-size:.65rem;letter-spacing:.2em;color:var(--mid);text-transform:uppercase;}
+.cover-btn{
+  display:inline-block;padding:1rem 3rem;
+  background:var(--deep);color:#fff;
+  font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;
+  cursor:pointer;border:none;font-family:'Noto Sans TC',sans-serif;
+  transition:all .3s;
+  opacity:0;animation:riseUp 1s 1.1s forwards;
+}
+.cover-btn:hover{background:var(--ink);transform:translateY(-2px);box-shadow:0 8px 30px rgba(44,95,114,.3);}
+
+/* sakura petals */
+.petals{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.petal{
+  position:absolute;width:8px;height:8px;
+  background:var(--blush);border-radius:50% 0 50% 0;
+  opacity:0;animation:fall linear infinite;
+}
+@keyframes fall{
+  0%{transform:translateY(-20px) rotate(0deg);opacity:.6;}
+  100%{transform:translateY(110vh) rotate(720deg);opacity:0;}
+}
+
+/* ════════════════════════════
+   PAGE 2 — TABLE OF CONTENTS
+════════════════════════════ */
+.toc-page{background:var(--cream);padding:5rem 2rem;}
+.page-header{text-align:center;margin-bottom:4rem;}
+.page-header .jp-label{
+  font-family:'Noto Serif TC',serif;
+  font-size:.75rem;letter-spacing:.4em;color:var(--soft);
+  text-transform:uppercase;display:block;margin-bottom:.8rem;
+}
+.page-header h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,5vw,3.5rem);font-weight:600;
+  color:var(--deep);line-height:1.2;
+}
+.page-header p{font-size:.9rem;color:var(--mid);margin-top:.8rem;font-weight:300;letter-spacing:.05em;}
+
+.toc-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;}
+.toc-card{
+  background:var(--white);
+  border:1px solid rgba(141,191,206,.3);
+  padding:2rem;cursor:pointer;
+  transition:all .3s;position:relative;overflow:hidden;
+}
+.toc-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--sky);transition:background .3s;
+}
+.toc-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(44,95,114,.12);}
+.toc-card:hover::before{background:var(--deep);}
+.toc-num{
+  font-family:'Cormorant Garamond',serif;font-size:3.5rem;
+  color:var(--sky);line-height:1;font-weight:600;
+  position:absolute;right:1.5rem;top:1rem;
+}
+.toc-icon{font-size:1.8rem;margin-bottom:.8rem;}
+.toc-tag{font-size:.65rem;letter-spacing:.2em;color:var(--soft);text-transform:uppercase;margin-bottom:.4rem;}
+.toc-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--deep);margin-bottom:.5rem;}
+.toc-desc{font-size:.8rem;line-height:1.7;color:var(--mid);}
+.toc-arrow{font-size:.8rem;color:var(--soft);margin-top:1rem;transition:transform .2s;}
+.toc-card:hover .toc-arrow{transform:translateX(4px);}
+
+/* ════════════════════════════
+   PAGE 3 — DECLARATION
+════════════════════════════ */
+.decl-page{
+  background:linear-gradient(180deg,var(--frost) 0%,var(--cream) 100%);
+  padding:5rem 2rem;
+}
+.decl-inner{max-width:780px;margin:0 auto;}
+.decl-doc{
+  background:var(--white);
+  border:1px solid rgba(141,191,206,.3);
+  padding:4rem;
+  position:relative;
+  box-shadow:0 4px 40px rgba(44,95,114,.08);
+}
+.decl-doc::before{
+  content:'';position:absolute;inset:12px;
+  border:1px solid rgba(141,191,206,.2);pointer-events:none;
+}
+.decl-seal{
+  text-align:center;margin-bottom:2.5rem;
+}
+.seal-circle{
+  width:70px;height:70px;border-radius:50%;
+  border:2px solid var(--soft);
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:1.8rem;color:var(--deep);margin-bottom:.8rem;
+}
+.decl-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.6rem,4vw,2.4rem);font-weight:600;
+  color:var(--deep);text-align:center;line-height:1.3;margin-bottom:.5rem;
+}
+.decl-subtitle{font-size:.75rem;letter-spacing:.2em;color:var(--soft);text-align:center;margin-bottom:3rem;}
+.decl-divider{height:1px;background:linear-gradient(to right,transparent,var(--sky),transparent);margin:2rem 0;}
+
+.decl-clauses{counter-reset:clause;}
+.clause{
+  display:flex;gap:1.2rem;margin-bottom:1.8rem;
+  padding:1.2rem 1.5rem;
+  background:var(--frost);border-left:3px solid var(--sky);
+  transition:border-color .3s;cursor:pointer;
+}
+.clause:hover{border-left-color:var(--deep);}
+.clause.agreed{border-left-color:var(--deep);background:rgba(218,238,245,.3);}
+.clause-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.8rem;color:var(--sky);font-weight:600;
+  flex-shrink:0;line-height:1;transition:color .3s;
+}
+.clause.agreed .clause-num{color:var(--deep);}
+.clause-body{}
+.clause-heading{font-size:.8rem;font-weight:500;color:var(--deep);letter-spacing:.1em;margin-bottom:.3rem;}
+.clause-text{font-size:.85rem;line-height:1.8;color:var(--mid);}
+.clause-check{
+  flex-shrink:0;width:24px;height:24px;border-radius:50%;
+  border:1.5px solid var(--soft);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;color:transparent;margin-left:auto;
+  transition:all .3s;align-self:center;
+}
+.clause.agreed .clause-check{background:var(--deep);border-color:var(--deep);color:#fff;}
+
+.sign-section{text-align:center;margin-top:3rem;}
+.sign-hint{font-size:.8rem;color:var(--mid);margin-bottom:1.5rem;letter-spacing:.05em;}
+.sign-boxes{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;}
+.sign-box{
+  flex:1;min-width:160px;max-width:220px;
+  border-bottom:1px solid var(--soft);padding-bottom:.5rem;
+  text-align:center;
+}
+.sign-label{font-size:.7rem;letter-spacing:.15em;color:var(--soft);display:block;margin-top:.4rem;}
+.sign-name{
+  width:100%;border:none;outline:none;background:transparent;
+  font-family:'Noto Serif TC',serif;font-size:1.1rem;color:var(--deep);
+  text-align:center;padding:.3rem 0;
+}
+.sign-name::placeholder{color:rgba(91,143,160,.4);}
+.agree-btn{
+  padding:1rem 3rem;background:var(--deep);color:#fff;border:none;cursor:pointer;
+  font-family:'Noto Sans TC',sans-serif;font-size:.8rem;letter-spacing:.2em;
+  transition:all .3s;display:inline-block;
+}
+.agree-btn:hover{background:var(--ink);transform:translateY(-2px);}
+.agree-btn:disabled{background:var(--soft);cursor:default;transform:none;}
+#decl-result{
+  display:none;margin-top:1.5rem;padding:1rem 2rem;
+  background:rgba(218,238,245,.5);border:1px solid var(--sky);
+  font-size:.85rem;color:var(--deep);letter-spacing:.05em;
+}
+
+/* ════════════════════════════
+   PAGE 4-8 — DAY PAGES
+════════════════════════════ */
+.day-page{background:var(--cream);padding:5rem 2rem;}
+.day-hero{
+  max-width:1000px;margin:0 auto 3rem;
+  display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:end;
+  padding-bottom:2.5rem;border-bottom:1px solid rgba(141,191,206,.3);
+}
+.day-number-big{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(5rem,12vw,9rem);font-weight:600;
+  color:var(--sky);line-height:1;
+}
+.day-info{}
+.day-tag{font-size:.7rem;letter-spacing:.3em;color:var(--soft);text-transform:uppercase;margin-bottom:.5rem;}
+.day-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:600;color:var(--deep);line-height:1.2;margin-bottom:.8rem;}
+.day-summary{font-size:.9rem;line-height:1.8;color:var(--mid);font-weight:300;}
+
+/* Timeline */
+.day-timeline{max-width:1000px;margin:0 auto;}
+.time-block{
+  display:grid;grid-template-columns:80px 1fr;gap:1.5rem;
+  margin-bottom:1.5rem;
+}
+.time-label{
+  text-align:right;padding-top:.4rem;
+  font-size:.75rem;color:var(--soft);letter-spacing:.05em;
+  position:relative;
+}
+.time-label::after{
+  content:'';position:absolute;right:-1.8rem;top:.5rem;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--sky);border:2px solid var(--white);
+  box-shadow:0 0 0 2px var(--sky);transition:all .3s;
+}
+.time-block.featured .time-label::after{background:var(--deep);box-shadow:0 0 0 2px var(--deep);}
+.time-line-v{
+  position:absolute;right:-1.46rem;top:1.2rem;
+  width:1px;height:calc(100% + 1.5rem);
+  background:linear-gradient(to bottom,var(--sky),transparent);
+  pointer-events:none;
+}
+
+.spot-card{
+  background:var(--white);border:1px solid rgba(141,191,206,.25);
+  padding:1.5rem 1.8rem;cursor:pointer;
+  transition:all .3s;overflow:hidden;
+}
+.spot-card:hover{box-shadow:0 8px 30px rgba(44,95,114,.1);transform:translateY(-2px);}
+.time-block.featured .spot-card{border-color:rgba(44,95,114,.3);background:linear-gradient(135deg,#fff 0%,var(--frost) 100%);}
+.spot-header{display:flex;justify-content:space-between;align-items:flex-start;}
+.spot-left{}
+.spot-cat{font-size:.65rem;letter-spacing:.2em;color:var(--soft);text-transform:uppercase;margin-bottom:.3rem;}
+.spot-name{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--deep);}
+.spot-en{font-size:.75rem;font-style:italic;color:var(--mid);margin-top:.1rem;}
+.spot-toggle{
+  width:28px;height:28px;border-radius:50%;border:1px solid rgba(141,191,206,.4);
+  background:var(--frost);display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;color:var(--mid);flex-shrink:0;margin-left:1rem;
+  transition:all .3s;
+}
+.spot-body{max-height:0;overflow:hidden;transition:max-height .45s ease,opacity .3s;opacity:0;}
+.time-block.open .spot-body{max-height:500px;opacity:1;}
+.time-block.open .spot-toggle{background:var(--deep);color:#fff;border-color:var(--deep);transform:rotate(180deg);}
+.spot-body-inner{padding:1rem 0 .3rem;border-top:1px solid var(--frost);margin-top:1rem;}
+.spot-desc{font-size:.87rem;line-height:1.9;color:#5a7a88;margin-bottom:1rem;}
+.spot-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.spot-tag{
+  font-size:.7rem;padding:.3rem .85rem;
+  background:var(--frost);border:1px solid rgba(141,191,206,.4);
+  color:var(--deep);cursor:pointer;transition:all .2s;
+}
+.spot-tag:hover{background:var(--deep);color:#fff;border-color:var(--deep);}
+.spot-tip{
+  display:none;margin-top:.8rem;padding:.8rem 1rem;
+  background:rgba(218,238,245,.5);border-left:3px solid var(--deep);
+  font-size:.82rem;line-height:1.7;color:var(--deep);animation:panelIn .3s;
+}
+.spot-tag.active+.spot-tip,.spot-tip.show{display:block;}
+@keyframes panelIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+
+/* Food section */
+.food-section{max-width:1000px;margin:3rem auto 0;padding:2.5rem;background:var(--white);border:1px solid rgba(141,191,206,.25);}
+.food-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--deep);margin-bottom:1.5rem;}
+.food-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;}
+.food-item{
+  padding:1rem 1.2rem;background:var(--frost);border:1px solid rgba(141,191,206,.2);
+  cursor:pointer;transition:all .2s;text-align:center;
+}
+.food-item:hover{background:var(--sky);border-color:var(--deep);}
+.food-emoji{font-size:2rem;display:block;margin-bottom:.4rem;}
+.food-name{font-size:.8rem;font-weight:500;color:var(--deep);}
+.food-note{font-size:.7rem;color:var(--mid);margin-top:.2rem;}
+
+/* Day nav bottom */
+.day-nav-bottom{max-width:1000px;margin:3rem auto 0;display:flex;justify-content:space-between;gap:1rem;}
+.day-nav-btn{
+  flex:1;padding:1rem;border:1px solid rgba(141,191,206,.4);background:var(--white);
+  cursor:pointer;font-family:'Noto Sans TC',sans-serif;font-size:.8rem;
+  color:var(--mid);letter-spacing:.08em;transition:all .25s;
+  display:flex;align-items:center;gap:.5rem;
+}
+.day-nav-btn:hover{background:var(--deep);color:#fff;border-color:var(--deep);}
+.day-nav-btn.next{justify-content:flex-end;}
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes riseUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:640px){
+  .day-hero{grid-template-columns:1fr;}
+  .day-number-big{font-size:5rem;}
+  .time-block{grid-template-columns:60px 1fr;gap:.8rem;}
+  .time-label::after{right:-1.3rem;}
+  .decl-doc{padding:2rem 1.5rem;}
+  .nav-link{padding:.3rem .6rem;font-size:.65rem;}
+  .topnav{padding:.6rem 1rem;}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- TOP NAV -->
+<nav class="topnav" id="topnav">
+  <div class="nav-logo" onclick="showPage('cover')">東京 TOKYO</div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="showPage('cover')">封面</button>
+    <button class="nav-link" onclick="showPage('toc')">目錄</button>
+    <button class="nav-link" onclick="showPage('decl')">聲明書</button>
+    <button class="nav-link" onclick="showPage('day1')">Day 1</button>
+    <button class="nav-link" onclick="showPage('day2')">Day 2</button>
+    <button class="nav-link" onclick="showPage('day3')">Day 3</button>
+    <button class="nav-link" onclick="showPage('day4')">Day 4</button>
+    <button class="nav-link" onclick="showPage('day5')">Day 5</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════
+     PAGE 1: COVER
+═══════════════════════════ -->
+<div class="page active" id="page-cover">
+  <div class="cover">
+    <div class="cover-circles">
+      <div class="circle c1"></div>
+      <div class="circle c2"></div>
+      <div class="circle c3"></div>
+    </div>
+    <div class="petals" id="petals"></div>
+    <div class="cover-content">
+      <div class="cover-jp">東京</div>
+      <div class="cover-en">T O K Y O</div>
+      <div class="cover-divider"></div>
+      <div class="cover-sub">五天四夜深度旅遊行程</div>
+      <div class="cover-date">FIVE DAYS &nbsp;·&nbsp; FOUR NIGHTS</div>
+      <div class="cover-stats">
+        <div class="cstat"><span class="cstat-n">5</span><span class="cstat-l">天數</span></div>
+        <div class="cstat"><span class="cstat-n">4</span><span class="cstat-l">區域</span></div>
+        <div class="cstat"><span class="cstat-n">25+</span><span class="cstat-l">景點</span></div>
+        <div class="cstat"><span class="cstat-n">∞</span><span class="cstat-l">回憶</span></div>
+      </div>
+      <button class="cover-btn" onclick="showPage('toc')">開始探索 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     PAGE 2: TOC
+═══════════════════════════ -->
+<div class="page" id="page-toc">
+  <div class="toc-page">
+    <div class="page-header">
+      <span class="jp-label">Table of Contents</span>
+      <h2>旅程目錄</h2>
+      <p>點擊任一章節即可直接跳轉</p>
+    </div>
+    <div class="toc-grid">
+      <div class="toc-card" onclick="showPage('decl')">
+        <div class="toc-num">01</div>
+        <div class="toc-icon">📜</div>
+        <div class="toc-tag">Declaration</div>
+        <div class="toc-title">旅遊不吵架聲明書</div>
+        <div class="toc-desc">出發前的重要約定，確保每一刻都是美好回憶。請雙方確認並簽署。</div>
+        <div class="toc-arrow">前往簽署 →</div>
+      </div>
+      <div class="toc-card" onclick="showPage('day1')">
+        <div class="toc-num">02</div>
+        <div class="toc-icon">✈️</div>
+        <div class="toc-tag">Day 1 · 抵達</div>
+        <div class="toc-title">入境東京 · 淺草初體驗</div>
+        <div class="toc-desc">抵達成田機場，前往淺草感受江戶風情，傍晚逛上野阿美橫丁市場。</div>
+        <div class="toc-arrow">查看行程 →</div>
+      </div>
+      <div class="toc-card" onclick="showPage('day2')">
+        <div class="toc-num">03</div>
+        <div class="toc-icon">🗼</div>
+        <div class="toc-tag">Day 2 · 東京鐵塔</div>
+        <div class="toc-title">銀座 · 台場 · 東京鐵塔</div>
+        <div class="toc-desc">奢華購物街銀座漫步，台場彩虹橋夜景，東京鐵塔點燈時刻。</div>
+        <div class="toc-arrow">查看行程 →</div>
+      </div>
+      <div class="toc-card" onclick="showPage('day3')">
+        <div class="toc-num">04</div>
+        <div class="toc-icon">🌸</div>
+        <div class="toc-tag">Day 3 · 原宿新宿</div>
+        <div class="toc-title">原宿 · 表參道 · 新宿</div>
+        <div class="toc-desc">竹下通潮流文化、表參道精品、新宿歌舞伎町夜遊。</div>
+        <div class="toc-arrow">查看行程 →</div>
+      </div>
+      <div class="toc-card" onclick="showPage('day4')">
+        <div class="toc-num">05</div>
+        <div class="toc-icon">🎮</div>
+        <div class="toc-tag">Day 4 · 秋葉原</div>
+        <div class="toc-title">秋葉原 · 皇居 · 六本木</div>
+        <div class="toc-desc">電器與動漫天堂秋葉原，皇居外苑晨跑，六本木藝術夜生活。</div>
+        <div class="toc-arrow">查看行程 →</div>
+      </div>
+      <div class="toc-card" onclick="showPage('day5')">
+        <div class="toc-num">06</div>
+        <div class="toc-icon">🛍</div>
+        <div class="toc-tag">Day 5 · 返程</div>
+        <div class="toc-title">渋谷 · 最後購物 · 歸途</div>
+        <div class="toc-desc">渋谷 SCRAMBLE 十字路口告別東京，最後採買伴手禮，滿載而歸。</div>
+        <div class="toc-arrow">查看行程 →</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     PAGE 3: DECLARATION
+═══════════════════════════ -->
+<div class="page" id="page-decl">
+  <div class="decl-page">
+    <div class="page-header">
+      <span class="jp-label">Travel Agreement</span>
+      <h2>旅遊不吵架聲明書</h2>
+      <p>出發前請雙方閱讀並勾選同意，方可啟程 ✓</p>
+    </div>
+    <div class="decl-inner">
+      <div class="decl-doc">
+        <div class="decl-seal">
+          <div class="seal-circle">🌸</div>
+        </div>
+        <div class="decl-title">東京旅遊和平共處協議書</div>
+        <div class="decl-subtitle">TOKYO TRAVEL HARMONY DECLARATION</div>
+        <div class="decl-divider"></div>
+
+        <p style="font-size:.85rem;line-height:2;color:#5a7a88;margin-bottom:2rem;">
+          本聲明書由同行旅伴共同訂立，旨在確保此次東京之旅愉快順利，留下美好回憶而非遺憾。
+          雙方自願遵守以下條款，並以良好心態面對旅途中的一切狀況。
+        </p>
+
+        <div class="decl-clauses">
+          <div class="clause" onclick="toggleClause(this)">
+            <div class="clause-num">01</div>
+            <div class="clause-body">
+              <div class="clause-heading">迷路條款</div>
+              <div class="clause-text">東京地鐵複雜，迷路屬正常現象。若走錯路線或搭錯站，雙方不得埋怨對方，應冷靜確認地圖，視為意外探索，享受「意外發現」的樂趣。</div>
+            </div>
+            <div class="clause-check">✓</div>
+          </div>
+          <div class="clause" onclick="toggleClause(this)">
+            <div class="clause-num">02</div>
+            <div class="clause-body">
+              <div class="clause-heading">排隊耐心條款</div>
+              <div class="clause-text">日本人氣餐廳、景點排隊可能需要30分鐘至2小時。等待期間不得催促、嘆氣或表達不耐，可利用等待時間聊天、拍照，把等待變成相處時光。</div>
+            </div>
+            <div class="clause-check">✓</div>
+          </div>
+          <div class="clause" onclick="toggleClause(this)">
+            <div class="clause-num">03</div>
+            <div class="clause-body">
+              <div class="clause-heading">購物時間條款</div>
+              <div class="clause-text">雙方各享有不受催促的購物自由時間。一方逛街時，另一方應耐心等候，不得頻繁催促，可善用手機打發時間。每人每天購物時間上限協議為：____小時。</div>
+            </div>
+            <div class="clause-check">✓</div>
+          </div>
+          <div class="clause" onclick="toggleClause(this)">
+            <div class="clause-num">04</div>
+            <div class="clause-body">
+              <div class="clause-heading">食物異議條款</div>
+              <div class="clause-text">若對餐廳或食物選擇有異議，應以平和方式表達，提出替代建議，不得以翻白眼、沉默抗議等消極方式表達不滿。最終決策以猜拳為準。</div>
+            </div>
+            <div class="clause-check">✓</div>
+          </div>
+          <div class="clause" onclick="toggleClause(this)">
+            <div class="clause-num">05</div>
+            <div class="clause-body">
+              <div class="clause-heading">疲憊諒解條款</div>
+              <div class="clause-text">長時間步行可能導致疲勞與情緒低落，此時雙方應互相體諒，可提出休息要求，另一方不得嫌棄或催促，找一家咖啡廳好好休息。</div>
+            </div>
+            <div class="clause-check">✓</div>
+          </div>
+          <div class="clause" onclick="toggleClause(this)">
+            <div class="clause-num">06</div>
+            <div class="clause-body">
+              <div class="clause-heading">拍照配合條款</div>
+              <div class="clause-text">被要求拍照時，應盡力配合，不得以「夠了吧」、「又在拍」等言語抱怨。拍照方應珍惜他人耐心，不過度要求重拍，每個地點拍照時間合理控制。</div>
+            </div>
+            <div class="clause-check">✓</div>
+          </div>
+          <div class="clause" onclick="toggleClause(this)">
+            <div class="clause-num">07</div>
+            <div class="clause-body">
+              <div class="clause-heading">最終仲裁條款</div>
+              <div class="clause-text">若旅途中發生意見衝突，雙方應給予彼此10分鐘冷靜時間，之後以成熟理性的方式溝通。旅行的目的是創造美好回憶，任何分歧都不值得破壞這段旅程。</div>
+            </div>
+            <div class="clause-check">✓</div>
+          </div>
+        </div>
+
+        <div class="decl-divider"></div>
+        <div class="sign-section">
+          <p class="sign-hint">請雙方填入姓名並點擊「我同意」完成簽署</p>
+          <div class="sign-boxes">
+            <div class="sign-box">
+              <input class="sign-name" type="text" placeholder="旅伴 A 姓名" id="sign-a"/>
+              <span class="sign-label">簽署人 A</span>
+            </div>
+            <div class="sign-box">
+              <input class="sign-name" type="text" placeholder="旅伴 B 姓名" id="sign-b"/>
+              <span class="sign-label">簽署人 B</span>
+            </div>
+          </div>
+          <button class="agree-btn" id="agree-btn" onclick="signDecl()">✓ &nbsp;我們同意，出發去東京！</button>
+          <div id="decl-result"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     PAGE 4: DAY 1
+═══════════════════════════ -->
+<div class="page" id="page-day1">
+  <div class="day-page">
+    <div class="day-hero">
+      <div class="day-number-big">01</div>
+      <div class="day-info">
+        <div class="day-tag">Day One · 第一天</div>
+        <div class="day-title">入境東京<br>淺草 · 上野初體驗</div>
+        <div class="day-summary">踏上東京的第一步，感受千年江戶文化的呼吸。從成田機場出發，在傳統與現代交錯的街道上展開五天的旅程。</div>
+      </div>
+    </div>
+    <div class="day-timeline">
+
+      <div class="time-block" onclick="toggleSpot(this)">
+        <div class="time-label">上午<br>10:00<div class="time-line-v"></div></div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">Airport · 機場</div>
+              <div class="spot-name">成田國際機場抵達</div>
+              <div class="spot-en">Narita International Airport</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">抵達成田機場後，建議先到 1F 入境大廳辦理 Suica 交通卡與租借 Wi-Fi 分享器。搭乘 N'EX (Narita Express) 約60分鐘可抵達東京站，再轉乘地鐵前往飯店。</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'💳 Suica卡：可在機場自動售票機購買，儲值後可用於全東京電車、公車，甚至便利商店消費，非常方便！')">💳 Suica卡</span>
+              <span class="spot-tag" onclick="showTip(this,'📶 Wi-Fi分享器：建議在台灣出發前預訂，機場取件。一天約NT$100，全程高速上網無煩惱。')">📶 Wi-Fi</span>
+              <span class="spot-tag" onclick="showTip(this,'🚆 N\'EX票價：約NT$700，東京站下車。也可搭京成Skyliner較便宜，約NT$500，終點為上野站。')">🚆 N'EX特急</span>
+            </div>
+            <div class="spot-tip" id="tip-current"></div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="time-block featured" onclick="toggleSpot(this)">
+        <div class="time-label">下午<br>14:00<div class="time-line-v"></div></div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">★ 必訪 · Temple</div>
+              <div class="spot-name">淺草寺 · 仲見世通</div>
+              <div class="spot-en">Senso-ji Temple & Nakamise</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">東京最古老的寺廟，建於628年。穿過雷門大紅燈籠，走過兩側滿是和菓子與紀念品的仲見世通，最後抵達本堂參拜。傍晚時分燈籠亮起，氣氛絕美。</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'⛩ 雷門：免費入場，24小時開放。建議下午3點後前往，遊客較少且燈籠打光更美。')">⛩ 雷門</span>
+              <span class="spot-tag" onclick="showTip(this,'🥮 人形燒：仲見世通必買！熱騰騰的紅豆人形燒，一個約¥150，是淺草最代表性的名物。')">🥮 人形燒</span>
+              <span class="spot-tag" onclick="showTip(this,'🎋 抽籤：在本堂旁可抽籤（¥100），若抽到「凶」不要緊，把它綁在籤架上就可以消除了！')">🎋 抽籤</span>
+            </div>
+            <div class="spot-tip"></div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="time-block" onclick="toggleSpot(this)">
+        <div class="time-label">下午<br>16:30<div class="time-line-v"></div></div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">View · 展望</div>
+              <div class="spot-name">東京晴空塔</div>
+              <div class="spot-en">Tokyo Skytree</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">全球第二高塔，高634公尺。350公尺的天望甲板可360度俯瞰東京全景，晴天甚至可看到富士山。建議傍晚前往，欣賞日落後點燈的東京夜景。</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'🎫 票價：天望甲板¥2,100、天望迴廊¥1,000（需加購）。建議網路預購，可省去排隊時間。')">🎫 票價</span>
+              <span class="spot-tag" onclick="showTip(this,'📸 最佳時間：建議日落前30分鐘入場，可同時欣賞白天景色與夜景，拍攝效果最好。')">📸 最佳時間</span>
+            </div>
+            <div class="spot-tip"></div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="time-block featured" onclick="toggleSpot(this)">
+        <div class="time-label">晚上<br>19:00</div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">★ 晚餐推薦</div>
+              <div class="spot-name">上野阿美橫丁</div>
+              <div class="spot-en">Ueno Ameyoko Market</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">上野最熱鬧的露天市集，從下午開始營業到深夜。這裡有超實惠的海鮮丼、烤串、炸物，以及各種乾貨零食。人聲鼎沸的街道氛圍讓人彷彿置身昭和時代。</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'🦐 海鮮丼推薦：阿美橫丁內的「魚力」，超巨大海膽鮭魚卵丼飯，約¥1,500，份量超值！')">🦐 海鮮丼</span>
+              <span class="spot-tag" onclick="showTip(this,'🍢 烤串推薦：市場內有多家烤串攤，價格約¥100-300一串，邊逛邊吃最有氣氛。')">🍢 烤串</span>
+            </div>
+            <div class="spot-tip"></div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="food-section">
+      <div class="food-title">🍜 今日餐食推薦</div>
+      <div class="food-grid">
+        <div class="food-item"><span class="food-emoji">🍱</span><div class="food-name">機場早午餐</div><div class="food-note">7-11便當 / 咖啡廳</div></div>
+        <div class="food-item"><span class="food-emoji">🥮</span><div class="food-name">仲見世小食</div><div class="food-note">人形燒・草餅</div></div>
+        <div class="food-item"><span class="food-emoji">🦐</span><div class="food-name">阿美橫丁晚餐</div><div class="food-note">海鮮丼・烤串</div></div>
+      </div>
+    </div>
+
+    <div class="day-nav-bottom">
+      <button class="day-nav-btn" onclick="showPage('decl')">← 聲明書</button>
+      <button class="day-nav-btn next" onclick="showPage('day2')">Day 2 · 東京鐵塔 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     PAGE 5: DAY 2
+═══════════════════════════ -->
+<div class="page" id="page-day2">
+  <div class="day-page">
+    <div class="day-hero">
+      <div class="day-number-big">02</div>
+      <div class="day-info">
+        <div class="day-tag">Day Two · 第二天</div>
+        <div class="day-title">銀座 · 台場<br>東京鐵塔點燈夜</div>
+        <div class="day-summary">從優雅奢華的銀座出發，橫渡彩虹橋到浪漫的台場海濱，最後在東京鐵塔的橙光下結束完美的一天。</div>
+      </div>
+    </div>
+    <div class="day-timeline">
+
+      <div class="time-block featured" onclick="toggleSpot(this)">
+        <div class="time-label">上午<br>10:00<div class="time-line-v"></div></div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">★ 購物 · Luxury</div>
+              <div class="spot-name">銀座</div>
+              <div class="spot-en">Ginza</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">東京最高端的購物街，CHANEL、LV、Hermès 旗艦店林立。就算不消費也值得來此感受東京最精緻的街道氛圍。推薦順道逛ITOYA文具店（12層樓的文具天堂）以及銀座六丁目的 GINZA SIX。</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'✒️ ITOYA文具店：銀座必訪！12層樓全是文具、設計商品，即使不買也可以逛上2小時，地址：銀座2-7-15。')">✒️ ITOYA</span>
+              <span class="spot-tag" onclick="showTip(this,'🏬 GINZA SIX：2017年開幕的超頂級商場，B2有全日本最大的茑屋書店，設計感十足值得一逛。')">🏬 GINZA SIX</span>
+            </div>
+            <div class="spot-tip"></div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="time-block" onclick="toggleSpot(this)">
+        <div class="time-label">下午<br>13:30<div class="time-line-v"></div></div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">Waterfront · 海濱</div>
+              <div class="spot-name">台場海濱公園</div>
+              <div class="spot-en">Odaiba Marine Park</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">東京最浪漫的海濱地帶，可遠眺彩虹橋與自由女神像複製品。搭乘百合海鷗號高架列車過橋，本身就是絕美風景。台場同時也有「アクアシティ」、「ダイバーシティ」等大型購物中心。</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'🌁 彩虹橋：傍晚5點後彩虹橋點燈，搭百合海鷗號過橋是最佳欣賞角度，票價¥320。')">🌁 彩虹橋</span>
+              <span class="spot-tag" onclick="showTip(this,'🤖 鋼彈：台場Diver City廣場外有1:1等比例的鋼彈立像，免費參觀，是打卡必去地點！')">🤖 鋼彈</span>
+            </div>
+            <div class="spot-tip"></div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="time-block featured" onclick="toggleSpot(this)">
+        <div class="time-label">傍晚<br>17:30<div class="time-line-v"></div></div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">★ Icon · 地標</div>
+              <div class="spot-name">東京鐵塔</div>
+              <div class="spot-en">Tokyo Tower</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">東京最經典的地標，高333公尺。日落後鐵塔換上橙紅色燈光，映照在周邊建築玻璃上格外迷人。主展望台（150m）可俯瞰東京鐵塔的腿部，以及遠方的東京灣夜景。</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'🎫 票價：主展望台¥1,200、頂上展望台¥3,000。建議只買主展望台即可，性價比最高。')">🎫 票價</span>
+              <span class="spot-tag" onclick="showTip(this,'📍 增上寺角度：從增上寺（免費）可以看到鐵塔與古老寺廟同框的最美照片，步行5分鐘即可到達。')">📍 最佳拍照點</span>
+            </div>
+            <div class="spot-tip"></div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="time-block" onclick="toggleSpot(this)">
+        <div class="time-label">晚上<br>20:00</div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">Dinner · 晚餐</div>
+              <div class="spot-name">麻布十番商店街</div>
+              <div class="spot-en">Azabu-Juban</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">東京鐵塔腳下的優雅商店街，充滿個性小店與特色餐廳。這裡沒有觀光客的喧嘩，是東京本地人最愛的悠閒街道，適合吃一頓輕鬆的晚餐。</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'🍣 推薦：麻布十番有多家平價壽司與日式居酒屋，人均約¥1,500-2,500，輕鬆享用美食。')">🍣 晚餐推薦</span>
+            </div>
+            <div class="spot-tip"></div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="food-section">
+      <div class="food-title">🍽 今日餐食推薦</div>
+      <div class="food-grid">
+        <div class="food-item"><span class="food-emoji">☕</span><div class="food-name">銀座早午餐</div><div class="food-note">Café de l'Ambre老咖啡廳</div></div>
+        <div class="food-item"><span class="food-emoji">🍜</span><div class="food-name">台場午餐</div><div class="food-note">Aqua City餐廳街</div></div>
+        <div class="food-item"><span class="food-emoji">🍶</span><div class="food-name">麻布十番晚餐</div><div class="food-note">日式居酒屋</div></div>
+      </div>
+    </div>
+
+    <div class="day-nav-bottom">
+      <button class="day-nav-btn" onclick="showPage('day1')">← Day 1 · 淺草</button>
+      <button class="day-nav-btn next" onclick="showPage('day3')">Day 3 · 原宿新宿 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     PAGE 6: DAY 3
+═══════════════════════════ -->
+<div class="page" id="page-day3">
+  <div class="day-page">
+    <div class="day-hero">
+      <div class="day-number-big">03</div>
+      <div class="day-info">
+        <div class="day-tag">Day Three · 第三天</div>
+        <div class="day-title">原宿 · 表參道<br>新宿歌舞伎町夜遊</div>
+        <div class="day-summary">從可愛爆炸的竹下通，走到奢華靜謐的表參道，最後在新宿的霓虹燈海裡沉浸東京最繁華的夜晚。</div>
+      </div>
+    </div>
+    <div class="day-timeline">
+
+      <div class="time-block featured" onclick="toggleSpot(this)">
+        <div class="time-label">上午<br>10:00<div class="time-line-v"></div></div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">★ 潮流 · Fashion</div>
+              <div class="spot-name">原宿 · 竹下通</div>
+              <div class="spot-en">Harajuku Takeshita Street</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">東京最具個性的街道，充滿誇張可愛的服飾店、棉花糖、可麗餅攤位。這條只有350公尺的小街，卻濃縮了日本最獨特的青少年次文化，每一家店都令人眼花撩亂。</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'🍦 彩虹可麗餅：竹下通必吃！MARION CREPES 是老字號，各種顏色的外皮可選，一個約¥700。')">🍦 彩虹可麗餅</span>
+              <span class="spot-tag" onclick="showTip(this,'👘 復古服飾：竹下通附近的「Cat Street」有更多獨特二手古著店，是挖寶的好地方。')">👘 古著</span>
+            </div>
+            <div class="spot-tip"></div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="time-block" onclick="toggleSpot(this)">
+        <div class="time-label">下午<br>12:30<div class="time-line-v"></div></div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">Luxury · 精品</div>
+              <div class="spot-name">表參道</div>
+              <div class="spot-en">Omotesando</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">被稱為「東京的香榭大道」，兩旁欒樹成蔭，各大奢侈品牌旗艦店設計感十足。安藤忠雄設計的表參道Hills值得一逛，南青山一帶的咖啡廳是東京最文青的下午茶地點。</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'☕ 藍瓶咖啡：Blue Bottle Coffee 的日本創始店就在南青山，喝一杯職人手沖，體驗東京咖啡文化。')">☕ Blue Bottle</span>
+              <span class="spot-tag" onclick="showTip(this,'🏛 表參道Hills：安藤忠雄設計，螺旋坡道式的購物商場，建築本身就是藝術，即使不消費也值得入內參觀。')">🏛 表參道Hills</span>
+            </div>
+            <div class="spot-tip"></div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="time-block featured" onclick="toggleSpot(this)">
+        <div class="time-label">傍晚<br>17:00<div class="time-line-v"></div></div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">★ 必看 · City View</div>
+              <div class="spot-name">新宿都廳展望台</div>
+              <div class="spot-en">Tokyo Metropolitan Government Building</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">完全免費的45樓展望台，高202公尺，可360度俯瞰新宿高樓群與遠方富士山。傍晚時分由白天景色過渡到夜景，是東京免費夜景的最佳選擇。</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'🆓 完全免費！開放時間至23:00（週一至22:00），是東京最高CP值的展望台，強烈推薦。')">🆓 完全免費</span>
+              <span class="spot-tag" onclick="showTip(this,'🗻 富士山：晴天的清晨或傍晚有機會遠眺富士山，特別是在冬季（11-3月）能見度最高。')">🗻 富士山</span>
+            </div>
+            <div class="spot-tip"></div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="time-block featured" onclick="toggleSpot(this)">
+        <div class="time-label">夜晚<br>20:00</div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">★ 夜生活 · Night</div>
+              <div class="spot-name">歌舞伎町 · 新宿</div>
+              <div class="spot-en">Kabukicho · Shinjuku</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">東京最不夜城的地帶，霓虹燈看板將街道染成各種顏色。黃金街是滿是個性小酒吧的橫丁，每間只有4-5個座位，與陌生人同桌聊天是這裡的文化。東寶大樓外的哥吉拉頭也是打卡熱點。</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'🍺 黃金街：迷宮般的小巷裡有200多家特色小酒吧，每間各有主題，光是外觀就值得拍照打卡。')">🍺 黃金街</span>
+              <span class="spot-tag" onclick="showTip(this,'🦖 哥吉拉：東寶大樓8樓的哥吉拉頭夜晚也會亮燈，和建築物同框拍照超有震撼感。')">🦖 哥吉拉</span>
+            </div>
+            <div class="spot-tip"></div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="food-section">
+      <div class="food-title">🍽 今日餐食推薦</div>
+      <div class="food-grid">
+        <div class="food-item"><span class="food-emoji">🍦</span><div class="food-name">竹下通小食</div><div class="food-note">彩虹可麗餅・棉花糖</div></div>
+        <div class="food-item"><span class="food-emoji">☕</span><div class="food-name">表參道午茶</div><div class="food-note">Blue Bottle咖啡</div></div>
+        <div class="food-item"><span class="food-emoji">🍜</span><div class="food-name">新宿晚餐</div><div class="food-note">一蘭拉麵・居酒屋</div></div>
+      </div>
+    </div>
+
+    <div class="day-nav-bottom">
+      <button class="day-nav-btn" onclick="showPage('day2')">← Day 2 · 東京鐵塔</button>
+      <button class="day-nav-btn next" onclick="showPage('day4')">Day 4 · 秋葉原 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     PAGE 7: DAY 4
+═══════════════════════════ -->
+<div class="page" id="page-day4">
+  <div class="day-page">
+    <div class="day-hero">
+      <div class="day-number-big">04</div>
+      <div class="day-info">
+        <div class="day-tag">Day Four · 第四天</div>
+        <div class="day-title">秋葉原 · 皇居<br>六本木藝術之夜</div>
+        <div class="day-summary">白天沉浸在動漫電器的次文化天堂，下午在皇居外苑感受都市中的寧靜，夜晚在六本木體驗東京最前衛的藝術場景。</div>
+      </div>
+    </div>
+    <div class="day-timeline">
+
+      <div class="time-block featured" onclick="toggleSpot(this)">
+        <div class="time-label">上午<br>10:00<div class="time-line-v"></div></div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">★ 動漫 · Akihabara</div>
+              <div class="spot-name">秋葉原電器街</div>
+              <div class="spot-en">Akihabara Electric Town</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">全球動漫、電玩、電子零件的聖地。Yodobashi Camera、Bic Camera有最新電子產品，多層樓的Animate、Mandarake有各式動漫周邊，女僕咖啡廳是獨特的東京體驗。</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'🎮 Yodobashi Camera：超大型電器店，電子產品在此購買加上退稅，比台灣便宜很多，記得帶護照辦理免稅。')">🎮 電器採購</span>
+              <span class="spot-tag" onclick="showTip(this,'👘 女僕咖啡廳：@home cafe是連鎖品牌，消費約¥1,500起，體驗日本特有的女僕文化，進門時女僕會說「歡迎回家，主人」。')">👘 女僕咖啡廳</span>
+            </div>
+            <div class="spot-tip"></div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="time-block" onclick="toggleSpot(this)">
+        <div class="time-label">下午<br>14:00<div class="time-line-v"></div></div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">History · 歷史</div>
+              <div class="spot-name">皇居東御苑</div>
+              <div class="spot-en">Imperial Palace East Garden</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">日本天皇居所，東御苑對外開放免費參觀。廣大的日式庭園裡有古老城牆遺址，在高樓環繞的東京市中心感受難得的寧靜與歷史感。二重橋前廣場是最知名的拍照地點。</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'📷 二重橋：皇居最著名的景點，搭配護城河與古松拍照，是代表性的東京風景。免費參觀，周一週五休園。')">📷 二重橋</span>
+            </div>
+            <div class="spot-tip"></div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="time-block featured" onclick="toggleSpot(this)">
+        <div class="time-label">傍晚<br>18:00</div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">★ 藝術 · Art</div>
+              <div class="spot-name">六本木 · teamLab Planets</div>
+              <div class="spot-en">Roppongi · teamLab</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">teamLab Planets 是東京最驚艷的沉浸式數位藝術展，赤腳走在反射水面上，四周全是無邊際的花朵與光影。這是全球最受歡迎的藝術體驗之一，強烈推薦！六本木Hills也有森美術館可一併參觀。</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'🎫 teamLab票價：¥3,200，官網預購較便宜且可省排隊時間，建議提前1-2週購票。')">🎫 票價</span>
+              <span class="spot-tag" onclick="showTip(this,'👗 穿著建議：需赤腳入場，建議穿短褲或容易收起褲管的服裝，白色衣物效果最好。')">👗 穿著建議</span>
+            </div>
+            <div class="spot-tip"></div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="food-section">
+      <div class="food-title">🍽 今日餐食推薦</div>
+      <div class="food-grid">
+        <div class="food-item"><span class="food-emoji">🍛</span><div class="food-name">秋葉原午餐</div><div class="food-note">咖哩飯・牛丼</div></div>
+        <div class="food-item"><span class="food-emoji">☕</span><div class="food-name">皇居咖啡</div><div class="food-note">附近Café休息</div></div>
+        <div class="food-item"><span class="food-emoji">🥩</span><div class="food-name">六本木晚餐</div><div class="food-note">和牛燒肉・壽司</div></div>
+      </div>
+    </div>
+
+    <div class="day-nav-bottom">
+      <button class="day-nav-btn" onclick="showPage('day3')">← Day 3 · 原宿新宿</button>
+      <button class="day-nav-btn next" onclick="showPage('day5')">Day 5 · 返程 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     PAGE 8: DAY 5
+═══════════════════════════ -->
+<div class="page" id="page-day5">
+  <div class="day-page">
+    <div class="day-hero">
+      <div class="day-number-big">05</div>
+      <div class="day-info">
+        <div class="day-tag">Day Five · 第五天</div>
+        <div class="day-title">渋谷十字路口<br>最後告別 · 滿載歸途</div>
+        <div class="day-summary">在東京最後一天，用渋谷的十字路口畫下旅程的句點。帶著滿滿伴手禮與回憶，心滿意足地踏上歸途。</div>
+      </div>
+    </div>
+    <div class="day-timeline">
+
+      <div class="time-block featured" onclick="toggleSpot(this)">
+        <div class="time-label">上午<br>09:00<div class="time-line-v"></div></div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">★ 必拍 · Iconic</div>
+              <div class="spot-name">渋谷 SCRAMBLE 十字路口</div>
+              <div class="spot-en">Shibuya Scramble Crossing</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">全世界最繁忙的十字路口，每次綠燈瞬間有超過3,000人同時穿越，場面震撼壯觀。Scramble Square 2樓的「渋谷スカイ」展望台可以完整俯瞰這個壯觀的畫面，是東京最具代表性的景色。</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'📍 最佳俯瞰點：Scramble Square展望台（¥2,000）或Mag's Park屋頂（免費但角度有限）都可俯瞰十字路口。')">📍 俯瞰點</span>
+              <span class="spot-tag" onclick="showTip(this,'🐕 忠犬八公：渋谷站前的八公犬銅像是東京最知名的集合地標，永遠人潮不斷，拍照要有耐心。')">🐕 八公犬</span>
+            </div>
+            <div class="spot-tip"></div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="time-block" onclick="toggleSpot(this)">
+        <div class="time-label">上午<br>10:30<div class="time-line-v"></div></div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">Shopping · 採購</div>
+              <div class="spot-name">最後伴手禮採購</div>
+              <div class="spot-en">Last Shopping</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">最後的購物時光！東急百貨、LOFT、Don Quijote（驚安の殿堂）都是採購伴手禮的好地方。記得保留體重，不然行李超重！</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'🎁 必買清單：東京香蕉、白色戀人（需到機場購買才最新鮮）、抹茶點心、藥妝、文具，以及只有日本才有的限定口味零食。')">🎁 必買清單</span>
+              <span class="spot-tag" onclick="showTip(this,'💴 退稅提醒：同一天在同一店家消費¥5,000以上可辦退稅，記得帶護照！機場還有退稅服務，百貨公司消費也別忘了問。')">💴 退稅提醒</span>
+            </div>
+            <div class="spot-tip"></div>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="time-block" onclick="toggleSpot(this)">
+        <div class="time-label">下午<br>13:00<div class="time-line-v"></div></div>
+        <div class="spot-card">
+          <div class="spot-header">
+            <div class="spot-left">
+              <div class="spot-cat">Airport · 機場</div>
+              <div class="spot-name">前往成田機場</div>
+              <div class="spot-en">Narita Airport Departure</div>
+            </div>
+            <div class="spot-toggle">▼</div>
+          </div>
+          <div class="spot-body"><div class="spot-body-inner">
+            <div class="spot-desc">東京到成田機場需預留至少3小時（搭車約60-75分鐘 + 辦理登機）。建議最晚下午1點出發，在機場慢慢吃最後一餐、逛免稅商店，輕鬆告別東京。</div>
+            <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'⏰ 時間提醒：國際線建議出發前3小時到機場。成田機場有世界級的免稅店與餐廳，早點到也不無聊！')">⏰ 時間提醒</span>
+              <span class="spot-tag" onclick="showTip(this,'🍱 機場最後一餐：成田T2的「喜多方拉麵」是最多人選擇的最後一餐，在東京的最後一碗麵，留下美好印象！')">🍱 最後一餐</span>
+            </div>
+            <div class="spot-tip"></div>
+          </div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Final Message -->
+    <div class="food-section" style="text-align:center;padding:3rem;">
+      <div style="font-size:3rem;margin-bottom:1rem;">✈️</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--deep);margin-bottom:.8rem;">旅程圓滿結束</div>
+      <div style="font-size:.9rem;line-height:2;color:var(--mid);max-width:500px;margin:0 auto 2rem;">
+        五天四夜，25個景點，無數個笑聲與回憶。<br>東京，我們下次見。
+      </div>
+      <button onclick="showPage('cover')" style="padding:.9rem 2.5rem;background:var(--deep);color:#fff;border:none;cursor:pointer;font-family:'Noto Sans TC',sans-serif;font-size:.8rem;letter-spacing:.2em;transition:all .3s;" onmouseover="this.style.background='#1e3a45'" onmouseout="this.style.background='var(--deep)'">
+        回到封面 ↑
+      </button>
+    </div>
+
+    <div class="day-nav-bottom">
+      <button class="day-nav-btn" onclick="showPage('day4')">← Day 4 · 秋葉原</button>
+      <button class="day-nav-btn next" onclick="showPage('cover')">回到封面 →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Page navigation ──
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  const btns=document.querySelectorAll('.nav-link');
+  btns.forEach(b=>{ if(b.getAttribute('onclick').includes("'"+id+"'")) b.classList.add('active'); });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── Spot card toggle ──
+function toggleSpot(block){
+  const wasOpen=block.classList.contains('open');
+  // close siblings
+  block.closest('.day-timeline').querySelectorAll('.time-block').forEach(b=>{
+    b.classList.remove('open');
+    b.querySelectorAll('.spot-tip').forEach(t=>t.classList.remove('show'));
+    b.querySelectorAll('.spot-tag').forEach(t=>t.classList.remove('active'));
+  });
+  if(!wasOpen) block.classList.add('open');
+}
+
+// ── Tag tip ──
+function showTip(tag, text){
+  event.stopPropagation();
+  const block=tag.closest('.time-block');
+  const allTips=block.querySelectorAll('.spot-tip');
+  const allTags=block.querySelectorAll('.spot-tag');
+  // find the tip in the same spot-body-inner
+  const bodyInner=tag.closest('.spot-body-inner');
+  const tip=bodyInner.querySelector('.spot-tip');
+  if(tag.classList.contains('active')){
+    tag.classList.remove('active');
+    tip.classList.remove('show');
+    return;
+  }
+  allTags.forEach(t=>t.classList.remove('active'));
+  allTips.forEach(t=>{ t.classList.remove('show'); t.textContent=''; });
+  tag.classList.add('active');
+  tip.textContent=text;
+  tip.classList.add('show');
+}
+
+// ── Declaration clauses ──
+function toggleClause(el){
+  el.classList.toggle('agreed');
+  checkAllAgreed();
+}
+function checkAllAgreed(){
+  const all=document.querySelectorAll('.clause');
+  const btn=document.getElementById('agree-btn');
+  const allDone=[...all].every(c=>c.classList.contains('agreed'));
+  btn.disabled=!allDone;
+  btn.textContent=allDone?'✓  全部同意，出發去東京！':'請先勾選所有條款';
+}
+function signDecl(){
+  const a=document.getElementById('sign-a').value.trim()||'旅伴A';
+  const b=document.getElementById('sign-b').value.trim()||'旅伴B';
+  const result=document.getElementById('decl-result');
+  result.style.display='block';
+  result.innerHTML=`🌸 &nbsp;${a} 與 ${b} 已完成簽署！東京之旅正式啟動，祝旅途愉快、不吵架、買到爽！<br><small style="color:var(--mid)">簽署日期：${new Date().toLocaleDateString('zh-TW')}</small>`;
+  document.getElementById('agree-btn').textContent='✓ 已簽署完成';
+  document.getElementById('agree-btn').disabled=true;
+}
+
+// ── Progress bar ──
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  document.getElementById('progress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+});
+
+// ── Hide/show nav on scroll ──
+let lastY=0;
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  const nav=document.getElementById('topnav');
+  nav.classList.toggle('hide',y>lastY&&y>100);
+  lastY=y;
+});
+
+// ── Sakura petals ──
+const petalContainer=document.getElementById('petals');
+for(let i=0;i<18;i++){
+  const p=document.createElement('div');
+  p.className='petal';
+  p.style.left=Math.random()*100+'%';
+  p.style.animationDuration=(6+Math.random()*8)+'s';
+  p.style.animationDelay=(Math.random()*8)+'s';
+  p.style.width=p.style.height=(6+Math.random()*6)+'px';
+  p.style.opacity=Math.random()*.5+.2;
+  petalContainer.appendChild(p);
+}
+
+// Initialize clause button state
+checkAllAgreed();
+</script>
+</body>
+</html>

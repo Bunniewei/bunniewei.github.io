@@ -638,7 +638,7 @@ body{
         <div class="toc-icon">🧳</div>
         <div class="toc-tag">Packing List</div>
         <div class="toc-title">旅行清單</div>
-        <div class="toc-desc">出發前必備物品清單，逐一勾選確認，確保什麼都不忘帶！</div>
+        <div class="toc-desc">出發前必備物品清單，逐一勾選確認，確保不漏帶！</div>
         <div class="toc-arrow">查看清單 →</div>
       </div>
       <div class="toc-card" onclick="showPage('metro')">
@@ -839,71 +839,85 @@ body{
 
       <div class="pack-category">
         <div class="pack-cat-title">🪪 重要證件</div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">護照（有效期6個月以上）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">護照(多帶一份影本)</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">台灣身分證</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">機票電子票券（截圖備份）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">機票電子/紙本憑證票券（截圖備份）</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">飯店訂房確認信</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">旅遊保險單</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">入境卡(Visit Japan Web)</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">緊急聯絡人資料</span></div>
       </div>
 
       <div class="pack-category">
         <div class="pack-cat-title">💴 金錢 & 支付</div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">日圓現金（建議出發前換好）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">日幣（建議円）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">一點點台幣（約2~3000備用）</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">信用卡（VISA / Mastercard）</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">Suica卡 / IC卡（或機場辦理）</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">零錢包（日本很多地方用現金）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">Suica卡(先存於apple錢包) / 72小時搭乘券</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">零錢包 </span></div>
       </div>
 
       <div class="pack-category">
         <div class="pack-cat-title">📱 電子 & 通訊</div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">手機充電器</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">行動電源</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">Wi-Fi 分享器（出發前預訂）</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">日本插座轉接頭（A型，台灣一樣）</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">相機 / 記憶卡</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">手機or其餘產品之充電器&線</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">行動電源(放隨身，用絕緣膠帶貼起，wh標示)</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">esim (出發前記得設定好)</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">手機</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">手錶</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">相機/記憶卡/底片/電池</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">耳機</span></div>
       </div>
 
       <div class="pack-category">
         <div class="pack-cat-title">👗 衣物</div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">上衣 × 5</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">外套（日夜溫差大）</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">褲子 / 裙子 × 3</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">內衣褲 × 5</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">舒適走路鞋（非常重要！）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">上衣</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">外套（溫差大）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">褲子/裙子/襪子 </span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">內衣褲 </span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">睡衣之舒適衣物</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">鞋子(爆走20000步)</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">拖鞋（飯店用）</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">帽子 / 遮陽帽</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">帽子/毛帽/圍巾(自行挑選)</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">飾品們</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">太陽眼鏡</span></div>
       </div>
 
       <div class="pack-category">
         <div class="pack-cat-title">🧴 盥洗 & 保養</div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">牙刷牙膏</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">洗髮精 / 潤髮乳（小瓶）</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">防曬乳 SPF50+</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">保濕乳液（日本室內乾燥）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">卸妝/洗面乳</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">沐浴乳(皂)/洗髮精/潤髮乳</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">沐浴球</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">毛巾/洗臉巾等</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">隱型眼鏡/眼鏡</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">化妝用品們(不細寫 自己帶好!)</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">香水</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">保養品們</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">棉花棒 / 化妝棉</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">生理用品</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">梳子/造型品</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">生理用品 (可備用)</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">小包衛生紙/濕紙巾</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">其餘個人用品</span></div>
       </div>
 
       <div class="pack-category">
         <div class="pack-cat-title">💊 醫藥 & 急救</div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">常備胃藥（吃太多用）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">胃藥</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">個人日常備藥</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">止痛藥</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">感冒藥</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">OK繃 / 防水貼（走路磨腳）</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">個人處方藥</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">其餘個人藥品</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">口罩 × 數片</span></div>
       </div>
 
       <div class="pack-category">
         <div class="pack-cat-title">🎒 行李 & 雜物</div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">行李箱（確認重量限制）</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">隨身小背包</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">雨傘 / 折疊雨傘</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">行李袋/隨身小背包</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">折疊雨傘</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">環保袋 / 購物袋</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">壓縮袋（裝衣物省空間）</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">行李秤（購物後確認重量）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">壓縮袋（看個人）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">夾鏈袋/塑膠袋</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">小筆記本 / 原子筆</span></div>
       </div>
 
@@ -948,7 +962,7 @@ body{
         </div>
       </div>
       <div style="margin-top:1.5rem;padding:1rem 1.5rem;background:rgba(218,238,245,.4);border-left:3px solid var(--deep);font-size:.82rem;line-height:2;color:var(--ink);">
-        💡 <strong>搭車小提示：</strong>建議使用 Suica IC卡感應搭乘，方便又省時。找不到方向時打開 Google Maps 輸入目的地，它會自動推薦最快路線與換乘資訊，非常好用！
+        💡 <strong>搭車小提示：</strong>建議使用72小時搭乘券 or 手機Suica感應搭乘，方便又省時。找不到方向時打開 Google Maps 輸入目的地，它會自動推薦最快路線與換乘資訊，非常好用！
       </div>
     </div>
     <div style="max-width:1000px;margin:2rem auto 0;display:flex;justify-content:space-between;gap:1rem;">
@@ -980,10 +994,10 @@ body{
           <div class="tips-card">
             <div class="tips-card-title">行李規定</div>
             <div class="tips-card-body"><ul>
-              <li>手提行李：7kg 以內，55×40×23cm</li>
-              <li>托運行李：依艙等，通常 23kg × 1件</li>
+              <li>手提+隨身行李：7kg 以內，三邊總和不超過115cm</li>
+              <li>托運行李：依艙等，20kg × 1件 ，三邊總和不超過203CM</li>
               <li>液體：隨身行李每瓶 100ml 以下，裝入透明夾鏈袋</li>
-              <li>鋰電池不可托運，須隨身攜帶</li>
+              <li>鋰電池/行動店員不可托運，須隨身攜帶</li>
             </ul></div>
           </div>
           <div class="tips-card">
@@ -992,16 +1006,17 @@ body{
               <li>登機前先確認登機門（常有更改）</li>
               <li>電子機票截圖備份或列印</li>
               <li>護照有效期需超過6個月</li>
-              <li>禁帶：超過100ml液體、刀具</li>
+              <li>機上禁帶：超過100ml液體、刀具</li>
             </ul></div>
           </div>
           <div class="tips-card">
             <div class="tips-card-title">機上建議</div>
             <div class="tips-card-body"><ul>
               <li>準備耳機、頸枕、眼罩</li>
-              <li>機上填寫入境卡（Visit Japan Web 可預先辦理）</li>
+              <li>事先填寫入境卡（Visit Japan Web 可預先辦理）</li>
               <li>日本時間比台灣快 1 小時</li>
               <li>飛機上可下載離線地圖備用</li>
+              <li>好好睡一覺吧!</li>
             </ul></div>
           </div>
         </div>
@@ -1022,14 +1037,14 @@ body{
               <li>③ 進行指紋及臉部辨識</li>
               <li>④ 前往行李轉盤領取托運行李</li>
               <li>⑤ 通過海關申告（帶免稅額內的物品）</li>
-              <li>⑥ 抵達入境大廳，辦理 Suica 及 Wi-Fi</li>
+              <li>⑥ 抵達入境大廳，辦理搭乘券等及設定網路</li>
             </ul></div>
           </div>
           <div class="tips-card">
             <div class="tips-card-title">海關免稅規定</div>
             <div class="tips-card-body"><ul>
               <li>菸酒：洋酒3瓶（760ml）、紙菸200支</li>
-              <li>香水：2盎司</li>
+              <li>香水：2盎司(約56ML)</li>
               <li>其他物品：合計20萬日圓以內</li>
               <li>超出需主動申報，有誠信加分哦</li>
             </ul></div>
@@ -1056,10 +1071,9 @@ body{
             <div class="tips-card-body"><ul>
               <li>① 起飛前 3 小時抵達機場</li>
               <li>② 辦理登機手續並托運行李</li>
-              <li>③ 辦理退稅（記得帶護照+收據）</li>
-              <li>④ 通過安全檢查</li>
-              <li>⑤ 前往登機門候機</li>
-              <li>⑥ 出境審查 → 登機</li>
+              <li>③ 通過安檢</li>
+              <li>④ 前往登機門等候</li>
+              <li>⑤ 出境審查 → 登機</li>
             </ul></div>
           </div>
           <div class="tips-card">
@@ -1068,7 +1082,7 @@ body{
               <li>同一店消費 ¥5,000 以上可退稅</li>
               <li>購物時出示護照辦理免稅</li>
               <li>機場退稅需在免稅品封口前使用</li>
-              <li>免稅物品不可在日本拆封使用</li>
+              <li>消耗品類型免稅物不可在日本拆封使用</li>
             </ul></div>
           </div>
         </div>
@@ -1105,17 +1119,18 @@ body{
               <li>優先讓位給老人、孕婦、小孩</li>
               <li>排隊等車，勿搶先上車</li>
               <li>飲食嚴禁（新幹線除外）</li>
-              <li>背包放前方避免佔用空間</li>
+              <li>背包避免佔用空間</li>
             </ul></div>
           </div>
           <div class="tips-card">
             <div class="tips-card-title">搭乘技巧</div>
             <div class="tips-card-body"><ul>
               <li>用 Google Maps 查詢路線最方便</li>
-              <li>Suica卡感應上下車，自動扣款</li>
+              <li>搭乘券/Suica感應上下車，自動扣款</li>
               <li>轉乘時注意路線顏色區別</li>
               <li>迷路時找站內工作人員幫忙</li>
               <li>尖峰時段（8-9AM、6-8PM）非常擁擠</li>
+              <li>太晚可能有醉漢大叔XD</li>
             </ul></div>
           </div>
           <div class="tips-card">
@@ -1149,7 +1164,7 @@ body{
             <div class="tips-card-body"><ul>
               <li>用餐前說「いただきます」</li>
               <li>用餐後說「ごちそうさまでした」</li>
-              <li>不邊走邊吃（特別是繁忙街道）</li>
+              <li>不邊走邊吃</li>
               <li>小費文化不存在，勿留小費</li>
               <li>點餐後改變心意前先告知</li>
             </ul></div>
@@ -1177,8 +1192,8 @@ body{
               <li>入住時間通常 15:00 後</li>
               <li>退房時間通常 11:00 前</li>
               <li>行李可先寄放飯店（早到或晚退時）</li>
-              <li>浴室有分浴缸（泡澡）和淋浴，換衣室獨立</li>
-              <li>飯店通常提供盥洗用品，可不用帶</li>
+              <li>浴室有分浴缸（泡澡）和淋浴，廁所獨立</li>
+              <li>飯店通常提供盥洗用品</li>
             </ul></div>
           </div>
           <div class="tips-card">
@@ -1220,9 +1235,9 @@ body{
       <div class="day-number-big">01</div>
       <div class="day-info">
         <div class="day-tag">Day One · 第一天</div>
-        <div class="day-title">入境東京<br>淺草 · 上野初體驗</div>
-        <div class="day-summary">踏上東京的第一步，感受千年江戶文化的呼吸。從成田機場出發，在傳統與現代交錯的街道上展開五天的旅程。</div>
-        <div class="wakeup-row"><span class="wakeup-icon">⏰</span> 預計起床時間：<strong>06:30</strong>（需趕早班機）</div>
+        <div class="day-title">入境東京<br>淺草</div>
+        <div class="day-summary">先回飯店洗洗睡，養精蓄銳後，在傳統與現代交錯的街道上展開旅程。</div>
+        <div class="wakeup-row"><span class="wakeup-icon">⏰</span> 預計抵達桃園時間：<strong>15:30(咕咕雞兩隊人馬不同)</strong></div>
       </div>
     </div>
     <div class="day-timeline">
@@ -1447,9 +1462,9 @@ body{
       <div class="day-number-big">02</div>
       <div class="day-info">
         <div class="day-tag">Day Two · 第二天</div>
-        <div class="day-title">銀座 · 台場<br>東京鐵塔點燈夜</div>
-        <div class="day-summary">從優雅奢華的銀座出發，橫渡彩虹橋到浪漫的台場海濱，最後在東京鐵塔的橙光下結束完美的一天。</div>
-        <div class="wakeup-row"><span class="wakeup-icon">⏰</span> 預計起床時間：<strong>08:00</strong></div>
+        <div class="day-title">谷中銀座 · 上野 · 銀座</div>
+        <div class="day-summary">谷中銀座充滿東京下町的懷舊氛圍，上野結合文化、美術館與公園景色，銀座則是東京最繁華的購物與美食區域。</div>
+        <div class="wakeup-row"><span class="wakeup-icon">⏰</span> 預計起床時間：<strong>08:30</strong></div>
       </div>
     </div>
     <div class="day-timeline">
@@ -1459,14 +1474,14 @@ body{
         <div class="spot-card">
           <div class="spot-header">
             <div class="spot-left">
-              <div class="spot-cat">★ 購物 · Luxury</div>
-              <div class="spot-name">銀座</div>
-              <div class="spot-en">Ginza</div>
+              <div class="spot-cat">★ 貓之街漫步 · Wander</div>
+              <div class="spot-name">谷中銀座</div>
+              <div class="spot-en">Yanaka Ginza</div>
             </div>
             <div class="spot-toggle">▼</div>
           </div>
           <div class="spot-body"><div class="spot-body-inner">
-            <div class="spot-desc">東京最高端的購物街，CHANEL、LV、Hermès 旗艦店林立。就算不消費也值得來此感受東京最精緻的街道氛圍。推薦順道逛ITOYA文具店（12層樓的文具天堂）以及銀座六丁目的 GINZA SIX。</div>
+            <div class="spot-desc">銀座是東京最具代表性的購物街區，可依序逛 伊東屋、UQ 與 GU，再到 無印良品，途中也可順訪 GINZA SIX 百貨與白熊商店等，邊逛邊享受銀座的時尚與美食氛圍。</div>
             <div class="spot-tags">
               <span class="spot-tag" onclick="showTip(this,'✒️ ITOYA文具店：銀座必訪！12層樓全是文具、設計商品，即使不買也可以逛上2小時，地址：銀座2-7-15。')">✒️ ITOYA</span>
               <span class="spot-tag" onclick="showTip(this,'🏬 GINZA SIX：2017年開幕的超頂級商場，B2有全日本最大的茑屋書店，設計感十足值得一逛。')">🏬 GINZA SIX</span>
@@ -1667,6 +1682,7 @@ body{
         <div class="day-tag">Day Three · 第三天</div>
         <div class="day-title">原宿 · 表參道<br>新宿歌舞伎町夜遊</div>
         <div class="day-summary">從可愛爆炸的竹下通，走到奢華靜謐的表參道，最後在新宿的霓虹燈海裡沉浸東京最繁華的夜晚。</div>
+        <div class="wakeup-row"><span class="wakeup-icon">⏰</span> 預計起床時間：<strong>08:00</strong></div>
       </div>
     </div>
     <div class="day-timeline">
@@ -1854,6 +1870,7 @@ body{
         <div class="day-tag">Day Four · 第四天</div>
         <div class="day-title">秋葉原 · 皇居<br>六本木藝術之夜</div>
         <div class="day-summary">白天沉浸在動漫電器的次文化天堂，下午在皇居外苑感受都市中的寧靜，夜晚在六本木體驗東京最前衛的藝術場景。</div>
+        <div class="wakeup-row"><span class="wakeup-icon">⏰</span> 預計起床時間：<strong>08:30</strong></div>
       </div>
     </div>
     <div class="day-timeline">
@@ -2018,6 +2035,7 @@ body{
         <div class="day-tag">Day Five · 第五天</div>
         <div class="day-title">渋谷十字路口<br>最後告別 · 滿載歸途</div>
         <div class="day-summary">在東京最後一天，用渋谷的十字路口畫下旅程的句點。帶著滿滿伴手禮與回憶，心滿意足地踏上歸途。</div>
+        <div class="wakeup-row"><span class="wakeup-icon">⏰</span> 預計起床時間：<strong>07:30</strong>（需整理行李 & 退房）</div>
       </div>
     </div>
     <div class="day-timeline">

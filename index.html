@@ -364,12 +364,30 @@ body{
 .food-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;}
 .food-item{
   padding:1rem 1.2rem;background:var(--frost);border:1px solid rgba(141,191,206,.2);
-  cursor:pointer;transition:all .2s;text-align:center;
+  cursor:pointer;transition:all .2s;text-align:center;position:relative;
 }
 .food-item:hover{background:var(--sky);border-color:var(--deep);}
+.food-item.open{background:var(--sky);border-color:var(--deep);}
 .food-emoji{font-size:2rem;display:block;margin-bottom:.4rem;}
 .food-name{font-size:.8rem;font-weight:500;color:var(--deep);}
 .food-note{font-size:.7rem;color:var(--mid);margin-top:.2rem;}
+.food-detail{
+  max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .3s;
+  opacity:0;text-align:left;
+}
+.food-item.open .food-detail{max-height:300px;opacity:1;}
+.food-detail-inner{
+  border-top:1px solid rgba(141,191,206,.3);margin-top:.8rem;padding-top:.8rem;
+}
+.food-detail-inner p{font-size:.78rem;line-height:1.8;color:var(--ink);margin-bottom:.4rem;}
+.food-detail-inner .food-meta{
+  display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem;
+}
+.food-meta-tag{
+  font-size:.68rem;padding:.2rem .6rem;
+  background:rgba(44,95,114,.08);border:1px solid rgba(44,95,114,.15);
+  color:var(--deep);
+}
 
 /* Day nav bottom */
 .day-nav-bottom{max-width:1000px;margin:3rem auto 0;display:flex;justify-content:space-between;gap:1rem;}
@@ -1347,10 +1365,47 @@ body{
 
     <div class="food-section">
       <div class="food-title">🍜 今日餐食推薦</div>
+      <p style="font-size:.78rem;color:var(--mid);margin-bottom:1.2rem;">點擊各項查看詳細資訊 ↓</p>
       <div class="food-grid">
-        <div class="food-item"><span class="food-emoji">🍱</span><div class="food-name">機場早午餐</div><div class="food-note">7-11便當 / 咖啡廳</div></div>
-        <div class="food-item"><span class="food-emoji">🥮</span><div class="food-name">仲見世小食</div><div class="food-note">人形燒・草餅</div></div>
-        <div class="food-item"><span class="food-emoji">🦐</span><div class="food-name">阿美橫丁晚餐</div><div class="food-note">海鮮丼・烤串</div></div>
+        <div class="food-item" onclick="toggleFood(this)">
+          <span class="food-emoji">🍱</span>
+          <div class="food-name">機場早午餐</div>
+          <div class="food-note">7-11便當 / 咖啡廳</div>
+          <div class="food-detail"><div class="food-detail-inner">
+            <p>抵達成田機場後，可在 1F 便利商店或咖啡廳解決第一餐。7-11 的飯糰、三明治與熱食便當都是不錯選擇，也可在 Lawson 點熱食。</p>
+            <div class="food-meta">
+              <span class="food-meta-tag">📍 成田機場 1F / 2F</span>
+              <span class="food-meta-tag">💴 約 ¥500～800</span>
+              <span class="food-meta-tag">⏰ 抵達後即可</span>
+            </div>
+          </div></div>
+        </div>
+        <div class="food-item" onclick="toggleFood(this)">
+          <span class="food-emoji">🥮</span>
+          <div class="food-name">仲見世小食</div>
+          <div class="food-note">人形燒・草餅</div>
+          <div class="food-detail"><div class="food-detail-inner">
+            <p>仲見世通有多家老字號點心攤，人形燒（¥150/個）是必買！也推薦草餅、海苔仙貝、芝麻糰子，邊走邊吃感受江戶下町氣氛。</p>
+            <div class="food-meta">
+              <span class="food-meta-tag">📍 仲見世通沿路</span>
+              <span class="food-meta-tag">💴 約 ¥200～500</span>
+              <span class="food-meta-tag">🍡 現做現賣</span>
+            </div>
+          </div></div>
+        </div>
+        <div class="food-item" onclick="toggleFood(this)">
+          <span class="food-emoji">🦐</span>
+          <div class="food-name">阿美橫丁晚餐</div>
+          <div class="food-note">海鮮丼・烤串</div>
+          <div class="food-detail"><div class="food-detail-inner">
+            <p>推薦「魚力」超大海鮮丼（¥1,500），或在市場小攤點烤串、炸雞塊邊走邊吃。露天市集氣氛熱鬧，是東京少見的市井風情。</p>
+            <div class="food-meta">
+              <span class="food-meta-tag">📍 上野 阿美橫丁</span>
+              <span class="food-meta-tag">💴 約 ¥1,000～2,000</span>
+              <span class="food-meta-tag">⏰ 15:00～22:00</span>
+            </div>
+          </div></div>
+        </div>
       </div>
     </div>
 
@@ -1528,10 +1583,47 @@ body{
 
     <div class="food-section">
       <div class="food-title">🍽 今日餐食推薦</div>
+      <p style="font-size:.78rem;color:var(--mid);margin-bottom:1.2rem;">點擊各項查看詳細資訊 ↓</p>
       <div class="food-grid">
-        <div class="food-item"><span class="food-emoji">☕</span><div class="food-name">銀座早午餐</div><div class="food-note">Café de l'Ambre老咖啡廳</div></div>
-        <div class="food-item"><span class="food-emoji">🍜</span><div class="food-name">台場午餐</div><div class="food-note">Aqua City餐廳街</div></div>
-        <div class="food-item"><span class="food-emoji">🍶</span><div class="food-name">麻布十番晚餐</div><div class="food-note">日式居酒屋</div></div>
+        <div class="food-item" onclick="toggleFood(this)">
+          <span class="food-emoji">☕</span>
+          <div class="food-name">銀座早午餐</div>
+          <div class="food-note">Café de l'Ambre老咖啡廳</div>
+          <div class="food-detail"><div class="food-detail-inner">
+            <p>銀座8丁目的老牌咖啡廳，1948年創業，專賣老年份手沖咖啡。時間允許也可去 Eggs 'n Things 吃份豐盛鬆餅早午餐。</p>
+            <div class="food-meta">
+              <span class="food-meta-tag">📍 銀座 8-10-15</span>
+              <span class="food-meta-tag">💴 約 ¥800～1,500</span>
+              <span class="food-meta-tag">⏰ 12:00 開店</span>
+            </div>
+          </div></div>
+        </div>
+        <div class="food-item" onclick="toggleFood(this)">
+          <span class="food-emoji">🍜</span>
+          <div class="food-name">台場午餐</div>
+          <div class="food-note">Aqua City餐廳街</div>
+          <div class="food-detail"><div class="food-detail-inner">
+            <p>台場 Aqua City 5F 有多家日式餐廳，可點拉麵、壽司或定食，座位靠窗可欣賞彩虹橋景色，是台場午餐的最佳選擇之一。</p>
+            <div class="food-meta">
+              <span class="food-meta-tag">📍 台場 Aqua City 5F</span>
+              <span class="food-meta-tag">💴 約 ¥1,000～2,000</span>
+              <span class="food-meta-tag">🌊 海景座位</span>
+            </div>
+          </div></div>
+        </div>
+        <div class="food-item" onclick="toggleFood(this)">
+          <span class="food-emoji">🍶</span>
+          <div class="food-name">麻布十番晚餐</div>
+          <div class="food-note">日式居酒屋</div>
+          <div class="food-detail"><div class="food-detail-inner">
+            <p>麻布十番商店街有多家平價居酒屋與日式料理。推薦「鳥幸」烤雞串，或在商店街找一家本地人常去的小店，點份定食配日本酒輕鬆收尾。</p>
+            <div class="food-meta">
+              <span class="food-meta-tag">📍 麻布十番商店街</span>
+              <span class="food-meta-tag">💴 約 ¥1,500～2,500</span>
+              <span class="food-meta-tag">🍺 居酒屋文化</span>
+            </div>
+          </div></div>
+        </div>
       </div>
     </div>
 
@@ -1670,10 +1762,77 @@ body{
 
     <div class="food-section">
       <div class="food-title">🍽 今日餐食推薦</div>
+      <p style="font-size:.78rem;color:var(--mid);margin-bottom:1.2rem;">點擊各項查看詳細資訊 ↓</p>
       <div class="food-grid">
-        <div class="food-item"><span class="food-emoji">🍦</span><div class="food-name">竹下通小食</div><div class="food-note">彩虹可麗餅・棉花糖</div></div>
-        <div class="food-item"><span class="food-emoji">☕</span><div class="food-name">表參道午茶</div><div class="food-note">Blue Bottle咖啡</div></div>
-        <div class="food-item"><span class="food-emoji">🍜</span><div class="food-name">新宿晚餐</div><div class="food-note">一蘭拉麵・居酒屋</div></div>
+        <div class="food-item" onclick="toggleFood(this)">
+          <span class="food-emoji">🍦</span>
+          <div class="food-name">竹下通小食</div>
+          <div class="food-note">彩虹可麗餅・棉花糖</div>
+          <div class="food-detail"><div class="food-detail-inner">
+            <p>MARION CREPES 是竹下通老字號可麗餅店，彩色麵糊包裹鮮奶油與水果，一個約 ¥700。也可嚐看看超巨大棉花糖或超商限定口味霜淇淋。</p>
+            <div class="food-meta">
+              <span class="food-meta-tag">📍 竹下通沿路</span>
+              <span class="food-meta-tag">💴 約 ¥500～800</span>
+              <span class="food-meta-tag">🍬 邊走邊吃</span>
+            </div>
+          </div></div>
+        </div>
+        <div class="food-item" onclick="toggleFood(this)">
+          <span class="food-emoji">☕</span>
+          <div class="food-name">表參道午茶</div>
+          <div class="food-note">Blue Bottle咖啡</div>
+          <div class="food-detail"><div class="food-detail-inner">
+            <p>Blue Bottle Coffee 日本創始店位於南青山，職人手沖咖啡配上簡潔工業風空間，是表參道下午茶打卡必去。旁邊也有多家精品甜點店可選。</p>
+            <div class="food-meta">
+              <span class="food-meta-tag">📍 南青山 3-13-14</span>
+              <span class="food-meta-tag">💴 約 ¥600～1,200</span>
+              <span class="food-meta-tag">⏰ 08:00～19:00</span>
+            </div>
+          </div></div>
+        </div>
+        <div class="food-item" onclick="toggleFood(this)">
+          <span class="food-emoji">🍜</span>
+          <div class="food-name">新宿晚餐</div>
+          <div class="food-note">一蘭拉麵・居酒屋</div>
+          <div class="food-detail"><div class="food-detail-inner">
+            <p>新宿有全日本最密集的餐廳選擇。一蘭拉麵獨立隔間體驗非常特別（約¥1,000）；或走入思い出横丁（懷舊横丁）感受昭和風烤串居酒屋氛圍。</p>
+            <div class="food-meta">
+              <span class="food-meta-tag">📍 新宿站周邊</span>
+              <span class="food-meta-tag">💴 約 ¥1,000～2,500</span>
+              <span class="food-meta-tag">🍺 思い出横丁推薦</span>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reserve-section">
+      <div class="reserve-title">🎫 今日有預約的景點</div>
+      <div class="reserve-grid">
+        <div class="reserve-item">
+          <div class="reserve-icon">🏛</div>
+          <div>
+            <div class="reserve-name">表參道Hills / 安藤忠雄建築</div>
+            <div class="reserve-detail">免費入場，無需預約</div>
+            <span class="reserve-status confirmed">✓ 免預約</span>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">🆓</div>
+          <div>
+            <div class="reserve-name">新宿都廳展望台</div>
+            <div class="reserve-detail">免費入場 · 開放至 23:00</div>
+            <span class="reserve-status confirmed">✓ 免預約</span>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">➕</div>
+          <div>
+            <div class="reserve-name">（點此新增預約項目）</div>
+            <div class="reserve-detail">可自行修改此欄位</div>
+            <span class="reserve-status pending">待確認</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1767,10 +1926,77 @@ body{
 
     <div class="food-section">
       <div class="food-title">🍽 今日餐食推薦</div>
+      <p style="font-size:.78rem;color:var(--mid);margin-bottom:1.2rem;">點擊各項查看詳細資訊 ↓</p>
       <div class="food-grid">
-        <div class="food-item"><span class="food-emoji">🍛</span><div class="food-name">秋葉原午餐</div><div class="food-note">咖哩飯・牛丼</div></div>
-        <div class="food-item"><span class="food-emoji">☕</span><div class="food-name">皇居咖啡</div><div class="food-note">附近Café休息</div></div>
-        <div class="food-item"><span class="food-emoji">🥩</span><div class="food-name">六本木晚餐</div><div class="food-note">和牛燒肉・壽司</div></div>
+        <div class="food-item" onclick="toggleFood(this)">
+          <span class="food-emoji">🍛</span>
+          <div class="food-name">秋葉原午餐</div>
+          <div class="food-note">咖哩飯・牛丼</div>
+          <div class="food-detail"><div class="food-detail-inner">
+            <p>秋葉原 CoCo壱番屋 咖哩飯是日本連鎖名店，可自選辣度與配料（約¥1,000）。吉野家牛丼也是快速填飽的好選擇，份量大、價格實惠。</p>
+            <div class="food-meta">
+              <span class="food-meta-tag">📍 秋葉原站周邊</span>
+              <span class="food-meta-tag">💴 約 ¥600～1,200</span>
+              <span class="food-meta-tag">⚡ 快速便利</span>
+            </div>
+          </div></div>
+        </div>
+        <div class="food-item" onclick="toggleFood(this)">
+          <span class="food-emoji">☕</span>
+          <div class="food-name">皇居咖啡</div>
+          <div class="food-note">附近Café休息</div>
+          <div class="food-detail"><div class="food-detail-inner">
+            <p>皇居外苑附近的 Café 可稍作休息。推薦走到丸之內區的咖啡廳，在摩登大樓間享受一杯咖啡與精緻甜點，稍微充電再出發。</p>
+            <div class="food-meta">
+              <span class="food-meta-tag">📍 丸之內 / 大手町一帶</span>
+              <span class="food-meta-tag">💴 約 ¥700～1,200</span>
+              <span class="food-meta-tag">🌿 補充體力</span>
+            </div>
+          </div></div>
+        </div>
+        <div class="food-item" onclick="toggleFood(this)">
+          <span class="food-emoji">🥩</span>
+          <div class="food-name">六本木晚餐</div>
+          <div class="food-note">和牛燒肉・壽司</div>
+          <div class="food-detail"><div class="food-detail-inner">
+            <p>六本木是東京高端餐廳的聚集地。看 teamLab 前後在附近享用和牛燒肉或精緻壽司，人均約 ¥3,000～5,000，是犒賞自己的好機會！</p>
+            <div class="food-meta">
+              <span class="food-meta-tag">📍 六本木Hills周邊</span>
+              <span class="food-meta-tag">💴 約 ¥2,500～5,000</span>
+              <span class="food-meta-tag">🥂 特別晚餐</span>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reserve-section">
+      <div class="reserve-title">🎫 今日有預約的景點</div>
+      <div class="reserve-grid">
+        <div class="reserve-item">
+          <div class="reserve-icon">🎨</div>
+          <div>
+            <div class="reserve-name">teamLab Planets 豐洲</div>
+            <div class="reserve-detail">預約時間：18:00 入場 · 票價 ¥3,200</div>
+            <span class="reserve-status confirmed">✓ 已確認</span>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">🏛</div>
+          <div>
+            <div class="reserve-name">皇居東御苑</div>
+            <div class="reserve-detail">免費入場 · 週一五休園</div>
+            <span class="reserve-status confirmed">✓ 免預約</span>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">➕</div>
+          <div>
+            <div class="reserve-name">（點此新增預約項目）</div>
+            <div class="reserve-detail">可自行修改此欄位</div>
+            <span class="reserve-status pending">待確認</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1864,6 +2090,82 @@ body{
 
     </div>
 
+    <div class="food-section">
+      <div class="food-title">🍽 今日餐食推薦</div>
+      <p style="font-size:.78rem;color:var(--mid);margin-bottom:1.2rem;">點擊各項查看詳細資訊 ↓</p>
+      <div class="food-grid">
+        <div class="food-item" onclick="toggleFood(this)">
+          <span class="food-emoji">🥐</span>
+          <div class="food-name">澀谷早午餐</div>
+          <div class="food-note">咖啡廳・鬆餅</div>
+          <div class="food-detail"><div class="food-detail-inner">
+            <p>澀谷 Scramble Square 或 Hikarie 內有多家早午餐咖啡廳。推薦 BAKERS & ROASTERS 或 bills 澀谷店，享用一份豐盛鬆餅為最後一天開個好頭。</p>
+            <div class="food-meta">
+              <span class="food-meta-tag">📍 澀谷 Hikarie / Scramble Square</span>
+              <span class="food-meta-tag">💴 約 ¥1,000～2,000</span>
+              <span class="food-meta-tag">⏰ 08:00 起</span>
+            </div>
+          </div></div>
+        </div>
+        <div class="food-item" onclick="toggleFood(this)">
+          <span class="food-emoji">🍱</span>
+          <div class="food-name">採購途中午餐</div>
+          <div class="food-note">松屋・すき家・便利商店</div>
+          <div class="food-detail"><div class="food-detail-inner">
+            <p>採購行程緊湊，建議選快速解決的牛丼連鎖（松屋、すき家）或便利商店，把時間留給購物。Don Quijote 旁的餐廳也是好選擇。</p>
+            <div class="food-meta">
+              <span class="food-meta-tag">📍 澀谷周邊</span>
+              <span class="food-meta-tag">💴 約 ¥400～800</span>
+              <span class="food-meta-tag">⚡ 快速方便</span>
+            </div>
+          </div></div>
+        </div>
+        <div class="food-item" onclick="toggleFood(this)">
+          <span class="food-emoji">🍜</span>
+          <div class="food-name">成田機場最後一餐</div>
+          <div class="food-note">喜多方拉麵・機場美食</div>
+          <div class="food-detail"><div class="food-detail-inner">
+            <p>成田 T2 的「坂內食堂」喜多方拉麵是最多旅客選擇的最後一餐（約¥1,000）。也可在出境後免稅區吃壽司或定食，為旅程畫下美味句點。</p>
+            <div class="food-meta">
+              <span class="food-meta-tag">📍 成田機場 T2</span>
+              <span class="food-meta-tag">💴 約 ¥1,000～1,800</span>
+              <span class="food-meta-tag">✈️ 出發前必吃</span>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reserve-section">
+      <div class="reserve-title">🎫 今日有預約的景點</div>
+      <div class="reserve-grid">
+        <div class="reserve-item">
+          <div class="reserve-icon">🌆</div>
+          <div>
+            <div class="reserve-name">澀谷スカイ展望台</div>
+            <div class="reserve-detail">預約時間：09:00 入場 · 票價 ¥2,000</div>
+            <span class="reserve-status confirmed">✓ 已確認</span>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">✈️</div>
+          <div>
+            <div class="reserve-name">成田機場 出境航班</div>
+            <div class="reserve-detail">記得提前 3 小時到機場</div>
+            <span class="reserve-status confirmed">✓ 已訂票</span>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">➕</div>
+          <div>
+            <div class="reserve-name">（點此新增預約項目）</div>
+            <div class="reserve-detail">可自行修改此欄位</div>
+            <span class="reserve-status pending">待確認</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Final Message -->
     <div class="food-section" style="text-align:center;padding:3rem;">
       <div style="font-size:3rem;margin-bottom:1rem;">✈️</div>
@@ -1891,6 +2193,14 @@ function togglePack(item){
   const done=[...all].filter(i=>i.classList.contains('checked')).length;
   document.getElementById('pack-count').textContent=done+' / '+all.length;
   document.getElementById('pack-bar').style.width=(done/all.length*100)+'%';
+}
+
+// ── Food item toggle ──
+function toggleFood(item){
+  const section = item.closest('.food-grid');
+  const wasOpen = item.classList.contains('open');
+  section.querySelectorAll('.food-item').forEach(f => f.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
 }
 
 // ── Page navigation ──

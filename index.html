@@ -558,7 +558,8 @@ body{
     <button class="nav-link" onclick="showPage('decl')">聲明書</button>
     <button class="nav-link" onclick="showPage('pack')">行李清單</button>
     <button class="nav-link" onclick="showPage('metro')">地鐵圖</button>
-    <button class="nav-link" onclick="showPage('tips')">注意事項</button>
+    <button class="nav-link" onclick="showPage('tips1')">飛行 & 海關</button>
+    <button class="nav-link" onclick="showPage('tips2')">旅遊須知</button>
     <button class="nav-link" onclick="showPage('day1')">Day 1</button>
     <button class="nav-link" onclick="showPage('day2')">Day 2</button>
     <button class="nav-link" onclick="showPage('day3')">Day 3</button>
@@ -630,16 +631,24 @@ body{
         <div class="toc-desc">東京地鐵路線總覽，搭配各線路顏色說明，輕鬆搞懂如何移動。</div>
         <div class="toc-arrow">查看地圖 →</div>
       </div>
-      <div class="toc-card" onclick="showPage('tips')">
-        <div class="toc-num">04</div>
-        <div class="toc-icon">📋</div>
-        <div class="toc-tag">Important Notes</div>
-        <div class="toc-title">日本注意事項</div>
-        <div class="toc-desc">飛行資訊、海關流程、地鐵搭乘、日本習俗、住宿交通等重要須知。</div>
+      <div class="toc-card" onclick="showPage('tips1')">
+        <div class="toc-num">05</div>
+        <div class="toc-icon">✈️</div>
+        <div class="toc-tag">Flight & Customs</div>
+        <div class="toc-title">飛行 & 出入境海關</div>
+        <div class="toc-desc">飛行資訊、行李規定、入境步驟、海關申報、出境退稅流程一次看懂。</div>
+        <div class="toc-arrow">查看須知 →</div>
+      </div>
+      <div class="toc-card" onclick="showPage('tips2')">
+        <div class="toc-num">06</div>
+        <div class="toc-icon">🎎</div>
+        <div class="toc-tag">Travel Notes</div>
+        <div class="toc-title">旅遊須知</div>
+        <div class="toc-desc">地鐵搭乘、日本習俗禮儀、住宿入住、交通資訊與緊急聯絡等實用須知。</div>
         <div class="toc-arrow">查看須知 →</div>
       </div>
       <div class="toc-card" onclick="showPage('day1')">
-        <div class="toc-num">05</div>
+        <div class="toc-num">07</div>
         <div class="toc-icon">✈️</div>
         <div class="toc-tag">Day 1 · 抵達</div>
         <div class="toc-title">入境東京 · 直奔淺草</div>
@@ -647,7 +656,7 @@ body{
         <div class="toc-arrow">查看行程 →</div>
       </div>
       <div class="toc-card" onclick="showPage('day2')">
-        <div class="toc-num">06</div>
+        <div class="toc-num">08</div>
         <div class="toc-icon">🏛</div>
         <div class="toc-tag">Day 2 · 上野 & 銀座</div>
         <div class="toc-title">谷中銀座 · 上野美術館 · 銀座</div>
@@ -655,7 +664,7 @@ body{
         <div class="toc-arrow">查看行程 →</div>
       </div>
       <div class="toc-card" onclick="showPage('day3')">
-        <div class="toc-num">07</div>
+        <div class="toc-num">09</div>
         <div class="toc-icon">🌸</div>
         <div class="toc-tag">Day 3 · 東京車站 & 新宿</div>
         <div class="toc-title">築地市場 · 東京車站 · 皇居外苑 · 新宿</div>
@@ -663,7 +672,7 @@ body{
         <div class="toc-arrow">查看行程 →</div>
       </div>
       <div class="toc-card" onclick="showPage('day4')">
-        <div class="toc-num">08</div>
+        <div class="toc-num">10</div>
         <div class="toc-icon">🌃</div>
         <div class="toc-tag">Day 4 · 原宿 & 表參道 & 澀谷</div>
         <div class="toc-title"> 中目黑 · 澀谷 · 原宿表參道 · 東京鐵塔 </div>
@@ -671,7 +680,7 @@ body{
         <div class="toc-arrow">查看行程 →</div>
       </div>
       <div class="toc-card" onclick="showPage('day5')">
-        <div class="toc-num">09</div>
+        <div class="toc-num">11</div>
         <div class="toc-icon">🏮</div>
         <div class="toc-tag">Day 5 · 返程</div>
         <div class="toc-title">淺草 · 最後購物 </div>
@@ -926,7 +935,7 @@ body{
     </div>
     <div style="max-width:1000px;margin:2rem auto 0;display:flex;justify-content:space-between;gap:1rem;">
       <button class="day-nav-btn" onclick="showPage('pack')">← 旅行清單</button>
-      <button class="day-nav-btn next" onclick="showPage('tips')">注意事項 →</button>
+      <button class="day-nav-btn next" onclick="showPage('tips1')">飛行 & 海關 →</button>
     </div>
   </div>
 </div>
@@ -934,12 +943,12 @@ body{
 <!-- ═══════════════════════════
      PAGE 6: TIPS / INFO
 ═══════════════════════════ -->
-<div class="page" id="page-tips">
+<div class="page" id="page-tips1">
   <div class="tips-page">
     <div class="page-header">
-      <span class="jp-label">Important Notes</span>
-      <h2>日本注意事項</h2>
-      <p>出發前必讀，讓旅途更順暢</p>
+      <span class="jp-label">Flight & Customs</span>
+      <h2>飛行 & 出入境海關</h2>
+      <p>出發前必讀，讓入出境流程更順暢</p>
     </div>
     <div class="tips-inner">
 
@@ -990,12 +999,12 @@ body{
           <div class="tips-card">
             <div class="tips-card-title">入境步驟</div>
             <div class="tips-card-body"><ul>
-              <li>①  飛機落地後前往入境審查</li>
-              <li>②  出示護照 + 入境卡給入境官</li>
-              <li>③  進行指紋及臉部辨識</li>
-              <li>④  前往行李轉盤領取托運行李</li>
-              <li>⑤  通過海關申告（帶免稅額內的物品）</li>
-              <li>⑥  抵達入境大廳，辦理 Suica 及 Wi-Fi</li>
+              <li>① 飛機落地後前往入境審查</li>
+              <li>② 出示護照 + 入境卡給入境官</li>
+              <li>③ 進行指紋及臉部辨識</li>
+              <li>④ 前往行李轉盤領取托運行李</li>
+              <li>⑤ 通過海關申告（帶免稅額內的物品）</li>
+              <li>⑥ 抵達入境大廳，辦理 Suica 及 Wi-Fi</li>
             </ul></div>
           </div>
           <div class="tips-card">
@@ -1027,12 +1036,12 @@ body{
           <div class="tips-card">
             <div class="tips-card-title">出境步驟</div>
             <div class="tips-card-body"><ul>
-              <li>①  起飛前 3 小時抵達機場</li>
-              <li>②  辦理登機手續並托運行李</li>
-              <li>③  辦理退稅（記得帶護照+收據）</li>
-              <li>④  通過安全檢查</li>
-              <li>⑤  前往登機門候機</li>
-              <li>⑥  出境審查 → 登機</li>
+              <li>① 起飛前 3 小時抵達機場</li>
+              <li>② 辦理登機手續並托運行李</li>
+              <li>③ 辦理退稅（記得帶護照+收據）</li>
+              <li>④ 通過安全檢查</li>
+              <li>⑤ 前往登機門候機</li>
+              <li>⑥ 出境審查 → 登機</li>
             </ul></div>
           </div>
           <div class="tips-card">
@@ -1046,6 +1055,26 @@ body{
           </div>
         </div>
       </div>
+
+    </div>
+    <div style="max-width:900px;margin:2rem auto 0;display:flex;justify-content:space-between;gap:1rem;">
+      <button class="day-nav-btn" onclick="showPage('metro')">← 地鐵圖</button>
+      <button class="day-nav-btn next" onclick="showPage('tips2')">旅遊須知 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     PAGE: 旅遊須知
+═══════════════════════════ -->
+<div class="page" id="page-tips2">
+  <div class="tips-page">
+    <div class="page-header">
+      <span class="jp-label">Travel Notes</span>
+      <h2>旅遊須知</h2>
+      <p>地鐵、習俗、住宿、交通，在日本生活的關鍵資訊</p>
+    </div>
+    <div class="tips-inner">
 
       <!-- 地鐵搭乘 -->
       <div class="tips-section">
@@ -1158,7 +1187,7 @@ body{
 
     </div>
     <div style="max-width:900px;margin:2rem auto 0;display:flex;justify-content:space-between;gap:1rem;">
-      <button class="day-nav-btn" onclick="showPage('metro')">← 地鐵圖</button>
+      <button class="day-nav-btn" onclick="showPage('tips1')">← 飛行 & 海關</button>
       <button class="day-nav-btn next" onclick="showPage('day1')">Day 1 開始 →</button>
     </div>
   </div>

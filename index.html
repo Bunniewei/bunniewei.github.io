@@ -226,6 +226,7 @@ body{
   background:var(--frost);border-left:3px solid var(--sky);
   transition:border-color .3s;cursor:pointer;
 }
+.clause:last-child{margin-bottom:0;}
 .clause:hover{border-left-color:var(--deep);}
 .clause.agreed{border-left-color:var(--deep);background:rgba(218,238,245,.3);}
 .clause-num{
@@ -246,7 +247,8 @@ body{
 }
 .clause.agreed .clause-check{background:var(--deep);border-color:var(--deep);color:#fff;}
 
-.sign-section{text-align:center;margin-top:3rem;}
+/* ── 簽署區塊 ── */
+.sign-section{text-align:center;margin-top:2.5rem;}
 .sign-hint{font-size:.8rem;color:var(--mid);margin-bottom:1.5rem;letter-spacing:.05em;}
 .sign-boxes{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;}
 .sign-box{
@@ -433,7 +435,7 @@ body{
       <div class="cover-date">咕咕雞 &nbsp;·&nbsp; 首度一起出國旅遊</div>
       <div class="cover-stats">
         <div class="cstat"><span class="cstat-n">5</span><span class="cstat-l">天數</span></div>
-        <div class="cstat"><span class="cstat-n">7</span></span><span class="cstat-l">區域</span></div>
+        <div class="cstat"><span class="cstat-n">7</span><span class="cstat-l">區域</span></div>
         <div class="cstat"><span class="cstat-n">25+</span><span class="cstat-l">景點</span></div>
         <div class="cstat"><span class="cstat-n">∞</span><span class="cstat-l">回憶</span></div>
       </div>
@@ -586,29 +588,31 @@ body{
             </div>
             <div class="clause-check">✓</div>
           </div>
-           <div class="clause" onclick="toggleClause(this)">
+          <!-- ✦ 修正：第8條 HTML 結構正確，下方無空白 -->
+          <div class="clause" onclick="toggleClause(this)">
             <div class="clause-num">08</div>
             <div class="clause-body">
               <div class="clause-heading">cautions</div>
-              <div class="clause-text">作為朋友及好旅伴，在這次旅行中承諾互相支持、尊重彼此，珍惜每一刻美好時光，分享快樂，遇到狀況時一同面對解決，以理解為基礎，不衝動、不急躁、不掃興、不擺臉色，愉快地完成這趟旅程，開心出門，平安回家
-            <div class="clause" onclick="toggleClause(this)">
-             </div>
+              <div class="clause-text">作為朋友及好旅伴，在這次旅行中承諾互相支持、尊重彼此，珍惜每一刻美好時光，分享快樂，遇到狀況時一同面對解決，以理解為基礎，不衝動、不急躁、不掃興、不擺臉色，愉快地完成這趟旅程，開心出門，平安回家。</div>
+            </div>
             <div class="clause-check">✓</div>
           </div>
         </div>
 
+        <!-- ✦ 簽署欄緊接在所有條款正下方，無多餘空白 -->
         <div class="decl-divider"></div>
         <div class="sign-section">
-          <p class="sign-hint">請填入姓名並點擊「我同意」完成簽署</p>
+          <p class="sign-hint">填入你的名字並點擊按鈕完成簽署 🐔</p>
           <div class="sign-boxes">
-  <div class="sign-box">
-    <input class="sign-name" type="text" placeholder="請輸入你的名字" id="sign-a"/>
-    <span class="sign-label">簽署人</span>
-  </div>
-</div>
-          <button class="agree-btn" id="agree-btn" onclick="signDecl()">✓ &nbsp;我們同意，出發去東京！</button>
+            <div class="sign-box">
+              <input class="sign-name" type="text" placeholder="請輸入你的名字" id="sign-a"/>
+              <span class="sign-label">簽署人</span>
+            </div>
+          </div>
+          <button class="agree-btn" id="agree-btn" onclick="signDecl()">請先勾選所有條款</button>
           <div id="decl-result"></div>
         </div>
+
       </div>
     </div>
   </div>
@@ -1188,7 +1192,6 @@ function showPage(id){
 // ── Spot card toggle ──
 function toggleSpot(block){
   const wasOpen=block.classList.contains('open');
-  // close siblings
   block.closest('.day-timeline').querySelectorAll('.time-block').forEach(b=>{
     b.classList.remove('open');
     b.querySelectorAll('.spot-tip').forEach(t=>t.classList.remove('show'));
@@ -1203,7 +1206,6 @@ function showTip(tag, text){
   const block=tag.closest('.time-block');
   const allTips=block.querySelectorAll('.spot-tip');
   const allTags=block.querySelectorAll('.spot-tag');
-  // find the tip in the same spot-body-inner
   const bodyInner=tag.closest('.spot-body-inner');
   const tip=bodyInner.querySelector('.spot-tip');
   if(tag.classList.contains('active')){
@@ -1228,16 +1230,33 @@ function checkAllAgreed(){
   const btn=document.getElementById('agree-btn');
   const allDone=[...all].every(c=>c.classList.contains('agreed'));
   btn.disabled=!allDone;
-  btn.textContent=allDone?'✓  全部同意，出發去東京！':'請先勾選所有條款';
+  // ✦ 修改 2：按鈕文字
+  btn.textContent=allDone?'🐔 我同意！咕咕雞出發東京！':'請先勾選所有條款';
 }
 
+// ✦ 修改 3+4+5：單人簽署 + Google Sheets 傳送
 function signDecl(){
-  const a=document.getElementById('sign-a').value.trim()||'旅人';
+  const a=document.getElementById('sign-a').value.trim();
+  if(!a){ alert('請先填入你的名字！'); return; }
+  const date=new Date().toLocaleDateString('zh-TW');
+
+  // ── 傳送到 Google Sheets ──
+  // 請將下方網址替換為你的 Google Apps Script 部署網址
+  const SHEET_URL='你的Google Apps Script網址貼這裡';
+  fetch(SHEET_URL,{
+    method:'POST',
+    mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name:a, date:date})
+  }).catch(()=>{ console.log('Google Sheets 傳送失敗，請確認網址'); });
+
+  // ── 顯示完成訊息 ──
   const result=document.getElementById('decl-result');
   result.style.display='block';
-  result.innerHTML=`🌸 &nbsp;${a} 已完成簽署！東京之旅正式啟動，祝ㄑ旅途愉快、不吵架、買到爽！<br><small style="color:var(--mid)">簽署日期：${new Date().toLocaleDateString('zh-TW')}</small>`;
-  document.getElementById('agree-btn').textContent='✓ 已簽署完成';
+  result.innerHTML=`🐔 &nbsp;<strong>${a}</strong> 已完成簽署！咕咕雞東京之旅正式啟動，祝旅途愉快、不吵架、買到爽！<br><small style="color:var(--mid)">簽署日期：${date}</small>`;
+  document.getElementById('agree-btn').textContent='🐔 已簽署完成！';
   document.getElementById('agree-btn').disabled=true;
+  document.getElementById('sign-a').disabled=true;
 }
 
 // ── Progress bar ──

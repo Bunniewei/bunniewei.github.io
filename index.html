@@ -382,6 +382,154 @@ body{
 .day-nav-btn:hover{background:var(--deep);color:#fff;border-color:var(--deep);}
 .day-nav-btn.next{justify-content:flex-end;}
 
+/* ════════════════════════════
+   PACKING LIST PAGE
+════════════════════════════ */
+.pack-page{background:var(--cream);padding:5rem 2rem;}
+.pack-inner{max-width:900px;margin:0 auto;}
+.pack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2rem;}
+.pack-category{background:var(--white);border:1px solid rgba(141,191,206,.3);padding:1.8rem;}
+.pack-cat-title{
+  font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;
+  color:var(--deep);margin-bottom:1.2rem;display:flex;align-items:center;gap:.6rem;
+  border-bottom:1px solid var(--sky);padding-bottom:.8rem;
+}
+.pack-item{
+  display:flex;align-items:center;gap:.8rem;padding:.5rem 0;
+  border-bottom:1px solid rgba(218,238,245,.5);cursor:pointer;
+  transition:all .2s;
+}
+.pack-item:last-child{border-bottom:none;}
+.pack-item:hover{color:var(--deep);}
+.pack-checkbox{
+  width:18px;height:18px;border-radius:3px;
+  border:1.5px solid var(--soft);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.65rem;color:transparent;transition:all .25s;
+}
+.pack-item.checked .pack-checkbox{background:var(--deep);border-color:var(--deep);color:#fff;}
+.pack-item.checked .pack-label{color:var(--soft);text-decoration:line-through;}
+.pack-label{font-size:.85rem;color:var(--ink);}
+.pack-progress{
+  max-width:900px;margin:2rem auto 0;
+  background:var(--white);border:1px solid rgba(141,191,206,.3);
+  padding:1.5rem 2rem;display:flex;align-items:center;gap:1.5rem;
+}
+.pack-bar-wrap{flex:1;height:6px;background:var(--sky);border-radius:3px;overflow:hidden;}
+.pack-bar{height:100%;background:var(--deep);border-radius:3px;transition:width .4s;width:0%;}
+.pack-count{font-size:.8rem;color:var(--mid);white-space:nowrap;}
+
+/* ════════════════════════════
+   METRO MAP PAGE
+════════════════════════════ */
+.metro-page{background:var(--cream);padding:5rem 2rem;}
+.metro-inner{max-width:1000px;margin:0 auto;}
+.metro-embed{
+  width:100%;border:2px solid rgba(141,191,206,.3);
+  background:var(--white);margin-top:2rem;
+  aspect-ratio:16/10;position:relative;overflow:hidden;
+}
+.metro-embed iframe{width:100%;height:100%;border:none;}
+.metro-legend{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1rem;margin-top:2rem;
+}
+.metro-line{
+  display:flex;align-items:center;gap:.8rem;
+  padding:.8rem 1rem;background:var(--white);
+  border:1px solid rgba(141,191,206,.2);font-size:.8rem;
+}
+.metro-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;}
+.metro-info{color:var(--ink);}
+.metro-sub{font-size:.7rem;color:var(--mid);margin-top:.1rem;}
+
+/* ════════════════════════════
+   TIPS / INFO PAGE
+════════════════════════════ */
+.tips-page{background:var(--cream);padding:5rem 2rem;}
+.tips-inner{max-width:900px;margin:0 auto;}
+.tips-section{margin-top:2.5rem;}
+.tips-section-title{
+  font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;
+  color:var(--deep);margin-bottom:1.2rem;padding-bottom:.6rem;
+  border-bottom:2px solid var(--sky);display:flex;align-items:center;gap:.6rem;
+}
+.tips-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;}
+.tips-card{
+  background:var(--white);border:1px solid rgba(141,191,206,.25);
+  padding:1.4rem 1.6rem;
+}
+.tips-card-title{font-size:.8rem;font-weight:500;color:var(--deep);letter-spacing:.08em;margin-bottom:.6rem;}
+.tips-card-body{font-size:.82rem;line-height:1.9;color:var(--mid);}
+.tips-card-body li{list-style:none;padding:.1rem 0;}
+.tips-card-body li::before{content:'· ';color:var(--soft);}
+.tips-highlight{
+  background:linear-gradient(135deg,var(--frost),var(--sky));
+  border-left:4px solid var(--deep);padding:1rem 1.4rem;
+  font-size:.85rem;line-height:1.9;color:var(--ink);
+  margin-bottom:1.2rem;
+}
+
+/* ════════════════════════════
+   WAKE UP TIME
+════════════════════════════ */
+.wakeup-row{
+  display:inline-flex;align-items:center;gap:.5rem;
+  margin-top:.8rem;padding:.4rem 1rem;
+  background:rgba(218,238,245,.4);border:1px solid rgba(141,191,206,.3);
+  font-size:.8rem;color:var(--deep);letter-spacing:.05em;
+}
+.wakeup-icon{font-size:1rem;}
+
+/* ════════════════════════════
+   ROUTE MAP IN SPOT
+════════════════════════════ */
+.route-section{
+  margin-top:1rem;padding-top:.8rem;
+  border-top:1px dashed rgba(141,191,206,.4);
+}
+.route-title{font-size:.7rem;letter-spacing:.15em;color:var(--soft);margin-bottom:.6rem;}
+.route-steps{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem;}
+.route-step{
+  font-size:.75rem;padding:.25rem .7rem;
+  background:var(--frost);border:1px solid rgba(141,191,206,.3);
+  color:var(--deep);
+}
+.route-arrow{font-size:.7rem;color:var(--soft);}
+.route-duration{
+  font-size:.7rem;color:var(--mid);margin-top:.4rem;
+  font-style:italic;
+}
+
+/* ════════════════════════════
+   RESERVATION SECTION
+════════════════════════════ */
+.reserve-section{
+  max-width:1000px;margin:1.5rem auto 0;
+  padding:2rem 2.5rem;background:var(--white);
+  border:1px solid rgba(201,169,110,.4);
+  border-left:4px solid var(--gold);
+}
+.reserve-title{
+  font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;
+  color:var(--deep);margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem;
+}
+.reserve-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem;}
+.reserve-item{
+  display:flex;align-items:flex-start;gap:.8rem;
+  padding:.8rem 1rem;background:rgba(201,169,110,.06);
+  border:1px solid rgba(201,169,110,.2);
+}
+.reserve-icon{font-size:1.2rem;flex-shrink:0;}
+.reserve-name{font-size:.82rem;font-weight:500;color:var(--deep);}
+.reserve-detail{font-size:.75rem;color:var(--mid);margin-top:.2rem;}
+.reserve-status{
+  display:inline-block;font-size:.65rem;padding:.15rem .5rem;
+  margin-top:.3rem;letter-spacing:.08em;
+}
+.reserve-status.confirmed{background:rgba(44,95,114,.1);color:var(--deep);}
+.reserve-status.pending{background:rgba(201,169,110,.15);color:#8a6a2e;}
+
 /* ═══ ANIMATIONS ═══ */
 @keyframes riseUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
@@ -407,7 +555,10 @@ body{
   <div class="nav-links">
     <button class="nav-link active" onclick="showPage('cover')">封面</button>
     <button class="nav-link" onclick="showPage('toc')">目錄</button>
-    <button class="nav-link" onclick="showPage('decl')">旅遊聲明書</button>
+    <button class="nav-link" onclick="showPage('decl')">聲明書</button>
+    <button class="nav-link" onclick="showPage('pack')">行李清單</button>
+    <button class="nav-link" onclick="showPage('metro')">地鐵圖</button>
+    <button class="nav-link" onclick="showPage('tips')">注意事項</button>
     <button class="nav-link" onclick="showPage('day1')">Day 1</button>
     <button class="nav-link" onclick="showPage('day2')">Day 2</button>
     <button class="nav-link" onclick="showPage('day3')">Day 3</button>
@@ -463,8 +614,32 @@ body{
         <div class="toc-desc">出發前的重要約定，確保每一刻都是美好回憶。請大家確認並簽署。</div>
         <div class="toc-arrow">前往簽署 →</div>
       </div>
-      <div class="toc-card" onclick="showPage('day1')">
+      <div class="toc-card" onclick="showPage('pack')">
         <div class="toc-num">02</div>
+        <div class="toc-icon">🧳</div>
+        <div class="toc-tag">Packing List</div>
+        <div class="toc-title">旅行清單</div>
+        <div class="toc-desc">出發前必備物品清單，逐一勾選確認，確保什麼都不忘帶！</div>
+        <div class="toc-arrow">查看清單 →</div>
+      </div>
+      <div class="toc-card" onclick="showPage('metro')">
+        <div class="toc-num">03</div>
+        <div class="toc-icon">🚇</div>
+        <div class="toc-tag">Metro Map</div>
+        <div class="toc-title">東京地鐵圖</div>
+        <div class="toc-desc">東京地鐵路線總覽，搭配各線路顏色說明，輕鬆搞懂如何移動。</div>
+        <div class="toc-arrow">查看地圖 →</div>
+      </div>
+      <div class="toc-card" onclick="showPage('tips')">
+        <div class="toc-num">04</div>
+        <div class="toc-icon">📋</div>
+        <div class="toc-tag">Important Notes</div>
+        <div class="toc-title">日本注意事項</div>
+        <div class="toc-desc">飛行資訊、海關流程、地鐵搭乘、日本習俗、住宿交通等重要須知。</div>
+        <div class="toc-arrow">查看須知 →</div>
+      </div>
+      <div class="toc-card" onclick="showPage('day1')">
+        <div class="toc-num">05</div>
         <div class="toc-icon">✈️</div>
         <div class="toc-tag">Day 1 · 抵達</div>
         <div class="toc-title">入境東京 · 直奔淺草</div>
@@ -472,7 +647,7 @@ body{
         <div class="toc-arrow">查看行程 →</div>
       </div>
       <div class="toc-card" onclick="showPage('day2')">
-        <div class="toc-num">03</div>
+        <div class="toc-num">06</div>
         <div class="toc-icon">🏛</div>
         <div class="toc-tag">Day 2 · 上野 & 銀座</div>
         <div class="toc-title">谷中銀座 · 上野美術館 · 銀座</div>
@@ -480,7 +655,7 @@ body{
         <div class="toc-arrow">查看行程 →</div>
       </div>
       <div class="toc-card" onclick="showPage('day3')">
-        <div class="toc-num">04</div>
+        <div class="toc-num">07</div>
         <div class="toc-icon">🌸</div>
         <div class="toc-tag">Day 3 · 東京車站 & 新宿</div>
         <div class="toc-title">築地市場 · 東京車站 · 皇居外苑 · 新宿</div>
@@ -488,7 +663,7 @@ body{
         <div class="toc-arrow">查看行程 →</div>
       </div>
       <div class="toc-card" onclick="showPage('day4')">
-        <div class="toc-num">05</div>
+        <div class="toc-num">08</div>
         <div class="toc-icon">🌃</div>
         <div class="toc-tag">Day 4 · 原宿 & 表參道 & 澀谷</div>
         <div class="toc-title"> 中目黑 · 澀谷 · 原宿表參道 · 東京鐵塔 </div>
@@ -496,7 +671,7 @@ body{
         <div class="toc-arrow">查看行程 →</div>
       </div>
       <div class="toc-card" onclick="showPage('day5')">
-        <div class="toc-num">06</div>
+        <div class="toc-num">09</div>
         <div class="toc-icon">🏮</div>
         <div class="toc-tag">Day 5 · 返程</div>
         <div class="toc-title">淺草 · 最後購物 </div>
@@ -619,7 +794,378 @@ body{
 </div>
 
 <!-- ═══════════════════════════
-     PAGE 4: DAY 1
+     PAGE 4: PACKING LIST
+═══════════════════════════ -->
+<div class="page" id="page-pack">
+  <div class="pack-page">
+    <div class="page-header">
+      <span class="jp-label">Packing List</span>
+      <h2>旅行清單</h2>
+      <p>點擊每一項打勾，出發前確認全部帶齊 ✓</p>
+    </div>
+    <div class="pack-progress">
+      <span style="font-size:.8rem;color:var(--deep);font-weight:500;white-space:nowrap;">完成進度</span>
+      <div class="pack-bar-wrap"><div class="pack-bar" id="pack-bar"></div></div>
+      <span class="pack-count" id="pack-count">0 / 0</span>
+    </div>
+    <div class="pack-grid">
+
+      <div class="pack-category">
+        <div class="pack-cat-title">🪪 重要證件</div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">護照（有效期6個月以上）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">台灣身分證</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">機票電子票券（截圖備份）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">飯店訂房確認信</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">旅遊保險單</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">緊急聯絡人資料</span></div>
+      </div>
+
+      <div class="pack-category">
+        <div class="pack-cat-title">💴 金錢 & 支付</div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">日圓現金（建議出發前換好）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">信用卡（VISA / Mastercard）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">Suica卡 / IC卡（或機場辦理）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">零錢包（日本很多地方用現金）</span></div>
+      </div>
+
+      <div class="pack-category">
+        <div class="pack-cat-title">📱 電子 & 通訊</div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">手機充電器</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">行動電源</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">Wi-Fi 分享器（出發前預訂）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">日本插座轉接頭（A型，台灣一樣）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">相機 / 記憶卡</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">耳機</span></div>
+      </div>
+
+      <div class="pack-category">
+        <div class="pack-cat-title">👗 衣物</div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">上衣 × 5</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">外套（日夜溫差大）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">褲子 / 裙子 × 3</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">內衣褲 × 5</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">舒適走路鞋（非常重要！）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">拖鞋（飯店用）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">帽子 / 遮陽帽</span></div>
+      </div>
+
+      <div class="pack-category">
+        <div class="pack-cat-title">🧴 盥洗 & 保養</div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">牙刷牙膏</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">洗髮精 / 潤髮乳（小瓶）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">防曬乳 SPF50+</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">保濕乳液（日本室內乾燥）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">棉花棒 / 化妝棉</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">生理用品</span></div>
+      </div>
+
+      <div class="pack-category">
+        <div class="pack-cat-title">💊 醫藥 & 急救</div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">常備胃藥（吃太多用）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">止痛藥</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">感冒藥</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">OK繃 / 防水貼（走路磨腳）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">個人處方藥</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">口罩 × 數片</span></div>
+      </div>
+
+      <div class="pack-category">
+        <div class="pack-cat-title">🎒 行李 & 雜物</div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">行李箱（確認重量限制）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">隨身小背包</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">雨傘 / 折疊雨傘</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">環保袋 / 購物袋</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">壓縮袋（裝衣物省空間）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">行李秤（購物後確認重量）</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">小筆記本 / 原子筆</span></div>
+      </div>
+
+    </div>
+    <div style="max-width:900px;margin:2rem auto 0;display:flex;justify-content:space-between;gap:1rem;">
+      <button class="day-nav-btn" onclick="showPage('decl')">← 旅遊聲明書</button>
+      <button class="day-nav-btn next" onclick="showPage('metro')">地鐵圖 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     PAGE 5: METRO MAP
+═══════════════════════════ -->
+<div class="page" id="page-metro">
+  <div class="metro-page">
+    <div class="page-header">
+      <span class="jp-label">Tokyo Metro Map</span>
+      <h2>東京地鐵圖</h2>
+      <p>東京地下鐵 · 都營地下鐵 · JR線路總覽</p>
+    </div>
+    <div class="metro-inner">
+      <div class="metro-embed">
+        <iframe src="https://www.tokyometro.jp/station/index.html" title="東京地鐵圖" loading="lazy"></iframe>
+      </div>
+      <p style="font-size:.75rem;color:var(--mid);margin-top:.8rem;text-align:center;">
+        ↑ 如地圖無法顯示，可直接前往
+        <a href="https://www.tokyometro.jp/station/index.html" target="_blank" style="color:var(--deep)">東京地鐵官網</a> 或
+        <a href="https://www.google.com/maps" target="_blank" style="color:var(--deep)">Google Maps</a> 查詢
+      </p>
+      <div style="margin-top:2rem;">
+        <div class="tips-section-title">🚇 主要路線說明</div>
+        <div class="metro-legend">
+          <div class="metro-line"><div class="metro-dot" style="background:#f62e36;"></div><div class="metro-info"><div>丸之內線 Marunouchi</div><div class="metro-sub">新宿 ↔ 池袋 ↔ 東京</div></div></div>
+          <div class="metro-line"><div class="metro-dot" style="background:#009bbf;"></div><div class="metro-info"><div>銀座線 Ginza</div><div class="metro-sub">澀谷 ↔ 銀座 ↔ 淺草</div></div></div>
+          <div class="metro-line"><div class="metro-dot" style="background:#9c5e31;"></div><div class="metro-info"><div>日比谷線 Hibiya</div><div class="metro-sub">中目黑 ↔ 六本木 ↔ 秋葉原</div></div></div>
+          <div class="metro-line"><div class="metro-dot" style="background:#00bb85;"></div><div class="metro-info"><div>千代田線 Chiyoda</div><div class="metro-sub">代代木上原 ↔ 表參道 ↔ 北千住</div></div></div>
+          <div class="metro-line"><div class="metro-dot" style="background:#814e9a;"></div><div class="metro-info"><div>半藏門線 Hanzomon</div><div class="metro-sub">澀谷 ↔ 表參道 ↔ 押上（晴空塔）</div></div></div>
+          <div class="metro-line"><div class="metro-dot" style="background:#f39700;"></div><div class="metro-info"><div>銀座線 Ginza（都營）</div><div class="metro-sub">澀谷 ↔ 上野 ↔ 淺草</div></div></div>
+          <div class="metro-line"><div class="metro-dot" style="background:#e85298;"></div><div class="metro-info"><div>副都心線 Fukutoshin</div><div class="metro-sub">和光市 ↔ 新宿三丁目 ↔ 澀谷</div></div></div>
+          <div class="metro-line"><div class="metro-dot" style="background:#007b43;"></div><div class="metro-info"><div>JR山手線 Yamanote</div><div class="metro-sub">東京站環狀線（30個站）</div></div></div>
+        </div>
+      </div>
+      <div style="margin-top:1.5rem;padding:1rem 1.5rem;background:rgba(218,238,245,.4);border-left:3px solid var(--deep);font-size:.82rem;line-height:2;color:var(--ink);">
+        💡 <strong>搭車小提示：</strong>建議使用 Suica IC卡感應搭乘，方便又省時。找不到方向時打開 Google Maps 輸入目的地，它會自動推薦最快路線與換乘資訊，非常好用！
+      </div>
+    </div>
+    <div style="max-width:1000px;margin:2rem auto 0;display:flex;justify-content:space-between;gap:1rem;">
+      <button class="day-nav-btn" onclick="showPage('pack')">← 旅行清單</button>
+      <button class="day-nav-btn next" onclick="showPage('tips')">注意事項 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     PAGE 6: TIPS / INFO
+═══════════════════════════ -->
+<div class="page" id="page-tips">
+  <div class="tips-page">
+    <div class="page-header">
+      <span class="jp-label">Important Notes</span>
+      <h2>日本注意事項</h2>
+      <p>出發前必讀，讓旅途更順暢</p>
+    </div>
+    <div class="tips-inner">
+
+      <!-- 飛行資訊 -->
+      <div class="tips-section">
+        <div class="tips-section-title">✈️ 飛行資訊</div>
+        <div class="tips-highlight">
+          台灣 → 東京（成田 / 羽田）飛行時間約 3 小時，建議出發前 2.5～3 小時到機場辦理手續。
+        </div>
+        <div class="tips-cards">
+          <div class="tips-card">
+            <div class="tips-card-title">行李規定</div>
+            <div class="tips-card-body"><ul>
+              <li>手提行李：7kg 以內，55×40×23cm</li>
+              <li>托運行李：依艙等，通常 23kg × 1件</li>
+              <li>液體：隨身行李每瓶 100ml 以下，裝入透明夾鏈袋</li>
+              <li>鋰電池不可托運，須隨身攜帶</li>
+            </ul></div>
+          </div>
+          <div class="tips-card">
+            <div class="tips-card-title">登機注意</div>
+            <div class="tips-card-body"><ul>
+              <li>登機前先確認登機門（常有更改）</li>
+              <li>電子機票截圖備份或列印</li>
+              <li>護照有效期需超過6個月</li>
+              <li>禁帶：超過100ml液體、刀具</li>
+            </ul></div>
+          </div>
+          <div class="tips-card">
+            <div class="tips-card-title">機上建議</div>
+            <div class="tips-card-body"><ul>
+              <li>準備耳機、頸枕、眼罩</li>
+              <li>機上填寫入境卡（Visit Japan Web 可預先辦理）</li>
+              <li>日本時間比台灣快 1 小時</li>
+              <li>飛機上可下載離線地圖備用</li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 海關 & 入境 -->
+      <div class="tips-section">
+        <div class="tips-section-title">🛂 海關 & 入境流程</div>
+        <div class="tips-highlight">
+          建議使用 <strong>Visit Japan Web</strong> 預先登錄，入境時可使用快速通關，大幅節省排隊時間。
+        </div>
+        <div class="tips-cards">
+          <div class="tips-card">
+            <div class="tips-card-title">入境步驟</div>
+            <div class="tips-card-body"><ul>
+              <li>①  飛機落地後前往入境審查</li>
+              <li>②  出示護照 + 入境卡給入境官</li>
+              <li>③  進行指紋及臉部辨識</li>
+              <li>④  前往行李轉盤領取托運行李</li>
+              <li>⑤  通過海關申告（帶免稅額內的物品）</li>
+              <li>⑥  抵達入境大廳，辦理 Suica 及 Wi-Fi</li>
+            </ul></div>
+          </div>
+          <div class="tips-card">
+            <div class="tips-card-title">海關免稅規定</div>
+            <div class="tips-card-body"><ul>
+              <li>菸酒：洋酒3瓶（760ml）、紙菸200支</li>
+              <li>香水：2盎司</li>
+              <li>其他物品：合計20萬日圓以內</li>
+              <li>超出需主動申報，有誠信加分哦</li>
+            </ul></div>
+          </div>
+          <div class="tips-card">
+            <div class="tips-card-title">禁止攜入日本</div>
+            <div class="tips-card-body"><ul>
+              <li>毒品、大麻（嚴禁，刑事責任）</li>
+              <li>偽造貨幣</li>
+              <li>新鮮水果、蔬菜、肉類</li>
+              <li>武器、爆裂物</li>
+              <li>侵犯著作權商品</li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 出境流程 -->
+      <div class="tips-section">
+        <div class="tips-section-title">🛫 出境流程</div>
+        <div class="tips-cards">
+          <div class="tips-card">
+            <div class="tips-card-title">出境步驟</div>
+            <div class="tips-card-body"><ul>
+              <li>①  起飛前 3 小時抵達機場</li>
+              <li>②  辦理登機手續並托運行李</li>
+              <li>③  辦理退稅（記得帶護照+收據）</li>
+              <li>④  通過安全檢查</li>
+              <li>⑤  前往登機門候機</li>
+              <li>⑥  出境審查 → 登機</li>
+            </ul></div>
+          </div>
+          <div class="tips-card">
+            <div class="tips-card-title">退稅注意事項</div>
+            <div class="tips-card-body"><ul>
+              <li>同一店消費 ¥5,000 以上可退稅</li>
+              <li>購物時出示護照辦理免稅</li>
+              <li>機場退稅需在免稅品封口前使用</li>
+              <li>免稅物品不可在日本拆封使用</li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 地鐵搭乘 -->
+      <div class="tips-section">
+        <div class="tips-section-title">🚇 地鐵搭乘須知</div>
+        <div class="tips-cards">
+          <div class="tips-card">
+            <div class="tips-card-title">基本禮儀</div>
+            <div class="tips-card-body"><ul>
+              <li>保持安靜，禁止打電話</li>
+              <li>優先讓位給老人、孕婦、小孩</li>
+              <li>排隊等車，勿搶先上車</li>
+              <li>飲食嚴禁（新幹線除外）</li>
+              <li>背包放前方避免佔用空間</li>
+            </ul></div>
+          </div>
+          <div class="tips-card">
+            <div class="tips-card-title">搭乘技巧</div>
+            <div class="tips-card-body"><ul>
+              <li>用 Google Maps 查詢路線最方便</li>
+              <li>Suica卡感應上下車，自動扣款</li>
+              <li>轉乘時注意路線顏色區別</li>
+              <li>迷路時找站內工作人員幫忙</li>
+              <li>尖峰時段（8-9AM、6-8PM）非常擁擠</li>
+            </ul></div>
+          </div>
+          <div class="tips-card">
+            <div class="tips-card-title">費用參考</div>
+            <div class="tips-card-body"><ul>
+              <li>起跳票價：¥170 起</li>
+              <li>機場 ↔ 市區：¥500～1,000</li>
+              <li>JR 山手線：¥140 起（環狀線）</li>
+              <li>一日券：¥600（地鐵）/ ¥800（含JR）</li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 日本習俗 -->
+      <div class="tips-section">
+        <div class="tips-section-title">🎎 日本習俗 & 禮儀</div>
+        <div class="tips-cards">
+          <div class="tips-card">
+            <div class="tips-card-title">一般禮儀</div>
+            <div class="tips-card-body"><ul>
+              <li>見面點頭鞠躬致意</li>
+              <li>排隊文化非常重視，請勿插隊</li>
+              <li>走路靠左行走（電扶梯右側站立）</li>
+              <li>進室內脫鞋，注意穿沒破洞的襪子</li>
+              <li>垃圾帶走，街上幾乎沒有垃圾桶</li>
+            </ul></div>
+          </div>
+          <div class="tips-card">
+            <div class="tips-card-title">用餐禮儀</div>
+            <div class="tips-card-body"><ul>
+              <li>用餐前說「いただきます」</li>
+              <li>用餐後說「ごちそうさまでした」</li>
+              <li>不邊走邊吃（特別是繁忙街道）</li>
+              <li>小費文化不存在，勿留小費</li>
+              <li>點餐後改變心意前先告知</li>
+            </ul></div>
+          </div>
+          <div class="tips-card">
+            <div class="tips-card-title">神社 & 寺廟</div>
+            <div class="tips-card-body"><ul>
+              <li>進鳥居前輕鞠躬</li>
+              <li>手水舍洗手後再參拜</li>
+              <li>參拜：二禮二拍手一禮</li>
+              <li>不大聲喧嘩，保持肅靜</li>
+              <li>拍照前確認是否有禁止標誌</li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 住宿資訊 -->
+      <div class="tips-section">
+        <div class="tips-section-title">🏨 住宿 & 交通資訊</div>
+        <div class="tips-cards">
+          <div class="tips-card">
+            <div class="tips-card-title">住宿入住</div>
+            <div class="tips-card-body"><ul>
+              <li>入住時間通常 15:00 後</li>
+              <li>退房時間通常 11:00 前</li>
+              <li>行李可先寄放飯店（早到或晚退時）</li>
+              <li>浴室有分浴缸（泡澡）和淋浴，換衣室獨立</li>
+              <li>飯店通常提供盥洗用品，可不用帶</li>
+            </ul></div>
+          </div>
+          <div class="tips-card">
+            <div class="tips-card-title">計程車</div>
+            <div class="tips-card-body"><ul>
+              <li>起跳 ¥500-730，後續每 1km 約¥100</li>
+              <li>門自動開關，勿自行開關車門</li>
+              <li>可使用 Go App 叫車（類似 Uber）</li>
+              <li>市區交通塞車，地鐵通常較快</li>
+            </ul></div>
+          </div>
+          <div class="tips-card">
+            <div class="tips-card-title">緊急聯絡</div>
+            <div class="tips-card-body"><ul>
+              <li>警察 110（報案）</li>
+              <li>消防 119（火災 / 急救）</li>
+              <li>旅遊諮詢：03-3201-3331</li>
+              <li>台灣駐日代表處：03-3280-7811</li>
+              <li>遺失護照：立即聯繫台灣代表處</li>
+            </ul></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="max-width:900px;margin:2rem auto 0;display:flex;justify-content:space-between;gap:1rem;">
+      <button class="day-nav-btn" onclick="showPage('metro')">← 地鐵圖</button>
+      <button class="day-nav-btn next" onclick="showPage('day1')">Day 1 開始 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════
+     PAGE 7: DAY 1
 ═══════════════════════════ -->
 <div class="page" id="page-day1">
   <div class="day-page">
@@ -629,6 +1175,7 @@ body{
         <div class="day-tag">Day One · 第一天</div>
         <div class="day-title">入境東京<br>淺草 · 上野初體驗</div>
         <div class="day-summary">踏上東京的第一步，感受千年江戶文化的呼吸。從成田機場出發，在傳統與現代交錯的街道上展開五天的旅程。</div>
+        <div class="wakeup-row"><span class="wakeup-icon">⏰</span> 預計起床時間：<strong>06:30</strong>（需趕早班機）</div>
       </div>
     </div>
     <div class="day-timeline">
@@ -651,12 +1198,25 @@ body{
               <span class="spot-tag" onclick="showTip(this,'📶 Wi-Fi分享器：建議在台灣出發前預訂，機場取件。一天約NT$100，全程高速上網無煩惱。')">📶 Wi-Fi</span>
               <span class="spot-tag" onclick="showTip(this,'🚆 N\'EX票價：約NT$700，東京站下車。也可搭京成Skyliner較便宜，約NT$500，終點為上野站。')">🚆 N'EX特急</span>
             </div>
+            <div class="route-section">
+              <div class="route-title">🗺 路線提示</div>
+              <div class="route-steps">
+                <span class="route-step">✈️ 成田機場</span>
+                <span class="route-arrow">→</span>
+                <span class="route-step">🚆 N'EX 60分鐘</span>
+                <span class="route-arrow">→</span>
+                <span class="route-step">🏙 東京站</span>
+                <span class="route-arrow">→</span>
+                <span class="route-step">🚇 地鐵換乘</span>
+                <span class="route-arrow">→</span>
+                <span class="route-step">🏨 飯店</span>
+              </div>
+              <div class="route-duration">⏱ 機場到飯店預計 1.5 ~ 2 小時</div>
+            </div>
             <div class="spot-tip" id="tip-current"></div>
           </div></div>
         </div>
       </div>
-
-      <div class="time-block featured" onclick="toggleSpot(this)">
         <div class="time-label">下午<br>14:00<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -673,6 +1233,16 @@ body{
               <span class="spot-tag" onclick="showTip(this,'⛩ 雷門：免費入場，24小時開放。建議下午3點後前往，遊客較少且燈籠打光更美。')">⛩ 雷門</span>
               <span class="spot-tag" onclick="showTip(this,'🥮 人形燒：仲見世通必買！熱騰騰的紅豆人形燒，一個約¥150，是淺草最代表性的名物。')">🥮 人形燒</span>
               <span class="spot-tag" onclick="showTip(this,'🎋 抽籤：在本堂旁可抽籤（¥100），若抽到「凶」不要緊，把它綁在籤架上就可以消除了！')">🎋 抽籤</span>
+            </div>
+            <div class="route-section">
+              <div class="route-title">🗺 路線提示</div>
+              <div class="route-steps">
+                <span class="route-step">🏨 飯店</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 銀座線 淺草站</span><span class="route-arrow">→</span>
+                <span class="route-step">🚶 步行 5分鐘</span><span class="route-arrow">→</span>
+                <span class="route-step">⛩ 雷門 → 仲見世通 → 本堂</span>
+              </div>
+              <div class="route-duration">⏱ 建議停留 1.5 ~ 2 小時</div>
             </div>
             <div class="spot-tip"></div>
           </div></div>
@@ -696,6 +1266,16 @@ body{
               <span class="spot-tag" onclick="showTip(this,'🎫 票價：天望甲板¥2,100、天望迴廊¥1,000（需加購）。建議網路預購，可省去排隊時間。')">🎫 票價</span>
               <span class="spot-tag" onclick="showTip(this,'📸 最佳時間：建議日落前30分鐘入場，可同時欣賞白天景色與夜景，拍攝效果最好。')">📸 最佳時間</span>
             </div>
+            <div class="route-section">
+              <div class="route-title">🗺 路線提示</div>
+              <div class="route-steps">
+                <span class="route-step">⛩ 淺草寺</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 銀座線 → 半藏門線 押上站</span><span class="route-arrow">→</span>
+                <span class="route-step">🚶 步行 5分鐘</span><span class="route-arrow">→</span>
+                <span class="route-step">🗼 晴空塔</span>
+              </div>
+              <div class="route-duration">⏱ 移動約 15分鐘，建議停留 1.5 小時</div>
+            </div>
             <div class="spot-tip"></div>
           </div></div>
         </div>
@@ -718,6 +1298,16 @@ body{
               <span class="spot-tag" onclick="showTip(this,'🦐 海鮮丼推薦：阿美橫丁內的「魚力」，超巨大海膽鮭魚卵丼飯，約¥1,500，份量超值！')">🦐 海鮮丼</span>
               <span class="spot-tag" onclick="showTip(this,'🍢 烤串推薦：市場內有多家烤串攤，價格約¥100-300一串，邊逛邊吃最有氣氛。')">🍢 烤串</span>
             </div>
+            <div class="route-section">
+              <div class="route-title">🗺 路線提示</div>
+              <div class="route-steps">
+                <span class="route-step">🗼 晴空塔</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 半藏門線 → 銀座線 上野站</span><span class="route-arrow">→</span>
+                <span class="route-step">🚶 步行 3分鐘</span><span class="route-arrow">→</span>
+                <span class="route-step">🍢 阿美橫丁</span>
+              </div>
+              <div class="route-duration">⏱ 移動約 20分鐘</div>
+            </div>
             <div class="spot-tip"></div>
           </div></div>
         </div>
@@ -733,8 +1323,30 @@ body{
       </div>
     </div>
 
+    <div class="reserve-section">
+      <div class="reserve-title">🎫 今日有預約的景點</div>
+      <div class="reserve-grid">
+        <div class="reserve-item">
+          <div class="reserve-icon">🗼</div>
+          <div>
+            <div class="reserve-name">東京晴空塔 天望甲板</div>
+            <div class="reserve-detail">預約時間：16:30 入場</div>
+            <span class="reserve-status confirmed">✓ 已確認</span>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">➕</div>
+          <div>
+            <div class="reserve-name">（點此新增預約項目）</div>
+            <div class="reserve-detail">可自行修改此欄位</div>
+            <span class="reserve-status pending">待確認</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="day-nav-bottom">
-      <button class="day-nav-btn" onclick="showPage('decl')">← 聲明書</button>
+      <button class="day-nav-btn" onclick="showPage('tips')">← 注意事項</button>
       <button class="day-nav-btn next" onclick="showPage('day2')">Day 2 · 東京鐵塔 →</button>
     </div>
   </div>
@@ -751,6 +1363,7 @@ body{
         <div class="day-tag">Day Two · 第二天</div>
         <div class="day-title">銀座 · 台場<br>東京鐵塔點燈夜</div>
         <div class="day-summary">從優雅奢華的銀座出發，橫渡彩虹橋到浪漫的台場海濱，最後在東京鐵塔的橙光下結束完美的一天。</div>
+        <div class="wakeup-row"><span class="wakeup-icon">⏰</span> 預計起床時間：<strong>08:00</strong></div>
       </div>
     </div>
     <div class="day-timeline">
@@ -771,6 +1384,16 @@ body{
             <div class="spot-tags">
               <span class="spot-tag" onclick="showTip(this,'✒️ ITOYA文具店：銀座必訪！12層樓全是文具、設計商品，即使不買也可以逛上2小時，地址：銀座2-7-15。')">✒️ ITOYA</span>
               <span class="spot-tag" onclick="showTip(this,'🏬 GINZA SIX：2017年開幕的超頂級商場，B2有全日本最大的茑屋書店，設計感十足值得一逛。')">🏬 GINZA SIX</span>
+            </div>
+            <div class="route-section">
+              <div class="route-title">🗺 路線提示</div>
+              <div class="route-steps">
+                <span class="route-step">🏨 飯店</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 地鐵 銀座站</span><span class="route-arrow">→</span>
+                <span class="route-step">🚶 步行 3分鐘</span><span class="route-arrow">→</span>
+                <span class="route-step">🏬 銀座中央通</span>
+              </div>
+              <div class="route-duration">⏱ 建議停留 2 ~ 3 小時</div>
             </div>
             <div class="spot-tip"></div>
           </div></div>
@@ -794,6 +1417,16 @@ body{
               <span class="spot-tag" onclick="showTip(this,'🌁 彩虹橋：傍晚5點後彩虹橋點燈，搭百合海鷗號過橋是最佳欣賞角度，票價¥320。')">🌁 彩虹橋</span>
               <span class="spot-tag" onclick="showTip(this,'🤖 鋼彈：台場Diver City廣場外有1:1等比例的鋼彈立像，免費參觀，是打卡必去地點！')">🤖 鋼彈</span>
             </div>
+            <div class="route-section">
+              <div class="route-title">🗺 路線提示</div>
+              <div class="route-steps">
+                <span class="route-step">🏬 銀座</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 有樂町線 → 百合海鷗號 台場站</span><span class="route-arrow">→</span>
+                <span class="route-step">🚶 步行 5分鐘</span><span class="route-arrow">→</span>
+                <span class="route-step">🌊 台場海濱</span>
+              </div>
+              <div class="route-duration">⏱ 移動約 30分鐘，建議停留 2 小時</div>
+            </div>
             <div class="spot-tip"></div>
           </div></div>
         </div>
@@ -816,6 +1449,16 @@ body{
               <span class="spot-tag" onclick="showTip(this,'🎫 票價：主展望台¥1,200、頂上展望台¥3,000。建議只買主展望台即可，性價比最高。')">🎫 票價</span>
               <span class="spot-tag" onclick="showTip(this,'📍 增上寺角度：從增上寺（免費）可以看到鐵塔與古老寺廟同框的最美照片，步行5分鐘即可到達。')">📍 最佳拍照點</span>
             </div>
+            <div class="route-section">
+              <div class="route-title">🗺 路線提示</div>
+              <div class="route-steps">
+                <span class="route-step">🌊 台場</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 百合海鷗號 → 都營大江戶線 赤羽橋站</span><span class="route-arrow">→</span>
+                <span class="route-step">🚶 步行 5分鐘</span><span class="route-arrow">→</span>
+                <span class="route-step">🗼 東京鐵塔</span>
+              </div>
+              <div class="route-duration">⏱ 移動約 35分鐘，建議停留 1.5 小時</div>
+            </div>
             <div class="spot-tip"></div>
           </div></div>
         </div>
@@ -837,6 +1480,15 @@ body{
             <div class="spot-tags">
               <span class="spot-tag" onclick="showTip(this,'🍣 推薦：麻布十番有多家平價壽司與日式居酒屋，人均約¥1,500-2,500，輕鬆享用美食。')">🍣 晚餐推薦</span>
             </div>
+            <div class="route-section">
+              <div class="route-title">🗺 路線提示</div>
+              <div class="route-steps">
+                <span class="route-step">🗼 東京鐵塔</span><span class="route-arrow">→</span>
+                <span class="route-step">🚶 步行 10分鐘</span><span class="route-arrow">→</span>
+                <span class="route-step">🍢 麻布十番</span>
+              </div>
+              <div class="route-duration">⏱ 步行可達，建議停留 1.5 小時</div>
+            </div>
             <div class="spot-tip"></div>
           </div></div>
         </div>
@@ -849,6 +1501,28 @@ body{
         <div class="food-item"><span class="food-emoji">☕</span><div class="food-name">銀座早午餐</div><div class="food-note">Café de l'Ambre老咖啡廳</div></div>
         <div class="food-item"><span class="food-emoji">🍜</span><div class="food-name">台場午餐</div><div class="food-note">Aqua City餐廳街</div></div>
         <div class="food-item"><span class="food-emoji">🍶</span><div class="food-name">麻布十番晚餐</div><div class="food-note">日式居酒屋</div></div>
+      </div>
+    </div>
+
+    <div class="reserve-section">
+      <div class="reserve-title">🎫 今日有預約的景點</div>
+      <div class="reserve-grid">
+        <div class="reserve-item">
+          <div class="reserve-icon">🗼</div>
+          <div>
+            <div class="reserve-name">東京鐵塔 主展望台</div>
+            <div class="reserve-detail">預約時間：17:30 入場</div>
+            <span class="reserve-status confirmed">✓ 已確認</span>
+          </div>
+        </div>
+        <div class="reserve-item">
+          <div class="reserve-icon">➕</div>
+          <div>
+            <div class="reserve-name">（點此新增預約項目）</div>
+            <div class="reserve-detail">可自行修改此欄位</div>
+            <span class="reserve-status pending">待確認</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1179,6 +1853,15 @@ body{
 </div>
 
 <script>
+// ── Packing list ──
+function togglePack(item){
+  item.classList.toggle('checked');
+  const all=document.querySelectorAll('.pack-item');
+  const done=[...all].filter(i=>i.classList.contains('checked')).length;
+  document.getElementById('pack-count').textContent=done+' / '+all.length;
+  document.getElementById('pack-bar').style.width=(done/all.length*100)+'%';
+}
+
 // ── Page navigation ──
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -1289,6 +1972,12 @@ for(let i=0;i<18;i++){
 
 // Initialize clause button state
 checkAllAgreed();
+
+// Initialize packing count
+(function(){
+  const all=document.querySelectorAll('.pack-item');
+  document.getElementById('pack-count').textContent='0 / '+all.length;
+})();
 </script>
 </body>
 </html>

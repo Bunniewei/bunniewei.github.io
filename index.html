@@ -978,15 +978,54 @@ body{
 
       <!-- 去程 -->
       <div style="background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);display:flex;flex-direction:column;">
-        <!-- Taiwan flag illustration -->
-        <div style="background:linear-gradient(135deg,#003893 0%,#003893 50%,#fff 50%,#fff 100%);height:120px;position:relative;display:flex;align-items:center;justify-content:center;">
-          <svg viewBox="0 0 160 90" width="130" style="position:absolute;top:0;left:0;width:100%;height:100%;" preserveAspectRatio="xMidYMid meet">
-            <rect width="160" height="90" fill="#fe0000"/>
-            <rect width="80" height="45" fill="#003893"/>
-            <circle cx="40" cy="22.5" r="15" fill="#fff"/>
-            <polygon points="40,8 43,19 54,19 45,26 48,37 40,30 32,37 35,26 26,19 37,19" fill="#003893"/>
+        <!-- Taiwan illustration: 101 + tea -->
+        <div style="background:linear-gradient(160deg,#d4eaf7 0%,#e8f4fb 60%,#f0f8fd 100%);height:140px;position:relative;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;">
+          <svg viewBox="0 0 200 110" width="100%" height="100%" style="position:absolute;top:0;left:0;" preserveAspectRatio="xMidYMax meet">
+            <!-- sky dots -->
+            <circle cx="20" cy="18" r="2" fill="#b8d8ee" opacity=".6"/>
+            <circle cx="170" cy="12" r="1.5" fill="#b8d8ee" opacity=".5"/>
+            <circle cx="140" cy="28" r="2.5" fill="#b8d8ee" opacity=".4"/>
+            <!-- clouds -->
+            <ellipse cx="50" cy="22" rx="22" ry="9" fill="#fff" opacity=".7"/>
+            <ellipse cx="68" cy="20" rx="14" ry="8" fill="#fff" opacity=".6"/>
+            <ellipse cx="155" cy="30" rx="18" ry="7" fill="#fff" opacity=".6"/>
+            <!-- Taipei 101 building -->
+            <rect x="89" y="95" width="22" height="15" fill="#5e8fa0"/>
+            <rect x="91" y="80" width="18" height="17" fill="#6ba0b2"/>
+            <rect x="93" y="67" width="14" height="15" fill="#7ab0c0"/>
+            <rect x="94" y="56" width="12" height="13" fill="#88bfcf"/>
+            <rect x="95" y="47" width="10" height="11" fill="#95ccda"/>
+            <rect x="96" y="39" width="8" height="10" fill="#a0d4e0"/>
+            <rect x="97" y="32" width="6" height="9" fill="#a8d8e4"/>
+            <rect x="98" y="27" width="4" height="7" fill="#b0dde8"/>
+            <!-- spire -->
+            <line x1="100" y1="10" x2="100" y2="27" stroke="#8ab8c8" stroke-width="2"/>
+            <!-- windows -->
+            <rect x="91" y="83" width="3" height="2" fill="#fff" opacity=".5"/>
+            <rect x="96" y="83" width="3" height="2" fill="#fff" opacity=".5"/>
+            <rect x="101" y="83" width="3" height="2" fill="#fff" opacity=".5"/>
+            <rect x="106" y="83" width="3" height="2" fill="#fff" opacity=".5"/>
+            <!-- bubble tea cup on left -->
+            <rect x="34" y="72" width="22" height="28" rx="3" fill="#f8e1c8"/>
+            <rect x="34" y="72" width="22" height="6" rx="2" fill="#e8c9a0"/>
+            <rect x="42" y="66" width="6" height="8" rx="2" fill="#d4a870"/>
+            <!-- bubbles in cup -->
+            <circle cx="40" cy="90" r="3" fill="#8B5E3C" opacity=".8"/>
+            <circle cx="48" cy="92" r="3" fill="#8B5E3C" opacity=".8"/>
+            <circle cx="44" cy="87" r="2.5" fill="#7a5030" opacity=".7"/>
+            <circle cx="38" cy="85" r="2" fill="#8B5E3C" opacity=".6"/>
+            <!-- tea liquid -->
+            <rect x="35" y="78" width="20" height="20" rx="2" fill="#d4956a" opacity=".5"/>
+            <!-- lantern on right -->
+            <ellipse cx="163" cy="78" rx="12" ry="16" fill="#e84040"/>
+            <rect x="160" y="62" width="6" height="5" rx="1" fill="#c8952a"/>
+            <rect x="161" y="94" width="4" height="7" fill="#d4a020"/>
+            <line x1="163" y1="70" x2="163" y2="78" stroke="#c8952a" stroke-width="1"/>
+            <text x="159" y="81" font-size="9" fill="#fff" opacity=".9" font-weight="700">福</text>
+            <!-- ground line -->
+            <rect x="0" y="108" width="200" height="3" fill="#c8dce6" opacity=".5"/>
           </svg>
-          <div style="position:absolute;bottom:8px;left:0;right:0;text-align:center;font-size:.65rem;color:rgba(255,255,255,.9);letter-spacing:.15em;font-family:'Noto Sans TC',sans-serif;">TAIWAN · 去程</div>
+          <div style="position:absolute;bottom:7px;left:0;right:0;text-align:center;font-size:.65rem;color:#4a7a95;letter-spacing:.15em;font-family:'Noto Sans TC',sans-serif;font-weight:600;">TAIWAN · 去程</div>
         </div>
         <div style="padding:1.4rem;flex:1;display:flex;flex-direction:column;gap:1rem;">
           <div style="text-align:center;">
@@ -1015,13 +1054,42 @@ body{
 
       <!-- 回程 -->
       <div style="background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);display:flex;flex-direction:column;">
-        <!-- Japan flag illustration -->
-        <div style="background:#fff;height:120px;position:relative;display:flex;align-items:center;justify-content:center;border-bottom:3px solid #f0f0f0;">
-          <svg viewBox="0 0 160 90" width="130" style="position:absolute;top:0;left:0;width:100%;height:100%;" preserveAspectRatio="xMidYMid meet">
-            <rect width="160" height="90" fill="#fff"/>
-            <circle cx="80" cy="45" r="27" fill="#bc002d"/>
+        <!-- Japan illustration: Fuji + torii + sakura -->
+        <div style="background:linear-gradient(160deg,#fce8f0 0%,#fdf0f5 60%,#fff8fb 100%);height:140px;position:relative;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;">
+          <svg viewBox="0 0 200 110" width="100%" height="100%" style="position:absolute;top:0;left:0;" preserveAspectRatio="xMidYMax meet">
+            <!-- sky -->
+            <circle cx="162" cy="20" r="14" fill="#ffd4b8" opacity=".5"/>
+            <!-- clouds -->
+            <ellipse cx="40" cy="20" rx="20" ry="8" fill="#fff" opacity=".8"/>
+            <ellipse cx="55" cy="18" rx="13" ry="7" fill="#fff" opacity=".7"/>
+            <ellipse cx="150" cy="28" rx="16" ry="6" fill="#fff" opacity=".7"/>
+            <!-- Mt. Fuji -->
+            <polygon points="100,18 140,80 60,80" fill="#e8e8e8"/>
+            <polygon points="100,18 116,46 84,46" fill="#fff" opacity=".9"/>
+            <!-- Fuji body shading -->
+            <polygon points="100,46 140,80 60,80" fill="#c8cdd0"/>
+            <polygon points="84,46 116,46 100,18" fill="#dde2e4"/>
+            <!-- Torii gate -->
+            <rect x="28" y="58" width="3" height="42" fill="#c0392b"/>
+            <rect x="43" y="58" width="3" height="42" fill="#c0392b"/>
+            <rect x="24" y="58" width="26" height="5" rx="2" fill="#c0392b"/>
+            <rect x="27" y="65" width="20" height="3" fill="#c0392b"/>
+            <!-- Sakura tree right -->
+            <rect x="158" y="72" width="4" height="30" fill="#8B6347"/>
+            <!-- blossoms -->
+            <circle cx="160" cy="62" r="13" fill="#f7c5d5" opacity=".85"/>
+            <circle cx="152" cy="67" r="9" fill="#f4b0c8" opacity=".8"/>
+            <circle cx="168" cy="67" r="9" fill="#f4b0c8" opacity=".8"/>
+            <circle cx="156" cy="57" r="8" fill="#f9d0de" opacity=".9"/>
+            <circle cx="164" cy="57" r="7" fill="#f9d0de" opacity=".9"/>
+            <!-- petal dots -->
+            <circle cx="145" cy="75" r="2.5" fill="#f4b0c8" opacity=".6"/>
+            <circle cx="175" cy="72" r="2" fill="#f4b0c8" opacity=".5"/>
+            <circle cx="150" cy="85" r="1.5" fill="#f4b0c8" opacity=".5"/>
+            <!-- ground -->
+            <rect x="0" y="108" width="200" height="3" fill="#f0d0d8" opacity=".5"/>
           </svg>
-          <div style="position:absolute;bottom:8px;left:0;right:0;text-align:center;font-size:.65rem;color:#bc002d;letter-spacing:.15em;font-family:'Noto Sans TC',sans-serif;">JAPAN · 回程</div>
+          <div style="position:absolute;bottom:7px;left:0;right:0;text-align:center;font-size:.65rem;color:#a0405a;letter-spacing:.15em;font-family:'Noto Sans TC',sans-serif;font-weight:600;">JAPAN · 回程</div>
         </div>
         <div style="padding:1.4rem;flex:1;display:flex;flex-direction:column;gap:1rem;">
           <div style="text-align:center;">

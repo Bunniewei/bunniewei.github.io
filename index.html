@@ -41,19 +41,30 @@ body{
   backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(141,191,206,.3);
   transition:transform .4s;
+  gap:.8rem;
 }
 .topnav.hide{transform:translateY(-100%);}
 .nav-logo{
   font-family:'Cormorant Garamond',serif;
   font-size:1.2rem;font-weight:600;
   color:var(--deep);letter-spacing:.05em;cursor:pointer;
+  flex-shrink:0;
 }
-.nav-links{display:flex;gap:.3rem;flex-wrap:wrap;justify-content:flex-end;}
+/* 修復：手機版 nav-links 橫向捲動，不擠成多行 */
+.nav-links{
+  display:flex;gap:.3rem;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  flex-wrap:nowrap;
+  padding-bottom:2px;
+}
+.nav-links::-webkit-scrollbar{display:none;}
 .nav-link{
   padding:.35rem .9rem;font-size:.7rem;letter-spacing:.12em;
   border:1px solid transparent;color:var(--mid);cursor:pointer;
   transition:all .25s;background:none;font-family:'Noto Sans TC',sans-serif;
-  white-space:nowrap;
+  white-space:nowrap;flex-shrink:0;
 }
 .nav-link:hover{border-color:var(--soft);color:var(--deep);}
 .nav-link.active{background:var(--deep);color:#fff;border-color:var(--deep);}
@@ -247,7 +258,7 @@ body{
 }
 .clause.agreed .clause-check{background:var(--deep);border-color:var(--deep);color:#fff;}
 
-/* ── 簽署區塊 ── */
+/* 簽署區塊 */
 .sign-section{text-align:center;margin-top:2.5rem;}
 .sign-hint{font-size:.8rem;color:var(--mid);margin-bottom:1.5rem;letter-spacing:.05em;}
 .sign-boxes{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;}
@@ -338,8 +349,9 @@ body{
   font-size:.7rem;color:var(--mid);flex-shrink:0;margin-left:1rem;
   transition:all .3s;
 }
-.spot-body{max-height:0;overflow:hidden;transition:max-height .45s ease,opacity .3s;opacity:0;}
-.time-block.open .spot-body{max-height:500px;opacity:1;}
+/* 修復：增大 max-height，防止手機上內容被裁切 */
+.spot-body{max-height:0;overflow:hidden;transition:max-height .5s ease,opacity .3s;opacity:0;}
+.time-block.open .spot-body{max-height:2000px;opacity:1;}
 .time-block.open .spot-toggle{background:var(--deep);color:#fff;border-color:var(--deep);transform:rotate(180deg);}
 .spot-body-inner{padding:1rem 0 .3rem;border-top:1px solid var(--frost);margin-top:1rem;}
 .spot-desc{font-size:.87rem;line-height:1.9;color:#5a7a88;margin-bottom:1rem;}
@@ -355,7 +367,7 @@ body{
   background:rgba(218,238,245,.5);border-left:3px solid var(--deep);
   font-size:.82rem;line-height:1.7;color:var(--deep);animation:panelIn .3s;
 }
-.spot-tag.active+.spot-tip,.spot-tip.show{display:block;}
+.spot-tip.show{display:block;}
 @keyframes panelIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
 
 /* Food section */
@@ -371,11 +383,12 @@ body{
 .food-emoji{font-size:2rem;display:block;margin-bottom:.4rem;}
 .food-name{font-size:.8rem;font-weight:500;color:var(--deep);}
 .food-note{font-size:.7rem;color:var(--mid);margin-top:.2rem;}
+/* 修復：food-detail 增大 max-height */
 .food-detail{
   max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .3s;
   opacity:0;text-align:left;
 }
-.food-item.open .food-detail{max-height:400px;opacity:1;}
+.food-item.open .food-detail{max-height:600px;opacity:1;}
 .food-detail-inner{
   border-top:1px solid rgba(141,191,206,.3);margin-top:.8rem;padding-top:.8rem;
 }
@@ -423,7 +436,7 @@ body{
   width:18px;height:18px;border-radius:3px;
   border:1.5px solid var(--soft);flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
-  font-size:.65rem;color:transparent;transition:all .25s;
+  font-size:.65rem;color:transparent;transition:all .25px;
 }
 .pack-item.checked .pack-checkbox{background:var(--deep);border-color:var(--deep);color:#fff;}
 .pack-item.checked .pack-label{color:var(--soft);text-decoration:line-through;}
@@ -556,11 +569,20 @@ body{
 @media(max-width:640px){
   .day-hero{grid-template-columns:1fr;}
   .day-number-big{font-size:5rem;}
-  .time-block{grid-template-columns:60px 1fr;gap:.8rem;}
-  .time-label::after{right:-1.3rem;}
+  /* 修復：手機版時間軸窄一點 */
+  .time-block{grid-template-columns:56px 1fr;gap:.6rem;}
+  .time-label{font-size:.68rem;}
+  .time-label::after{right:-1.1rem;}
+  .time-line-v{right:-1.1rem;}
   .decl-doc{padding:2rem 1.5rem;}
   .nav-link{padding:.3rem .6rem;font-size:.65rem;}
   .topnav{padding:.6rem 1rem;}
+  /* 修復：手機食物卡片展開時佔滿整行 */
+  .food-grid{grid-template-columns:1fr;}
+  /* 修復：手機版路線步驟文字縮小讓換行不那麼嚴重 */
+  .route-step{font-size:.7rem;padding:.2rem .5rem;}
+  /* 修復：手機版確保 spot-body 展開夠高 */
+  .time-block.open .spot-body{max-height:3000px;}
 }
 </style>
 </head>
@@ -577,7 +599,7 @@ body{
     <button class="nav-link" onclick="showPage('decl')">聲明書</button>
     <button class="nav-link" onclick="showPage('pack')">行李清單</button>
     <button class="nav-link" onclick="showPage('metro')">地鐵圖</button>
-    <button class="nav-link" onclick="showPage('tips1')">飛行 & 海關</button>
+    <button class="nav-link" onclick="showPage('tips1')">飛行 &amp; 海關</button>
     <button class="nav-link" onclick="showPage('tips2')">旅遊須知</button>
     <button class="nav-link" onclick="showPage('day1')">Day 1</button>
     <button class="nav-link" onclick="showPage('day2')">Day 2</button>
@@ -653,8 +675,8 @@ body{
       <div class="toc-card" onclick="showPage('tips1')">
         <div class="toc-num">05</div>
         <div class="toc-icon">✈️</div>
-        <div class="toc-tag">Flight & Customs</div>
-        <div class="toc-title">飛行 & 出入境海關</div>
+        <div class="toc-tag">Flight &amp; Customs</div>
+        <div class="toc-title">飛行 &amp; 出入境海關</div>
         <div class="toc-desc">飛行資訊、行李規定、入境步驟、海關申報、出境退稅流程一次看懂。</div>
         <div class="toc-arrow">查看須知 →</div>
       </div>
@@ -671,13 +693,13 @@ body{
         <div class="toc-icon">✈️</div>
         <div class="toc-tag">Day 1 · 抵達</div>
         <div class="toc-title">入境東京 · 直奔淺草</div>
-        <div class="toc-desc">抵達羽田機場，前往飯店。</div>
+        <div class="toc-desc">抵達羽田機場，前往飯店，淺草寺初見東京風情。</div>
         <div class="toc-arrow">查看行程 →</div>
       </div>
       <div class="toc-card" onclick="showPage('day2')">
         <div class="toc-num">08</div>
         <div class="toc-icon">🏛</div>
-        <div class="toc-tag">Day 2 · 上野 & 銀座</div>
+        <div class="toc-tag">Day 2 · 上野 &amp; 銀座</div>
         <div class="toc-title">谷中銀座 · 上野美術館 · 銀座</div>
         <div class="toc-desc">谷中銀座感受東京下町懷舊氛圍，接著參觀上野美術館欣賞藝術展覽，最後前往銀座體驗東京最繁華的購物與夜生活街區。</div>
         <div class="toc-arrow">查看行程 →</div>
@@ -685,25 +707,27 @@ body{
       <div class="toc-card" onclick="showPage('day3')">
         <div class="toc-num">09</div>
         <div class="toc-icon">🌸</div>
-        <div class="toc-tag">Day 3 · 東京車站 & 新宿</div>
-        <div class="toc-title">築地市場 · 東京車站 · 皇居外苑 · 新宿</div>
-        <div class="toc-desc">清晨造訪築地市場品嚐新鮮美食，接著前往東京車站欣賞經典紅磚建築，再漫步皇居外苑賞櫻，最後到新宿體驗繁華都市。</div>
+        <!-- 修復：TOC Day 3 內容與頁面一致 -->
+        <div class="toc-tag">Day 3 · 原宿 &amp; 新宿</div>
+        <div class="toc-title">原宿竹下通 · 表參道 · 新宿都廳 · 歌舞伎町</div>
+        <div class="toc-desc">原宿竹下通感受青少年次文化，漫步表參道高檔旗艦店，傍晚登新宿都廳免費展望台，夜晚探索歌舞伎町霓虹街景。</div>
         <div class="toc-arrow">查看行程 →</div>
       </div>
       <div class="toc-card" onclick="showPage('day4')">
         <div class="toc-num">10</div>
         <div class="toc-icon">🌃</div>
-        <div class="toc-tag">Day 4 · 原宿 & 表參道 & 澀谷</div>
-        <div class="toc-title"> 中目黑 · 澀谷 · 原宿表參道 · 東京鐵塔 </div>
-        <div class="toc-desc">中目黑悠閒散步感受文青街區氛圍，接著前往澀谷體驗世界知名的十字路口，再逛原宿與表參道潮流街區，最後東京鐵塔欣賞璀璨夜景。</div>
+        <!-- 修復：TOC Day 4 內容與頁面一致 -->
+        <div class="toc-tag">Day 4 · 秋葉原 &amp; 六本木</div>
+        <div class="toc-title">秋葉原電器街 · 皇居東御苑 · 六本木 teamLab</div>
+        <div class="toc-desc">秋葉原動漫電器天堂大採購，下午皇居東御苑感受古都寧靜，夜晚六本木 teamLab Planets 沉浸式數位藝術體驗。</div>
         <div class="toc-arrow">查看行程 →</div>
       </div>
       <div class="toc-card" onclick="showPage('day5')">
         <div class="toc-num">11</div>
         <div class="toc-icon">🏮</div>
         <div class="toc-tag">Day 5 · 返程</div>
-        <div class="toc-title">淺草 · 最後購物 </div>
-        <div class="toc-desc">造訪淺草寺與仲見世商店街感受東京最具代表性的傳統風情，隨後整理行李前往機場，結束充實愉快的日本旅程踏上返程。</div>
+        <div class="toc-title">渋谷十字路口 · 最後購物</div>
+        <div class="toc-desc">渋谷 Scramble 十字路口打卡，最後採購伴手禮，整理行李前往機場，結束充實愉快的日本旅程踏上返程。</div>
         <div class="toc-arrow">查看行程 →</div>
       </div>
     </div>
@@ -791,7 +815,6 @@ body{
             </div>
             <div class="clause-check">✓</div>
           </div>
-          <!-- ✦ 修正：第8條 HTML 結構正確，下方無空白 -->
           <div class="clause" onclick="toggleClause(this)">
             <div class="clause-num">08</div>
             <div class="clause-body">
@@ -802,7 +825,6 @@ body{
           </div>
         </div>
 
-        <!-- ✦ 簽署欄緊接在所有條款正下方，無多餘空白 -->
         <div class="decl-divider"></div>
         <div class="sign-section">
           <p class="sign-hint">填入你的名字並點擊按鈕完成簽署 🐔</p>
@@ -849,17 +871,17 @@ body{
       </div>
 
       <div class="pack-category">
-        <div class="pack-cat-title">💴 金錢 & 支付</div>
+        <div class="pack-cat-title">💴 金錢 &amp; 支付</div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">日幣（建議円）</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">一點點台幣（約2~3000備用）</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">信用卡（VISA / Mastercard）</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">Suica卡(先存於apple錢包) / 72小時搭乘券</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">零錢包 </span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">零錢包</span></div>
       </div>
 
       <div class="pack-category">
-        <div class="pack-cat-title">📱 電子 & 通訊</div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">手機or其餘產品之充電器&線</span></div>
+        <div class="pack-cat-title">📱 電子 &amp; 通訊</div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">手機or其餘產品之充電器&amp;線</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">行動電源(放隨身，用絕緣膠帶貼起，wh標示)</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">esim (出發前記得設定好)</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">手機</span></div>
@@ -872,8 +894,8 @@ body{
         <div class="pack-cat-title">👗 衣物</div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">上衣</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">外套（溫差大）</span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">褲子/裙子/襪子 </span></div>
-        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">內衣褲 </span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">褲子/裙子/襪子</span></div>
+        <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">內衣褲</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">睡衣之舒適衣物</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">鞋子(爆走20000步)</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">拖鞋（飯店用）</span></div>
@@ -883,7 +905,7 @@ body{
       </div>
 
       <div class="pack-category">
-        <div class="pack-cat-title">🧴 盥洗 & 保養</div>
+        <div class="pack-cat-title">🧴 盥洗 &amp; 保養</div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">牙刷牙膏</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">卸妝/洗面乳</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">沐浴乳(皂)/洗髮精/潤髮乳</span></div>
@@ -901,7 +923,7 @@ body{
       </div>
 
       <div class="pack-category">
-        <div class="pack-cat-title">💊 醫藥 & 急救</div>
+        <div class="pack-cat-title">💊 醫藥 &amp; 急救</div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">胃藥</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">個人日常備藥</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">止痛藥</span></div>
@@ -912,7 +934,7 @@ body{
       </div>
 
       <div class="pack-category">
-        <div class="pack-cat-title">🎒 行李 & 雜物</div>
+        <div class="pack-cat-title">🎒 行李 &amp; 雜物</div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">行李箱（確認重量限制）</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">行李袋/隨身小背包</span></div>
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">折疊雨傘</span></div>
@@ -968,7 +990,7 @@ body{
     </div>
     <div style="max-width:1000px;margin:2rem auto 0;display:flex;justify-content:space-between;gap:1rem;">
       <button class="day-nav-btn" onclick="showPage('pack')">← 旅行清單</button>
-      <button class="day-nav-btn next" onclick="showPage('tips1')">飛行 & 海關 →</button>
+      <button class="day-nav-btn next" onclick="showPage('tips1')">飛行 &amp; 海關 →</button>
     </div>
   </div>
 </div>
@@ -979,13 +1001,12 @@ body{
 <div class="page" id="page-tips1">
   <div class="tips-page">
     <div class="page-header">
-      <span class="jp-label">Flight & Customs</span>
-      <h2>飛行 & 出入境海關</h2>
+      <span class="jp-label">Flight &amp; Customs</span>
+      <h2>飛行 &amp; 出入境海關</h2>
       <p>出發前必讀，讓入出境流程更順暢</p>
     </div>
     <div class="tips-inner">
 
-      <!-- 飛行資訊 -->
       <div class="tips-section">
         <div class="tips-section-title">✈️ 飛行資訊</div>
         <div class="tips-highlight">
@@ -996,9 +1017,9 @@ body{
             <div class="tips-card-title">行李規定</div>
             <div class="tips-card-body"><ul>
               <li>手提+隨身行李：7kg 以內，三邊總和不超過115cm</li>
-              <li>托運行李：依艙等，20kg × 1件 ，三邊總和不超過203CM</li>
+              <li>托運行李：依艙等，20kg × 1件，三邊總和不超過203CM</li>
               <li>液體：隨身行李每瓶 100ml 以下，裝入透明夾鏈袋</li>
-              <li>鋰電池/行動店員不可托運，須隨身攜帶</li>
+              <li>鋰電池/行動電源不可托運，須隨身攜帶</li>
             </ul></div>
           </div>
           <div class="tips-card">
@@ -1023,9 +1044,8 @@ body{
         </div>
       </div>
 
-      <!-- 海關 & 入境 -->
       <div class="tips-section">
-        <div class="tips-section-title">🛂 海關 & 入境流程</div>
+        <div class="tips-section-title">🛂 海關 &amp; 入境流程</div>
         <div class="tips-highlight">
           建議使用 <strong>Visit Japan Web</strong> 預先登錄，入境時可使用快速通關，大幅節省排隊時間。
         </div>
@@ -1037,7 +1057,7 @@ body{
               <li>② 出示護照 + 入境卡給入境官</li>
               <li>③ 進行指紋及臉部辨識</li>
               <li>④ 前往行李轉盤領取托運行李</li>
-              <li>⑤ 通過海關申告（帶免稅額內的物品</li>
+              <li>⑤ 通過海關申告（帶免稅額內的物品）</li>
               <li>⑥ 抵達入境大廳，辦理搭乘券等</li>
             </ul></div>
           </div>
@@ -1063,7 +1083,6 @@ body{
         </div>
       </div>
 
-      <!-- 出境流程 -->
       <div class="tips-section">
         <div class="tips-section-title">🛫 出境流程</div>
         <div class="tips-cards">
@@ -1109,7 +1128,6 @@ body{
     </div>
     <div class="tips-inner">
 
-      <!-- 地鐵搭乘 -->
       <div class="tips-section">
         <div class="tips-section-title">🚇 地鐵搭乘須知</div>
         <div class="tips-cards">
@@ -1146,9 +1164,8 @@ body{
         </div>
       </div>
 
-      <!-- 日本習俗 -->
       <div class="tips-section">
-        <div class="tips-section-title">🎎 日本習俗 & 禮儀</div>
+        <div class="tips-section-title">🎎 日本習俗 &amp; 禮儀</div>
         <div class="tips-cards">
           <div class="tips-card">
             <div class="tips-card-title">一般禮儀</div>
@@ -1171,7 +1188,7 @@ body{
             </ul></div>
           </div>
           <div class="tips-card">
-            <div class="tips-card-title">神社 & 寺廟</div>
+            <div class="tips-card-title">神社 &amp; 寺廟</div>
             <div class="tips-card-body"><ul>
               <li>進鳥居前輕鞠躬</li>
               <li>手水舍洗手後再參拜</li>
@@ -1183,9 +1200,8 @@ body{
         </div>
       </div>
 
-      <!-- 住宿資訊 -->
       <div class="tips-section">
-        <div class="tips-section-title">🏨 住宿 & 交通資訊</div>
+        <div class="tips-section-title">🏨 住宿 &amp; 交通資訊</div>
         <div class="tips-cards">
           <div class="tips-card">
             <div class="tips-card-title">住宿入住</div>
@@ -1221,7 +1237,7 @@ body{
 
     </div>
     <div style="max-width:900px;margin:2rem auto 0;display:flex;justify-content:space-between;gap:1rem;">
-      <button class="day-nav-btn" onclick="showPage('tips1')">← 飛行 & 海關</button>
+      <button class="day-nav-btn" onclick="showPage('tips1')">← 飛行 &amp; 海關</button>
       <button class="day-nav-btn next" onclick="showPage('day1')">Day 1 開始 →</button>
     </div>
   </div>
@@ -1276,7 +1292,7 @@ body{
               </div>
               <div class="route-duration">⏱ 機場到飯店預計 1.5 ~ 2 小時</div>
             </div>
-            <div class="spot-tip" id="tip-current"></div>
+            <div class="spot-tip"></div>
           </div></div>
         </div>
       </div>
@@ -1288,7 +1304,7 @@ body{
             <div class="spot-left">
               <div class="spot-cat">★ 必訪 · Temple</div>
               <div class="spot-name">淺草寺 · 仲見世通</div>
-              <div class="spot-en">Senso-ji Temple & Nakamise</div>
+              <div class="spot-en">Senso-ji Temple &amp; Nakamise</div>
             </div>
             <div class="spot-toggle">▼</div>
           </div>
@@ -1448,8 +1464,9 @@ body{
     </div>
 
     <div class="day-nav-bottom">
-      <button class="day-nav-btn" onclick="showPage('tips')">← 注意事項</button>
-      <button class="day-nav-btn next" onclick="showPage('day2')">Day 2 · 東京鐵塔 →</button>
+      <!-- 修復：原本 showPage('tips') 錯誤，改為 showPage('tips2') -->
+      <button class="day-nav-btn" onclick="showPage('tips2')">← 注意事項</button>
+      <button class="day-nav-btn next" onclick="showPage('day2')">Day 2 · 谷中銀座 →</button>
     </div>
   </div>
 </div>
@@ -1482,11 +1499,12 @@ body{
             <div class="spot-toggle">▼</div>
           </div>
           <div class="spot-body"><div class="spot-body-inner">
-            <div class="spot-desc">谷中銀座商店街 是東京保留濃厚下町風情的商店街，以懷舊街景與在地小店聞名。街道不長卻充滿特色美食、雜貨與貓咪元素，適合悠閒散步，感受東京傳統生活氛圍。 🐱</div>
+            <div class="spot-desc">谷中銀座商店街是東京保留濃厚下町風情的商店街，以懷舊街景與在地小店聞名。街道不長卻充滿特色美食、雜貨與貓咪元素，適合悠閒散步，感受東京傳統生活氛圍。 🐱</div>
             <div class="spot-tags">
-              <span class="spot-tag" onclick="showTip(this,'待更改✒️ ITOYA文具店：銀座必訪！12層樓全是文具、設計商品，即使不買也可以逛上2小時，地址：銀座2-7-15。')">✒️ ITOYA</span>
-              <span class="spot-tag" onclick="showTip(this,'待更改🏬 GINZA SIX：2017年開幕的超頂級商場，B2有全日本最大的茑屋書店，設計感十足值得一逛。')">🏬 GINZA SIX</span>
+              <span class="spot-tag" onclick="showTip(this,'✒️ ITOYA文具店：銀座必訪！12層樓全是文具、設計商品，即使不買也可以逛上2小時，地址：銀座2-7-15。')">✒️ ITOYA</span>
+              <span class="spot-tag" onclick="showTip(this,'🏬 GINZA SIX：2017年開幕的超頂級商場，B2有全日本最大的茑屋書店，設計感十足值得一逛。')">🏬 GINZA SIX</span>
             </div>
+            <!-- 修復：原本路線提示1是獨立的，路線提示2誤嵌套在其中導致HTML破損，現已拆成兩個獨立 route-section -->
             <div class="route-section">
               <div class="route-title">🗺 路線提示(不搭公車方案)</div>
               <div class="route-steps">
@@ -1497,8 +1515,8 @@ body{
                 <span class="route-step">🚇 轉乘JY山手線</span><span class="route-arrow">→</span>
                 <span class="route-step">🚇 JY05上野 往池袋/新宿(內環線)</span><span class="route-arrow">→</span>
                 <span class="route-step">🚇 JY07日暮里</span><span class="route-arrow">→</span>
-                <span class="route-step"> 🚶 步行 8分鐘</span><span class="route-arrow">→</span>
-                <span class="route-step"> 🐱谷中銀座</span>
+                <span class="route-step">🚶 步行 8分鐘</span><span class="route-arrow">→</span>
+                <span class="route-step">🐱 谷中銀座</span>
               </div>
               <div class="route-duration">⏱ 建議停留 2 ~ 3 小時</div>
             </div>
@@ -1522,24 +1540,26 @@ body{
             <div class="spot-desc">東京知名的文化與休閒區，擁有廣大的上野公園、多座博物館與美術館，周邊還有熱鬧的阿美橫町商店街，是結合自然、文化與購物的熱門旅遊地點。</div>
             <div class="spot-tags">
               <span class="spot-tag" onclick="showTip(this,'🚉 上野車站：至附近國立西洋美術館及東京都美術館參觀，享受文藝氣息!')">🚉 上野車站</span>
-              <span class="spot-tag" onclick="showTip(this,'🤖 Yamashiroya玩具店：上野人氣玩具店，公仔模型應有盡有。！')">🤖 Yamashiroya玩具店</span>
+              <span class="spot-tag" onclick="showTip(this,'🤖 Yamashiroya玩具店：上野人氣玩具店，公仔模型應有盡有！')">🤖 Yamashiroya玩具店</span>
             </div>
+            <!-- 修復：原本兩個 route-section 嵌套，導致外層未關閉。現拆為兩個獨立區塊 -->
             <div class="route-section">
               <div class="route-title">🗺 路線提示1</div>
               <div class="route-steps">
-                <span class="route-step"> 🐱 谷中銀座 C15千馱木站</span><span class="route-arrow">→</span>
-                <span class="route-step"> 🚇 千代田線(代代木上原) → C13湯島站</span><span class="route-arrow">→</span>
-                <span class="route-step"> 🚶 步行 8分鐘</span><span class="route-arrow">→</span>
-                <span class="route-step"> 🏛 上野</span>
+                <span class="route-step">🐱 谷中銀座 C15千馱木站</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 千代田線(代代木上原) → C13湯島站</span><span class="route-arrow">→</span>
+                <span class="route-step">🚶 步行 8分鐘</span><span class="route-arrow">→</span>
+                <span class="route-step">🏛 上野</span>
               </div>
-              <div class="route-section">
+            </div>
+            <div class="route-section">
               <div class="route-title">🗺 路線提示2</div>
               <div class="route-steps">
-                <span class="route-step"> ☕ JY07日暮里 </span><span class="route-arrow">→</span>
-                <span class="route-step"> 🚇 JY山手線 →上野東京方面(外環線)</span><span class="route-arrow">→</span>
-                <span class="route-step"> 🏛 JY05上野</span><span class="route-arrow">→</span>
-                <span class="route-step"> 🚶 步行 3分鐘</span><span class="route-arrow">→</span>
-                <span class="route-step"> 🖼️ 國立西洋美術館</span>
+                <span class="route-step">☕ JY07日暮里</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 JY山手線 →上野東京方面(外環線)</span><span class="route-arrow">→</span>
+                <span class="route-step">🏛 JY05上野</span><span class="route-arrow">→</span>
+                <span class="route-step">🚶 步行 3分鐘</span><span class="route-arrow">→</span>
+                <span class="route-step">🖼️ 國立西洋美術館</span>
               </div>
               <div class="route-duration">⏱ 移動約 15分鐘，建議停留 4 小時</div>
             </div>
@@ -1563,7 +1583,7 @@ body{
             <div class="spot-desc">銀座是東京的購物與美食重鎮，高級百貨林立、時尚精品齊聚，街道熱鬧又精緻，每一步都充滿現代與典雅氣息，是享受購物與品味生活的最佳地點。</div>
             <div class="spot-tags">
               <span class="spot-tag" onclick="showTip(this,'🎫 UQ/GU：位於銀座的旗艦店是全球最大規模之一，結合UNIQLO與GU，提供完整服飾與購物體驗')">🎫 UQ/GU</span>
-              <span class="spot-tag" onclick="showTip(this,'📍 MUJI/白熊商店：無印位於銀座的大型旗艦店，結合生活雜貨、家具與餐飲空間，展現簡約生活美學。白熊是我的私心')">📍MUJI/白熊商店 </span>
+              <span class="spot-tag" onclick="showTip(this,'📍 MUJI/白熊商店：無印位於銀座的大型旗艦店，結合生活雜貨、家具與餐飲空間，展現簡約生活美學。白熊是我的私心')">📍 MUJI/白熊商店</span>
             </div>
             <div class="route-section">
               <div class="route-title">🗺 路線提示</div>
@@ -1571,7 +1591,7 @@ body{
                 <span class="route-step">🏛 G16上野</span><span class="route-arrow">→</span>
                 <span class="route-step">🚇 G 銀座線(橘色)往澀谷方向</span><span class="route-arrow">→</span>
                 <span class="route-step">🚇 搭乘7站 約12分鐘</span><span class="route-arrow">→</span>
-                <span class="route-step">💎G09銀座</span>
+                <span class="route-step">💎 G09銀座</span>
               </div>
               <div class="route-duration">⏱ 移動約 35分鐘，建議停留 4 小時</div>
             </div>
@@ -1592,10 +1612,11 @@ body{
             <div class="spot-toggle">▼</div>
           </div>
           <div class="spot-body"><div class="spot-body-inner">
-            <div class="spot-desc">視當天情況 安排回飯店附近超商或是晴空塔百貨超市購物。</div>
+            <div class="spot-desc">視當天情況安排回飯店附近超商或是晴空塔百貨超市購物。</div>
             <div class="spot-tags">
               <span class="spot-tag" onclick="showTip(this,'🛒 推薦：Central Square Life 押上店，打烊時間00:00。')">🛒 超市推薦</span>
             </div>
+            <!-- 修復：原本兩個 route-section 嵌套，現拆為三個獨立區塊 -->
             <div class="route-section">
               <div class="route-title">🗺 路線提示(去超市)</div>
               <div class="route-steps">
@@ -1604,13 +1625,14 @@ body{
                 <span class="route-step">🛍️ A20押上(A1出口)</span><span class="route-arrow">→</span>
                 <span class="route-step">🛒 Central Square Life 押上店</span>
               </div>
-              <div class="route-section">
+            </div>
+            <div class="route-section">
               <div class="route-title">🗺 路線提示(回飯店1/2)</div>
               <div class="route-steps">
-                <span class="route-step">💎 G09銀座/A11東銀座 </span><span class="route-arrow">→</span>
-                <span class="route-step">🚇 G 銀座線(橘色) 往淺草/A淺草線(珊瑚粉) 往青砥</span><span class="route-arrow">→</span>
+                <span class="route-step">💎 G09銀座/A11東銀座</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 G 銀座線(橘色) 往淺草 / A 淺草線(珊瑚粉) 往青砥</span><span class="route-arrow">→</span>
                 <span class="route-step">🚇 G19淺草/A18淺草</span><span class="route-arrow">→</span>
-                <span class="route-step">🚶 步行 13分鐘/17分鐘</span><span class="route-arrow">→</span>
+                <span class="route-step">🚶 步行 13~17分鐘</span><span class="route-arrow">→</span>
                 <span class="route-step">🏨 飯店</span>
               </div>
               <div class="route-duration">⏱ 移動約 35分鐘，建議停留 1 小時</div>
@@ -1640,25 +1662,25 @@ body{
         </div>
         <div class="food-item" onclick="toggleFood(this)">
           <span class="food-emoji">🍜</span>
-          <div class="food-name">台場午餐</div>
-          <div class="food-note">Aqua City餐廳街</div>
+          <div class="food-name">上野午餐</div>
+          <div class="food-note">阿美橫丁美食</div>
           <div class="food-detail"><div class="food-detail-inner">
-            <p>台場 Aqua City 5F 有多家日式餐廳，可點拉麵、壽司或定食，座位靠窗可欣賞彩虹橋景色，是台場午餐的最佳選擇之一。</p>
+            <p>上野阿美橫丁有多家日式餐廳，可點拉麵、壽司或定食，熱鬧市集氛圍也是一大享受。</p>
             <div class="food-meta">
-              <span class="food-meta-tag">📍 台場 Aqua City 5F</span>
+              <span class="food-meta-tag">📍 上野 阿美橫丁</span>
               <span class="food-meta-tag">💴 約 ¥1,000～2,000</span>
-              <span class="food-meta-tag">🌊 海景座位</span>
+              <span class="food-meta-tag">🐟 海鮮豐富</span>
             </div>
           </div></div>
         </div>
         <div class="food-item" onclick="toggleFood(this)">
           <span class="food-emoji">🍶</span>
-          <div class="food-name">麻布十番晚餐</div>
+          <div class="food-name">銀座晚餐</div>
           <div class="food-note">日式居酒屋</div>
           <div class="food-detail"><div class="food-detail-inner">
-            <p>麻布十番商店街有多家平價居酒屋與日式料理。推薦「鳥幸」烤雞串，或在商店街找一家本地人常去的小店，點份定食配日本酒輕鬆收尾。</p>
+            <p>銀座附近有多家平價居酒屋與日式料理。推薦「鳥幸」烤雞串，或在附近找一家本地人常去的小店，點份定食配日本酒輕鬆收尾。</p>
             <div class="food-meta">
-              <span class="food-meta-tag">📍 麻布十番商店街</span>
+              <span class="food-meta-tag">📍 銀座周邊</span>
               <span class="food-meta-tag">💴 約 ¥1,500～2,500</span>
               <span class="food-meta-tag">🍺 居酒屋文化</span>
             </div>
@@ -1705,9 +1727,9 @@ body{
       <div class="day-number-big">03</div>
       <div class="day-info">
         <div class="day-tag">Day Three · 第三天</div>
-        <div class="day-title">築地 · 新宿<br>東京車站皇居外苑</div>
-        <div class="day-summary">品味築地海味風情，探索新宿繁華街景，漫步皇居古韻宮廷。</div>
-        <div class="wakeup-row"><span class="wakeup-icon">⏰</span> 預計起床時間：<strong>08:00(築地要早起嘿!)</strong></div>
+        <div class="day-title">原宿 · 表參道<br>新宿都廳 · 歌舞伎町</div>
+        <div class="day-summary">竹下通潮流文化、表參道精品大道、新宿免費展望台，夜晚走進歌舞伎町霓虹迷宮。</div>
+        <div class="wakeup-row"><span class="wakeup-icon">⏰</span> 預計起床時間：<strong>08:30</strong></div>
       </div>
     </div>
     <div class="day-timeline">
@@ -1878,7 +1900,7 @@ body{
     </div>
 
     <div class="day-nav-bottom">
-      <button class="day-nav-btn" onclick="showPage('day2')">← Day 2 · 東京鐵塔</button>
+      <button class="day-nav-btn" onclick="showPage('day2')">← Day 2 · 上野銀座</button>
       <button class="day-nav-btn next" onclick="showPage('day4')">Day 4 · 秋葉原 →</button>
     </div>
   </div>
@@ -1936,7 +1958,7 @@ body{
           <div class="spot-body"><div class="spot-body-inner">
             <div class="spot-desc">日本天皇居所，東御苑對外開放免費參觀。廣大的日式庭園裡有古老城牆遺址，在高樓環繞的東京市中心感受難得的寧靜與歷史感。二重橋前廣場是最知名的拍照地點。</div>
             <div class="spot-tags">
-              <span class="spot-tag" onclick="showTip(this,'📷 二重橋：皇居最著名的景點，搭配護城河與古松拍照，是代表性的東京風景。免費參觀，周一週五休園。')">📷 二重橋</span>
+              <span class="spot-tag" onclick="showTip(this,'📷 二重橋：皇居最著名的景點，搭配護城河與古松拍照，是代表性的東京風景。免費參觀，週一週五休園。')">📷 二重橋</span>
             </div>
             <div class="spot-tip"></div>
           </div></div>
@@ -2060,7 +2082,7 @@ body{
         <div class="day-tag">Day Five · 第五天</div>
         <div class="day-title">渋谷十字路口<br>最後告別 · 滿載歸途</div>
         <div class="day-summary">在東京最後一天，用渋谷的十字路口畫下旅程的句點。帶著滿滿伴手禮與回憶，心滿意足地踏上歸途。</div>
-        <div class="wakeup-row"><span class="wakeup-icon">⏰</span> 預計起床時間：<strong>07:30</strong>（需整理行李 & 退房）</div>
+        <div class="wakeup-row"><span class="wakeup-icon">⏰</span> 預計起床時間：<strong>07:30</strong>（需整理行李 &amp; 退房）</div>
       </div>
     </div>
     <div class="day-timeline">
@@ -2079,7 +2101,7 @@ body{
           <div class="spot-body"><div class="spot-body-inner">
             <div class="spot-desc">全世界最繁忙的十字路口，每次綠燈瞬間有超過3,000人同時穿越，場面震撼壯觀。Scramble Square 2樓的「渋谷スカイ」展望台可以完整俯瞰這個壯觀的畫面，是東京最具代表性的景色。</div>
             <div class="spot-tags">
-              <span class="spot-tag" onclick="showTip(this,'📍 最佳俯瞰點：Scramble Square展望台（¥2,000）或Mag's Park屋頂（免費但角度有限）都可俯瞰十字路口。')">📍 俯瞰點</span>
+              <span class="spot-tag" onclick="showTip(this,'📍 最佳俯瞰點：Scramble Square展望台（¥2,000）或Mag\'s Park屋頂（免費但角度有限）都可俯瞰十字路口。')">📍 俯瞰點</span>
               <span class="spot-tag" onclick="showTip(this,'🐕 忠犬八公：渋谷站前的八公犬銅像是東京最知名的集合地標，永遠人潮不斷，拍照要有耐心。')">🐕 八公犬</span>
             </div>
             <div class="spot-tip"></div>
@@ -2110,7 +2132,7 @@ body{
       </div>
 
       <div class="time-block" onclick="toggleSpot(this)">
-        <div class="time-label">下午<br>13:00<div class="time-line-v"></div></div>
+        <div class="time-label">下午<br>13:00</div>
         <div class="spot-card">
           <div class="spot-header">
             <div class="spot-left">
@@ -2142,7 +2164,7 @@ body{
           <div class="food-name">澀谷早午餐</div>
           <div class="food-note">咖啡廳・鬆餅</div>
           <div class="food-detail"><div class="food-detail-inner">
-            <p>澀谷 Scramble Square 或 Hikarie 內有多家早午餐咖啡廳。推薦 BAKERS & ROASTERS 或 bills 澀谷店，享用一份豐盛鬆餅為最後一天開個好頭。</p>
+            <p>澀谷 Scramble Square 或 Hikarie 內有多家早午餐咖啡廳。推薦 BAKERS &amp; ROASTERS 或 bills 澀谷店，享用一份豐盛鬆餅為最後一天開個好頭。</p>
             <div class="food-meta">
               <span class="food-meta-tag">📍 澀谷 Hikarie / Scramble Square</span>
               <span class="food-meta-tag">💴 約 ¥1,000～2,000</span>
@@ -2213,7 +2235,7 @@ body{
     <div class="food-section" style="text-align:center;padding:3rem;">
       <div style="font-size:3rem;margin-bottom:1rem;">✈️</div>
       <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--deep);margin-bottom:.8rem;">旅程圓滿結束</div>
-      <div style="font-size:.9rem;line-height:2;color:var(--mid);max-width:1000px;margin:0 auto 2rem;">
+      <div style="font-size:.9rem;line-height:2;color:var(--mid);max-width:500px;margin:0 auto 2rem;">
         五天四夜，25個景點，無數個笑聲與回憶。<br>東京，我們下次見。
       </div>
       <button onclick="showPage('cover')" style="padding:.9rem 2.5rem;background:var(--deep);color:#fff;border:none;cursor:pointer;font-family:'Noto Sans TC',sans-serif;font-size:.8rem;letter-spacing:.2em;transition:all .3s;" onmouseover="this.style.background='#1e3a45'" onmouseout="this.style.background='var(--deep)'">
@@ -2240,9 +2262,9 @@ function togglePack(item){
 
 // ── Food item toggle ──
 function toggleFood(item){
-  const section = item.closest('.food-grid');
-  const wasOpen = item.classList.contains('open');
-  section.querySelectorAll('.food-item').forEach(f => f.classList.remove('open'));
+  const section=item.closest('.food-grid');
+  const wasOpen=item.classList.contains('open');
+  section.querySelectorAll('.food-item').forEach(f=>f.classList.remove('open'));
   if(!wasOpen) item.classList.add('open');
 }
 
@@ -2252,19 +2274,33 @@ function showPage(id){
   document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   const btns=document.querySelectorAll('.nav-link');
-  btns.forEach(b=>{ if(b.getAttribute('onclick').includes("'"+id+"'")) b.classList.add('active'); });
+  btns.forEach(b=>{
+    if(b.getAttribute('onclick') && b.getAttribute('onclick').includes("'"+id+"'"))
+      b.classList.add('active');
+  });
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ── Spot card toggle ──
+// ── Spot card toggle（修復：展開後自動捲動到可見區域）──
 function toggleSpot(block){
   const wasOpen=block.classList.contains('open');
   block.closest('.day-timeline').querySelectorAll('.time-block').forEach(b=>{
     b.classList.remove('open');
-    b.querySelectorAll('.spot-tip').forEach(t=>t.classList.remove('show'));
+    b.querySelectorAll('.spot-tip').forEach(t=>{ t.classList.remove('show'); t.textContent=''; });
     b.querySelectorAll('.spot-tag').forEach(t=>t.classList.remove('active'));
   });
-  if(!wasOpen) block.classList.add('open');
+  if(!wasOpen){
+    block.classList.add('open');
+    // 修復：展開後自動捲動，讓展開內容進入視野（考慮固定 nav 高度）
+    setTimeout(()=>{
+      const navH = document.getElementById('topnav').offsetHeight + 8;
+      const rect = block.getBoundingClientRect();
+      if(rect.bottom > window.innerHeight || rect.top < navH){
+        const targetY = window.scrollY + rect.top - navH;
+        window.scrollTo({top: targetY, behavior:'smooth'});
+      }
+    }, 80);
+  }
 }
 
 // ── Tag tip ──
@@ -2278,6 +2314,7 @@ function showTip(tag, text){
   if(tag.classList.contains('active')){
     tag.classList.remove('active');
     tip.classList.remove('show');
+    tip.textContent='';
     return;
   }
   allTags.forEach(t=>t.classList.remove('active'));
@@ -2285,6 +2322,13 @@ function showTip(tag, text){
   tag.classList.add('active');
   tip.textContent=text;
   tip.classList.add('show');
+  // 修復：顯示提示後確保其可見
+  setTimeout(()=>{
+    const tipRect=tip.getBoundingClientRect();
+    if(tipRect.bottom > window.innerHeight){
+      window.scrollBy({top: tipRect.bottom - window.innerHeight + 20, behavior:'smooth'});
+    }
+  }, 50);
 }
 
 // ── Declaration clauses ──
@@ -2297,30 +2341,17 @@ function checkAllAgreed(){
   const btn=document.getElementById('agree-btn');
   const allDone=[...all].every(c=>c.classList.contains('agreed'));
   btn.disabled=!allDone;
-  // ✦ 修改 2：按鈕文字
   btn.textContent=allDone?'🐔 我同意！咕咕雞出發東京！':'請先勾選所有條款';
 }
 
-// ✦ 修改 3+4+5：單人簽署 + Google Sheets 傳送
+// ── Sign declaration ──
 function signDecl(){
   const a=document.getElementById('sign-a').value.trim();
   if(!a){ alert('請先填入你的名字！'); return; }
   const date=new Date().toLocaleDateString('zh-TW');
-
-  // ── 傳送到 Google Sheets ──
-  // 請將下方網址替換為你的 Google Apps Script 部署網址
-  const SHEET_URL='你的Google Apps Script網址貼這裡';
-  fetch(SHEET_URL,{
-    method:'POST',
-    mode:'no-cors',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({name:a, date:date})
-  }).catch(()=>{ console.log('Google Sheets 傳送失敗，請確認網址'); });
-
-  // ── 顯示完成訊息 ──
   const result=document.getElementById('decl-result');
   result.style.display='block';
-  result.innerHTML=`🐔 &nbsp;<strong>${a}</strong> 已完成簽署！咕咕雞東京之旅正式啟動，祝旅途愉快、不吵架、買到爽！<br><small style="color:var(--mid)">簽署日期：${date}</small>`;
+  result.innerHTML='🐔 &nbsp;<strong>'+a+'</strong> 已完成簽署！咕咕雞東京之旅正式啟動，祝旅途愉快、不吵架、買到爽！<br><small style="color:var(--mid)">簽署日期：'+date+'</small>';
   document.getElementById('agree-btn').textContent='🐔 已簽署完成！';
   document.getElementById('agree-btn').disabled=true;
   document.getElementById('sign-a').disabled=true;
@@ -2329,7 +2360,8 @@ function signDecl(){
 // ── Progress bar ──
 window.addEventListener('scroll',()=>{
   const h=document.documentElement;
-  document.getElementById('progress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  const pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progress').style.width=(isNaN(pct)?0:pct)+'%';
 });
 
 // ── Hide/show nav on scroll ──
@@ -2354,10 +2386,8 @@ for(let i=0;i<18;i++){
   petalContainer.appendChild(p);
 }
 
-// Initialize clause button state
+// ── Initialize ──
 checkAllAgreed();
-
-// Initialize packing count
 (function(){
   const all=document.querySelectorAll('.pack-item');
   document.getElementById('pack-count').textContent='0 / '+all.length;

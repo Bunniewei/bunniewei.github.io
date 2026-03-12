@@ -586,14 +586,16 @@ body{
   .time-block.open .spot-body{max-height:3000px;}
 }
   /* 水印 */
-  .day-page::after {
-    content: '© 2026 咕咕雞旅遊企劃 · Design By Wei · All Rights Reserved';
-    display: block;
-    text-align: center;
-    font-size: 0.65rem;
-    color: #ccc;
-    letter-spacing: 0.1em;
-    padding: 1.5rem 0 2rem;
+.day-page::after {
+  content: '© 2026 咕咕雞旅遊企劃 · Design By Wei · All Rights Reserved';
+  display: block;
+  text-align: center;
+  font-size: 0.65rem;
+  color: #ccc;
+  letter-spacing: 0.1em;
+  padding: 1.5rem 0 2rem;
+  white-space: nowrap;      /* ← 強制單行 */
+  overflow: hidden;          /* ← 超出就隱藏 */
 }
 </style>
 </head>

@@ -147,9 +147,17 @@ body{
   background:var(--blush);border-radius:50% 0 50% 0;
   opacity:0;animation:fall linear infinite;
 }
-@keyframes fall{
-  0%{transform:translateY(-20px) rotate(0deg);opacity:.6;}
-  100%{transform:translateY(110vh) rotate(720deg);opacity:0;}
+@keyframes fall {
+  0% {
+    /* 一開始就完全不透明，且從畫面上方落下 */
+    transform: translateY(-100px) translateX(0) rotate(0deg);
+    opacity: 1; 
+  }
+  100% {
+    /* 最後消失，並加入水平飄移 */
+    transform: translateY(110vh) translateX(50px) rotate(720deg);
+    opacity: 0;
+  }
 }
 
 /* ════════════════════════════

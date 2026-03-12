@@ -77,6 +77,9 @@ body{
 /* ════════════════════════════
    PAGE 1 — COVER
 ════════════════════════════ */
+/* ════════════════════════════
+   PAGE 1 — COVER
+════════════════════════════ */
 .cover{
   min-height:100vh;padding-top:0!important;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -143,13 +146,17 @@ body{
 /* sakura petals */
 .petals{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
 .petal{
-  position:absolute;width:8px;height:8px;
-  background:var(--blush);border-radius:50% 0 50% 0;
+  position:absolute;
+  width:13px;height:13px;                          /* 🔧 8px → 13px */
+  background:#f4a7b9;                              /* 🔧 更飽和的粉紅 */
+  border-radius:50% 0 50% 0;
+  box-shadow:0 0 4px rgba(244,167,185,.5);         /* 🔧 新增：柔和光暈 */
   opacity:0;animation:fall linear infinite;
 }
 @keyframes fall{
-  0%{transform:translateY(-20px) rotate(0deg);opacity:.6;}
-  100%{transform:translateY(110vh) rotate(720deg);opacity:0;}
+  0%  {transform:translateY(-20px) rotate(0deg);   opacity:.85;}  /* 🔧 .6 → .85 */
+  80% {opacity:.6;}                                               /* 🔧 新增：延後消失 */
+  100%{transform:translateY(110vh) rotate(720deg); opacity:0;}
 }
 
 /* ════════════════════════════

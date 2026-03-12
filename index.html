@@ -147,17 +147,9 @@ body{
   background:var(--blush);border-radius:50% 0 50% 0;
   opacity:0;animation:fall linear infinite;
 }
-@keyframes fall {
-  0% {
-    /* 一開始就完全不透明，且從畫面上方落下 */
-    transform: translateY(-100px) translateX(0) rotate(0deg);
-    opacity: 1; 
-  }
-  100% {
-    /* 最後消失，並加入水平飄移 */
-    transform: translateY(110vh) translateX(50px) rotate(720deg);
-    opacity: 0;
-  }
+@keyframes fall{
+  0%{transform:translateY(-20px) rotate(0deg);opacity:.6;}
+  100%{transform:translateY(110vh) rotate(720deg);opacity:0;}
 }
 
 /* ════════════════════════════
@@ -1055,7 +1047,7 @@ body{
           </div>
           <div style="margin-top:auto;padding:.8rem;background:#f8f9fa;border-radius:10px;font-size:.75rem;color:#555;line-height:1.8;text-align:center;">
             ⏱ 飛行時間約 <strong>3小時30分</strong><br>
-            🚆 羽田→市區：京急線約35分鐘
+            🚆 羽田→飯店：計程車約40分鐘
           </div>
         </div>
       </div>
@@ -1115,18 +1107,18 @@ body{
             <div style="font-size:.7rem;color:#888;letter-spacing:.1em;margin-bottom:.3rem;">ARRIVAL</div>
             <div style="font-size:1.4rem;font-weight:700;color:#003893;letter-spacing:.05em;">桃園國際機場</div>
             <div style="font-size:.75rem;color:#555;margin-top:.2rem;">Taiwan Taoyuan International Airport</div>
-            <div style="display:inline-block;margin-top:.5rem;padding:.25rem .8rem;background:#f0f5ff;border-radius:20px;font-size:.75rem;font-weight:600;color:#003893;">第二航廈 Terminal 2</div>
+            <div style="display:inline-block;margin-top:.5rem;padding:.25rem .8rem;background:#f0f5ff;border-radius:20px;font-size:.75rem;font-weight:600;color:#003893;">第一航廈 Terminal 1</div>
           </div>
           <div style="margin-top:auto;padding:.8rem;background:#f8f9fa;border-radius:10px;font-size:.75rem;color:#555;line-height:1.8;text-align:center;">
-            ⏱ 飛行時間約 <strong>3小時30分</strong><br>
-            🚆 成田→市區：NEX約60分鐘
+            ⏱ 飛行時間約 <strong>3小時</strong><br>
+            🚆 飯店→成田：skyliner約1.5小時(提早出門)
           </div>
         </div>
       </div>
     </div>
 
     <div style="max-width:900px;margin:1.5rem auto 0;padding:1rem 1.5rem;background:rgba(218,238,245,.4);border-left:3px solid var(--deep);font-size:.82rem;line-height:2;color:var(--ink);border-radius:0 8px 8px 0;">
-      💡 <strong>提醒：</strong>出發前請至少提前 <strong>2小時</strong> 抵達機場辦理報到，行李超重限制請事先確認，液體隨身行李需符合100ml規定。
+      💡 <strong>提醒：</strong>出發前請至少提前 <strong>2小時</strong> 抵達機場辦理報到，行李超重限制請事先確認，液體隨身行李需符合100ml規定。(記得互相提醒 不要被丟掉了)
     </div>
 
     <div style="max-width:900px;margin:2rem auto 0;display:flex;justify-content:space-between;gap:1rem;">
@@ -1423,7 +1415,7 @@ body{
         </div>
       </div>
       <div style="margin-top:1.5rem;padding:1rem 1.5rem;background:rgba(218,238,245,.4);border-left:3px solid var(--deep);font-size:.82rem;line-height:2;color:var(--ink);">
-        💡 <strong>搭車小提示：</strong>建議使用72小時搭乘券 or 手機Suica感應搭乘，方便又省時。找不到方向時打開 Google Maps 輸入目的地，它會自動推薦最快路線與換乘資訊，非常好用！
+        💡 <strong>搭車小提示：</strong>建議使用72小時搭乘券 or 手機Suica感應搭乘，方便又省時。找不到方向時打開 Google Maps 輸入目的地，它會自動推薦最快路線與換乘資訊！
       </div>
     </div>
     <div style="max-width:1000px;margin:2rem auto 0;display:flex;justify-content:space-between;gap:1rem;">
@@ -1444,7 +1436,7 @@ body{
       <div class="day-number-big">01</div>
       <div class="day-info">
         <div class="day-tag">Day One · 第一天</div>
-        <div class="day-title">入境東京<br>淺草</div>
+        <div class="day-title">出發!<br>入境東京</div>
         <div class="day-summary">先回飯店洗洗睡，養精蓄銳後，在傳統與現代交錯的街道上展開旅程。</div>
         <div class="wakeup-row"><span class="wakeup-icon">⏰</span> 預計抵達桃園時間：<strong>15:30(咕咕雞兩隊人馬不同)</strong></div>
       </div>
@@ -1457,7 +1449,7 @@ body{
           <div class="spot-header">
             <div class="spot-left">
               <div class="spot-cat">Airport · 機場</div>
-              <div class="spot-name">羽田國際機場抵達</div>
+              <div class="spot-name">桃園國際機場抵達</div>
               <div class="spot-en">Haneda Airport</div>
             </div>
             <div class="spot-toggle">▼</div>
@@ -1465,9 +1457,9 @@ body{
           <div class="spot-body"><div class="spot-body-inner">
             <div class="spot-desc">抵達羽田機場後，。搭乘 N'EX (Narita Express) 約60分鐘可抵達東京站，再轉乘地鐵前往飯店。</div>
             <div class="spot-tags">
-              <span class="spot-tag" onclick="showTip(this,'💳 Suica卡：可在機場自動售票機購買，儲值後可用於全東京電車、公車，甚至便利商店消費，非常方便！')">💳 Suica卡</span>
-              <span class="spot-tag" onclick="showTip(this,'📶 Wi-Fi分享器：建議在台灣出發前預訂，機場取件。一天約NT$100，全程高速上網無煩惱。')">📶 Wi-Fi</span>
-              <span class="spot-tag" onclick="showTip(this,'🚆 N\'EX票價：約NT$700，東京站下車。也可搭京成Skyliner較便宜，約NT$500，終點為上野站。')">🚆 N'EX特急</span>
+              <span class="spot-tag" onclick="showTip(this,'💳 ')">💳 Suica卡</span>
+              <span class="spot-tag" onclick="showTip(this,'🚕 計程車：建議在台灣出發前預訂，機場取件。一天約NT$100，全程高速上網無煩惱。')">🚕 計程車</span>
+              <span class="spot-tag" onclick="showTip(this,'🚆 Skyliner：成Skyliner較便宜，約NT$500，終點為上野站。')">🚆 Skyliner</span>
             </div>
             <div class="spot-tip"></div>
             <div class="route-section">
@@ -1475,7 +1467,7 @@ body{
               <div class="route-steps">
                 <span class="route-step">✈️ 羽田機場</span>
                 <span class="route-arrow">→</span>
-                <span class="route-step">🚆 計程車</span>
+                <span class="route-step">🚕 計程車</span>
                 <span class="route-arrow">→</span>
                 <span class="route-step">🏨 飯店</span>
               </div>
@@ -1534,18 +1526,18 @@ body{
     </div>
 
     <div class="reserve-section">
-      <div class="reserve-title">🎫 今日有預約的景點</div>
+      <div class="reserve-title">🎫 今日有預約的行程</div>
       <div class="reserve-grid">
         <div class="reserve-item">
-          <div class="reserve-icon">🗼</div>
+          <div class="reserve-icon">✈️</div>
           <div>
-            <div class="reserve-name">東京晴空塔 天望甲板</div>
-            <div class="reserve-detail">預約時間：16:30 入場</div>
+            <div class="reserve-name">桃機出發</div>
+            <div class="reserve-detail">約：20:00</div>
             <span class="reserve-status confirmed">✓ 已確認</span>
           </div>
         </div>
       </div>
-    </div>
+    </div></div></div>
     <div class="day-nav-bottom">
       <button class="day-nav-btn" onclick="showPage('metro')">← 地鐵圖</button>
       <button class="day-nav-btn next" onclick="showPage('day2')">Day 2 · 谷中銀座 →</button>
@@ -1664,6 +1656,8 @@ body{
           <div class="spot-body"><div class="spot-body-inner">
             <div class="spot-desc">銀座是東京的購物與美食重鎮，高級百貨林立、時尚精品齊聚，街道熱鬧又精緻，每一步都充滿現代與典雅氣息，是享受購物與品味生活的最佳地點。</div>
             <div class="spot-tags">
+              <span class="spot-tag" onclick="showTip(this,'✒️ ITOYA文具店：銀座必訪！12層樓全是文具、設計商品，即使不買也可以逛上2小時，地址：銀座2-7-15。')">✒️ ITOYA</span>
+              <span class="spot-tag" onclick="showTip(this,'🏬 GINZA SIX：2017年開幕的超頂級商場，B2有全日本最大的茑屋書店，設計感十足值得一逛。')">🏬 GINZA SIX</span>
               <span class="spot-tag" onclick="showTip(this,'🎫 UQ/GU：位於銀座的旗艦店是全球最大規模之一，結合UNIQLO與GU，提供完整服飾與購物體驗')">🎫 UQ/GU</span>
               <span class="spot-tag" onclick="showTip(this,'📍 MUJI/白熊商店：無印位於銀座的大型旗艦店，結合生活雜貨、家具與餐飲空間，展現簡約生活美學。白熊是我的私心')">📍 MUJI/白熊商店</span>
             </div>
@@ -1963,41 +1957,41 @@ body{
       <p style="font-size:.78rem;color:var(--mid);margin-bottom:1.2rem;">點擊各項查看詳細資訊 ↓</p>
       <div class="food-grid">
         <div class="food-item" onclick="toggleFood(this)">
-          <span class="food-emoji">🍦</span>
-          <div class="food-name">竹下通小食</div>
-          <div class="food-note">彩虹可麗餅・棉花糖</div>
+          <span class="food-emoji">🍵</span>
+          <div class="food-name">築地市場</div>
+          <div class="food-note"> Matcha Stand Maruni Tokyo Tsukiji</div>
           <div class="food-detail"><div class="food-detail-inner">
-            <p>MARION CREPES 是竹下通老字號可麗餅店，彩色麵糊包裹鮮奶油與水果，一個約 ¥700。也可嚐看看超巨大棉花糖或超商限定口味霜淇淋。</p>
+            <p>築地的一家抹茶專賣咖啡小店，以現點現打的抹茶拿鐵最受歡迎，是築地必訪的特色茶飲地點之一。</p>
             <div class="food-meta">
-              <span class="food-meta-tag">📍 竹下通沿路</span>
-              <span class="food-meta-tag">💴 約 ¥500～800</span>
-              <span class="food-meta-tag">🍬 邊走邊吃</span>
+              <span class="food-meta-tag">📍 築地市場內部</span>
+              <span class="food-meta-tag">💴 約 ¥700～1000</span>
+              <span class="food-meta-tag">⏰ 9：00~15：00</span>
             </div>
           </div></div>
         </div>
         <div class="food-item" onclick="toggleFood(this)">
-          <span class="food-emoji">☕</span>
-          <div class="food-name">表參道午茶</div>
-          <div class="food-note">Blue Bottle咖啡</div>
+          <span class="food-emoji">🍣</span>
+          <div class="food-name">築地市場</div>
+          <div class="food-note">黑銀鮪屋</div>
           <div class="food-detail"><div class="food-detail-inner">
-            <p>Blue Bottle Coffee 日本創始店位於南青山，職人手沖咖啡配上簡潔工業風空間，是表參道下午茶打卡必去。旁邊也有多家精品甜點店可選。</p>
+            <p>築地的知名鮪魚專賣店，以超新鮮的藍鰭鮪魚生魚片與壽司聞名，店家每天現場切割各種鮪魚部位。</p>
             <div class="food-meta">
-              <span class="food-meta-tag">📍 南青山 3-13-14</span>
-              <span class="food-meta-tag">💴 約 ¥600～1,200</span>
-              <span class="food-meta-tag">⏰ 08:00～19:00</span>
+              <span class="food-meta-tag">📍 築地市場內部</span>
+              <span class="food-meta-tag">💴 約 ¥2000～7000</span>
+              <span class="food-meta-tag">⏰ 08:00～13:00</span>
             </div>
           </div></div>
         </div>
         <div class="food-item" onclick="toggleFood(this)">
-          <span class="food-emoji">🍜</span>
+          <span class="food-emoji">🍋</span>
           <div class="food-name">新宿晚餐</div>
-          <div class="food-note">一蘭拉麵・居酒屋</div>
+          <div class="food-note">Gyu Tongue Lemon Shinjuku</div>
           <div class="food-detail"><div class="food-detail-inner">
-            <p>新宿有全日本最密集的餐廳選擇。一蘭拉麵獨立隔間體驗非常特別（約¥1,000）；或走入思い出横丁（懷舊横丁）感受昭和風烤串居酒屋氛圍。</p>
+            <p>新宿有全日本最密集的餐廳選擇。日式牛舌餐廳。</p>
             <div class="food-meta">
-              <span class="food-meta-tag">📍 新宿站周邊</span>
-              <span class="food-meta-tag">💴 約 ¥1,000～2,500</span>
-              <span class="food-meta-tag">🍺 思い出横丁推薦</span>
+              <span class="food-meta-tag">📍 新宿站周邊(B1)</span>
+              <span class="food-meta-tag">💴 約 ¥1000～4000</span>
+              <span class="food-meta-tag">⏰ 已預約：18:30 (再確認)</span>
             </div>
           </div></div>
         </div>
@@ -2087,7 +2081,7 @@ body{
       </div>
 
       <div class="time-block" onclick="toggleSpot(this)">
-        <div class="time-label">下午<br>14:00<div class="time-line-v"></div></div>
+        <div class="time-label">下午<br>12:00<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
             <div class="spot-left">

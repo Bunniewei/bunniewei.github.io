@@ -532,6 +532,24 @@ body{
   font-size:.7rem;color:var(--mid);margin-top:.4rem;
   font-style:italic;
 }
+  /* ════ 水印 ════ */
+.day-page::after,
+.cover::after,
+.toc-page::after,
+.decl-page::after,
+.pack-page::after,
+.metro-page::after,
+.tips-page::after {
+  content: '© 2026 咕咕雞旅遊企劃 · Design By Wei · All Rights Reserved';
+  display: block;
+  text-align: center;
+  font-size: clamp(0.45rem, 2vw, 0.65rem);
+  color: #ccc;
+  letter-spacing: 0.1em;
+  padding: 1.5rem 0 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
 
 /* ════════════════════════════
    RESERVATION SECTION

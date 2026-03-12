@@ -77,9 +77,6 @@ body{
 /* ════════════════════════════
    PAGE 1 — COVER
 ════════════════════════════ */
-/* ════════════════════════════
-   PAGE 1 — COVER
-════════════════════════════ */
 .cover{
   min-height:100vh;padding-top:0!important;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -146,17 +143,13 @@ body{
 /* sakura petals */
 .petals{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
 .petal{
-  position:absolute;
-  width:13px;height:13px;                          /* 🔧 8px → 13px */
-  background:#f4a7b9;                              /* 🔧 更飽和的粉紅 */
-  border-radius:50% 0 50% 0;
-  box-shadow:0 0 4px rgba(244,167,185,.5);         /* 🔧 新增：柔和光暈 */
+  position:absolute;width:8px;height:8px;
+  background:var(--blush);border-radius:50% 0 50% 0;
   opacity:0;animation:fall linear infinite;
 }
 @keyframes fall{
-  0%  {transform:translateY(-20px) rotate(0deg);   opacity:.85;}  /* 🔧 .6 → .85 */
-  80% {opacity:.6;}                                               /* 🔧 新增：延後消失 */
-  100%{transform:translateY(110vh) rotate(720deg); opacity:0;}
+  0%{transform:translateY(-20px) rotate(0deg);opacity:.6;}
+  100%{transform:translateY(110vh) rotate(720deg);opacity:0;}
 }
 
 /* ════════════════════════════
@@ -1582,8 +1575,11 @@ body{
           <div class="spot-body"><div class="spot-body-inner">
             <div class="spot-desc">谷中銀座商店街是東京保留濃厚下町風情的商店街，以懷舊街景與在地小店聞名。街道不長卻充滿特色美食、雜貨與貓咪元素，適合悠閒散步，感受東京傳統生活氛圍。 🐱</div>
             <div class="spot-tags">
-              <span class="spot-tag" onclick="showTip(this,'✒️ ITOYA文具店：銀座必訪！12層樓全是文具、設計商品，即使不買也可以逛上2小時，地址：銀座2-7-15。')">✒️ ITOYA</span>
-              <span class="spot-tag" onclick="showTip(this,'🏬 GINZA SIX：2017年開幕的超頂級商場，B2有全日本最大的茑屋書店，設計感十足值得一逛。')">🏬 GINZA SIX</span>
+              <span class="spot-tag" onclick="showTip(this,'🧁 Cannele de papin：可麗露專門店，約¥200~300。')">🧁 Cannele de papin </span>
+              <span class="spot-tag" onclick="showTip(this,'🐈 貓咪蛋捲：Logo是三花，蛋捲上有貓爪，¥180/個。')">🐈 貓咪蛋捲</span>
+              <span class="spot-tag" onclick="showTip(this,'☕ Calm Coffee：手沖咖啡，也有貓咪圖案。')">☕ Calm Coffee</span>
+              <span class="spot-tag" onclick="showTip(this,'☕ CIBI：咖啡簡餐，有賣杯子與器具。')">☕ CIBI</span>
+              <span class="spot-tag" onclick="showTip(this,'🧸 Biscuit：昭和風格的中古玩具店。')">🧸 Biscuit</span>
             </div>
             <!-- 修復：原本路線提示1是獨立的，路線提示2誤嵌套在其中導致HTML破損，現已拆成兩個獨立 route-section -->
             <div class="spot-tip"></div>

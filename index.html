@@ -638,6 +638,7 @@ body{
     <button class="nav-link" onclick="showPage('day3')">Day 3</button>
     <button class="nav-link" onclick="showPage('day4')">Day 4</button>
     <button class="nav-link" onclick="showPage('day5')">Day 5</button>
+    <button class="nav-link" onclick="showPage('shop')">購物清單</button>
   </div>
 </nav>
 
@@ -762,13 +763,21 @@ body{
         <div class="toc-desc">漫步中目黑河岸櫻花與特色小店，感受澀谷繁華潮流，探索原宿與表參道時尚精品與咖啡文化。</div>
         <div class="toc-arrow">查看行程 →</div>
       </div>
-      <div class="toc-card" onclick="showPage('day5')">
+    <div class="toc-card" onclick="showPage('day5')">
         <div class="toc-num">11</div>
         <div class="toc-icon">🏮</div>
         <div class="toc-tag">Day 5 · 返程</div>
         <div class="toc-title">淺草寺 · 最後購物</div>
         <div class="toc-desc">東京最古老、最著名的佛教寺廟，周邊仲見世商店街販售各式傳統小吃與紀念品，是必訪的歷史文化地標。</div>
         <div class="toc-arrow">查看行程 →</div>
+      </div>
+      <div class="toc-card" onclick="showPage('shop')">
+        <div class="toc-num">12</div>
+        <div class="toc-icon">🛍</div>
+        <div class="toc-tag">Shopping List</div>
+        <div class="toc-title">購物清單</div>
+        <div class="toc-desc">藥妝、零食、雜貨、服飾，記錄所有戰利品，勾選已購買項目。</div>
+        <div class="toc-arrow">查看清單 →</div>
       </div>
     </div>
   </div>
@@ -2415,6 +2424,115 @@ body{
   </div>
 </div>
 
+  <div class="page pack-page" id="page-shop">
+  <div class="pack-inner">
+
+    <div class="page-header">
+      <span class="jp-label">Shopping List</span>
+      <h2>購物清單</h2>
+      <p>點擊項目打勾，記錄已購買的戰利品</p>
+    </div>
+
+    <div class="pack-progress">
+      <span style="font-size:.8rem;color:var(--mid);white-space:nowrap;">購買進度</span>
+      <div class="pack-bar-wrap">
+        <div class="pack-bar" id="shop-bar"></div>
+      </div>
+      <span class="pack-count" id="shop-count">0 / 0</span>
+    </div>
+
+    <div class="pack-grid" style="margin-top:1.5rem;">
+
+      <div class="pack-category">
+        <div class="pack-cat-title">💊 藥妝</div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">肌研極潤玻尿酸化妝水</span>
+        </div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">MINON 氨基酸保濕面膜</span>
+        </div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">小林製藥退熱貼</span>
+        </div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">龍角散潤喉糖</span>
+        </div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">樂敦 V 眼藥水</span>
+        </div>
+      </div>
+
+      <div class="pack-category">
+        <div class="pack-cat-title">🍬 零食伴手禮</div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">東京香蕉 Tokyo Banana</span>
+        </div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">抹茶 KitKat</span>
+        </div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">ROYCE 生巧克力</span>
+        </div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">白色戀人餅乾</span>
+        </div>
+      </div>
+
+      <div class="pack-category">
+        <div class="pack-cat-title">🧴 生活雜貨</div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">無印良品收納盒</span>
+        </div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">Daiso 廚房小物</span>
+        </div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">和紙膠帶</span>
+        </div>
+      </div>
+
+      <div class="pack-category">
+        <div class="pack-cat-title">👗 時尚服飾</div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">GU 當季新品</span>
+        </div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">UNIQLO 日本限定款</span>
+        </div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">古著店挖寶</span>
+        </div>
+      </div>
+
+      <!-- 自訂清單 -->
+      <div class="pack-category" style="grid-column:1/-1;">
+        <div class="pack-cat-title">✏️ 自訂清單</div>
+        <div id="shop-custom-list"></div>
+        <div style="display:flex;gap:.6rem;margin-top:.8rem;">
+          <input id="shop-input" type="text" placeholder="輸入想買的東西…"
+            style="flex:1;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
+                   font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
+                   color:var(--ink);background:var(--frost);outline:none;"
+            onkeydown="if(event.key==='Enter')addShopItem()"/>
+          <button onclick="addShopItem()"
+            style="padding:.5rem 1.2rem;background:var(--deep);color:#fff;border:none;
+                   cursor:pointer;font-size:.8rem;letter-spacing:.1em;">
+            新增
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 下方導航 -->
+    <div class="day-nav-bottom">
+      <button class="day-nav-btn" onclick="showPage('day5')">← Day 5 · 淺草</button>
+      <button class="day-nav-btn next" onclick="showPage('cover')">回到封面 →</button>
+    </div>
+
+  </div>
+</div>
+  
 <script>
 // ── Packing list ──
 function togglePack(item){
@@ -2564,6 +2682,31 @@ for(let i=0;i<18;i++){
   petalContainer.appendChild(p);
 }
 
+// ── 購物清單 ──
+function toggleShop(el){
+  el.classList.toggle('checked');
+  updateShopProgress();
+}
+function updateShopProgress(){
+  const all  = document.querySelectorAll('#page-shop .pack-item');
+  const done = [...all].filter(i=>i.classList.contains('checked')).length;
+  document.getElementById('shop-bar').style.width = (all.length ? done/all.length*100 : 0)+'%';
+  document.getElementById('shop-count').textContent = done+' / '+all.length;
+}
+function addShopItem(){
+  const input = document.getElementById('shop-input');
+  const val   = input.value.trim();
+  if(!val) return;
+  const item  = document.createElement('div');
+  item.className = 'pack-item';
+  item.onclick   = function(){ toggleShop(this); };
+  item.innerHTML = `<div class="pack-checkbox">✓</div><span class="pack-label">${val}</span>`;
+  document.getElementById('shop-custom-list').appendChild(item);
+  input.value = '';
+  updateShopProgress();
+}
+updateShopProgress();
+  
 // ── Initialize ──
 checkAllAgreed();
 (function(){

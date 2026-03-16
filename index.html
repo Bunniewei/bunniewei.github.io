@@ -2508,18 +2508,18 @@ body{
       <div class="pack-category" style="grid-column:1/-1;">
         <div class="pack-cat-title">✏️ 自訂清單</div>
         <div id="shop-custom-list"></div>
-        <div style="display:flex;gap:.6rem;margin-top:.8rem;">
-          <input id="shop-input" type="text" placeholder="輸入想買的東西…"
-            style="flex:1;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
-                   font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
-                   color:var(--ink);background:var(--frost);outline:none;"
-            onkeydown="if(event.key==='Enter')addShopItem()"/>
-          <button onclick="addShopItem()"
-            style="padding:.5rem 1.2rem;background:var(--deep);color:#fff;border:none;
-                   cursor:pointer;font-size:.8rem;letter-spacing:.1em;">
-            新增
-          </button>
-        </div>
+<div style="display:flex;flex-wrap:nowrap;gap:.6rem;margin-top:.8rem;">
+  <input id="shop-input" type="text" placeholder="輸入想買的東西…"
+    style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
+           font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
+           color:var(--ink);background:var(--frost);outline:none;"
+    onkeydown="if(event.key==='Enter')addShopItem()"/>
+  <button onclick="addShopItem()"
+    style="flex-shrink:0;padding:.5rem 1.2rem;background:var(--deep);color:#fff;border:none;
+           cursor:pointer;font-size:.8rem;letter-spacing:.1em;">
+    新增
+  </button>
+</div>
       </div>
 
     </div>
@@ -2693,18 +2693,81 @@ function updateShopProgress(){
   document.getElementById('shop-bar').style.width = (all.length ? done/all.length*100 : 0)+'%';
   document.getElementById('shop-count').textContent = done+' / '+all.length;
 }
-function addShopItem(){
+
+function updateShopBar() { updateShopProgress(); }
+
+// 新增自訂購物項目
+function addShopItem() {
   const input = document.getElementById('shop-input');
-  const val   = input.value.trim();
-  if(!val) return;
-  const item  = document.createElement('div');
-  item.className = 'pack-item';
-  item.onclick   = function(){ toggleShop(this); };
-  item.innerHTML = `<div class="pack-checkbox">✓</div><span class="pack-label">${val}</span>`;
-  document.getElementById('shop-custom-list').appendChild(item);
+  const text = input.value.trim();
+  if (!text) return;
+
+  // 存入 localStorage
+  const items = getShopItems();
+  items.push({ text: text, checked: false });
+  saveShopItems(items);
+
+  renderShopItems();
   input.value = '';
-  updateShopProgress();
+  updateShopBar();
 }
+
+// 讀取 localStorage
+function getShopItems() {
+  return JSON.parse(localStorage.getItem('shop-custom') || '[]');
+}
+
+// 寫入 localStorage
+function saveShopItems(items) {
+  localStorage.setItem('shop-custom', JSON.stringify(items));
+}
+
+// 渲染自訂清單
+function renderShopItems() {
+  const list = document.getElementById('shop-custom-list');
+  const items = getShopItems();
+  list.innerHTML = '';
+
+  items.forEach((item, index) => {
+    const div = document.createElement('div');
+    div.className = 'pack-item' + (item.checked ? ' checked' : '');
+    div.innerHTML = `
+      <div class="pack-checkbox">✓</div>
+      <span class="pack-label">${item.text}</span>
+      <span onclick="deleteShopItem(${index})" 
+        style="margin-left:auto;cursor:pointer;color:var(--mid);font-size:.85rem;padding:0 .3rem;">✕</span>
+    `;
+    div.onclick = (e) => {
+      if (e.target.tagName !== 'SPAN' || !e.target.onclick) {
+        toggleShopCustom(index);
+      }
+    };
+    list.appendChild(div);
+  });
+}
+
+// 勾選 / 取消勾選
+function toggleShopCustom(index) {
+  const items = getShopItems();
+  items[index].checked = !items[index].checked;
+  saveShopItems(items);
+  renderShopItems();
+  updateShopBar();
+}
+
+// 刪除項目
+function deleteShopItem(index) {
+  const items = getShopItems();
+  items.splice(index, 1);
+  saveShopItems(items);
+  renderShopItems();
+  updateShopBar();
+}
+
+// 頁面載入時自動讀取
+document.addEventListener('DOMContentLoaded', () => {
+  renderShopItems();
+});
 updateShopProgress();
   
 // ── Initialize ──

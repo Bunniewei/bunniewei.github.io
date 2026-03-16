@@ -2685,6 +2685,10 @@ for(let i=0;i<18;i++){
 // ── 購物清單 ──
 function toggleShop(el){
   el.classList.toggle('checked');
+  const label = el.querySelector('.pack-label').textContent;
+  const checked = JSON.parse(localStorage.getItem('shop-checked') || '{}');
+  checked[label] = el.classList.contains('checked');
+  localStorage.setItem('shop-checked', JSON.stringify(checked));
   updateShopProgress();
 }
 function updateShopProgress(){
@@ -2766,7 +2770,15 @@ function deleteShopItem(index) {
 
 // 頁面載入時自動讀取
 document.addEventListener('DOMContentLoaded', () => {
+  // 恢復預設項目勾選狀態
+  const checked = JSON.parse(localStorage.getItem('shop-checked') || '{}');
+  document.querySelectorAll('#page-shop .pack-item').forEach(el => {
+    const label = el.querySelector('.pack-label')?.textContent;
+    if (label && checked[label]) el.classList.add('checked');
+  });
+
   renderShopItems();
+  updateShopProgress();
 });
 updateShopProgress();
   

@@ -2578,6 +2578,32 @@ body{
       </div>
     </div>
 
+<!-- Day 5 花費紀錄 -->
+    <div class="food-section" style="margin-top:2rem;">
+      <div class="food-title">💴 當日花費紀錄</div>
+      <div id="expense-day5-list"></div>
+      <div style="display:flex;flex-wrap:nowrap;gap:.6rem;margin-top:.8rem;">
+        <input id="expense-day5-name" type="text" placeholder="項目（例：午餐）"
+          style="flex:2;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
+                 font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
+                 color:var(--ink);background:var(--frost);outline:none;"/>
+        <input id="expense-day5-price" type="number" placeholder="¥"
+          style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
+                 font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
+                 color:var(--ink);background:var(--frost);outline:none;"/>
+        <button onclick="addExpense('day5')"
+          style="flex-shrink:0;padding:.5rem 1.2rem;background:var(--deep);color:#fff;border:none;
+                 cursor:pointer;font-size:.8rem;letter-spacing:.1em;">
+          新增
+        </button>
+      </div>
+      <div style="margin-top:1rem;padding:.8rem;background:var(--frost);border:1px solid rgba(141,191,206,.3);
+                  display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:.85rem;color:var(--mid);">當日合計</span>
+        <span id="expense-day5-total" style="font-size:1.1rem;font-weight:600;color:var(--deep);">¥ 0</span>
+      </div>
+    </div>
+
     <!-- Final Message -->
     <div class="food-section" style="text-align:center;padding:3rem;">
       <div style="font-size:3rem;margin-bottom:1rem;">✈️</div>
@@ -2590,32 +2616,7 @@ body{
       </button>
     </div>
 
-    <!-- Day 5 花費紀錄 -->
-<div class="food-section" style="margin-top:2rem;">
-  <div class="food-title">💴 當日花費紀錄</div>
-  <div id="expense-day5-list"></div>
-  <div style="display:flex;flex-wrap:nowrap;gap:.6rem;margin-top:.8rem;">
-    <input id="expense-day5-name" type="text" placeholder="項目（例：午餐）"
-      style="flex:2;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
-             font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
-             color:var(--ink);background:var(--frost);outline:none;"/>
-    <input id="expense-day5-price" type="number" placeholder="¥"
-      style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
-             font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
-             color:var(--ink);background:var(--frost);outline:none;"/>
-    <button onclick="addExpense('day5')"
-      style="flex-shrink:0;padding:.5rem 1.2rem;background:var(--deep);color:#fff;border:none;
-             cursor:pointer;font-size:.8rem;letter-spacing:.1em;">
-      新增
-    </button>
-  </div>
-  <div style="margin-top:1rem;padding:.8rem;background:var(--frost);border:1px solid rgba(141,191,206,.3);
-              display:flex;justify-content:space-between;align-items:center;">
-    <span style="font-size:.85rem;color:var(--mid);">當日合計</span>
-    <span id="expense-day5-total" style="font-size:1.1rem;font-weight:600;color:var(--deep);">¥ 0</span>
-  </div>
-</div>
-   <div class="day-nav-bottom">
+    <div class="day-nav-bottom">
       <button class="day-nav-btn" onclick="showPage('day4')">← Day 4 · 中目黑澀谷原宿表參道</button>
       <button class="day-nav-btn next" onclick="showPage('shop')">購物清單 →</button>
     </div>

@@ -1555,7 +1555,7 @@ body{
     </div>
     <div class="day-timeline">
 
-      <div class="time-block" onclick="toggleSpot(this)">
+      <div class="time-block" data-map="羽田機場" onclick="toggleSpot(this)">
         <div class="time-label">下午<br>16:00左右<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -1673,7 +1673,7 @@ body{
     </div>
     <div class="day-timeline">
 
-      <div class="time-block featured" onclick="toggleSpot(this)">
+      <div class="time-block featured" data-map="谷中銀座 東京" onclick="toggleSpot(this)">
         <div class="time-label">上午<br>10:00<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -1714,7 +1714,7 @@ body{
         </div>
       </div>
 
-      <div class="time-block" onclick="toggleSpot(this)">
+      <div class="time-block" data-map="上野 国立西洋美術館" onclick="toggleSpot(this)">
         <div class="time-label">下午<br>12:30<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -1757,7 +1757,7 @@ body{
         </div>
       </div>
 
-      <div class="time-block featured" onclick="toggleSpot(this)">
+      <div class="time-block featured" data-map="銀座 東京" onclick="toggleSpot(this)">
         <div class="time-label">傍晚<br>17:00<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -1791,7 +1791,7 @@ body{
         </div>
       </div>
 
-      <div class="time-block" onclick="toggleSpot(this)">
+      <div class="time-block" data-map="Central Square Life 押上店" onclick="toggleSpot(this)">
         <div class="time-label">晚上<br>21:30</div>
         <div class="spot-card">
           <div class="spot-header">
@@ -1925,7 +1925,7 @@ body{
     </div>
     <div class="day-timeline">
 
-      <div class="time-block featured" onclick="toggleSpot(this)">
+      <div class="time-block featured" data-map="築地市場 東京" onclick="toggleSpot(this)">
         <div class="time-label">上午<br>9:30<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -1965,7 +1965,7 @@ body{
         </div>
       </div>
 
-      <div class="time-block" onclick="toggleSpot(this)">
+      <div class="time-block" data-map="東京駅" onclick="toggleSpot(this)">
         <div class="time-label">下午<br>12:00<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -2001,7 +2001,7 @@ body{
         </div>
       </div>
 
-      <div class="time-block featured" onclick="toggleSpot(this)">
+      <div class="time-block featured" data-map="新宿 東京" onclick="toggleSpot(this)">
         <div class="time-label">傍晚<br>17:30<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -2036,7 +2036,7 @@ body{
         </div>
       </div>
 
-      <div class="time-block featured" onclick="toggleSpot(this)">
+      <div class="time-block featured" data-map="Gyu Tongue Lemon Shinjuku" onclick="toggleSpot(this)">
         <div class="time-label">晚上<br>18:30</div>
         <div class="spot-card">
           <div class="spot-header">
@@ -2158,7 +2158,7 @@ body{
     </div>
     <div class="day-timeline">
 
-      <div class="time-block featured" onclick="toggleSpot(this)">
+      <div class="time-block featured" data-map="中目黒 東京" onclick="toggleSpot(this)">
         <div class="time-label">上午<br>09:30<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -2195,7 +2195,7 @@ body{
         </div>
       </div>
 
-      <div class="time-block" onclick="toggleSpot(this)">
+      <div class="time-block" data-map="皇居東御苑 東京" onclick="toggleSpot(this)">
         <div class="time-label">下午<br>12:00<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -2226,7 +2226,7 @@ body{
         </div>
       </div>
 
-      <div class="time-block featured" onclick="toggleSpot(this)">
+      <div class="time-block featured" data-map="teamLab Planets TOKYO 豊洲" onclick="toggleSpot(this)">
         <div class="time-label">傍晚<br>18:00</div>
         <div class="spot-card">
           <div class="spot-header">
@@ -2351,7 +2351,7 @@ body{
     </div>
     <div class="day-timeline">
 
-      <div class="time-block featured" onclick="toggleSpot(this)">
+      <div class="time-block featured" data-map="浅草寺 東京" onclick="toggleSpot(this)">
         <div class="time-label">上午<br>09:30<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -2383,7 +2383,7 @@ body{
         </div>
       </div>
 
-      <div class="time-block" onclick="toggleSpot(this)">
+      <div class="time-block" data-map="成田国際空港 第一ターミナル" onclick="toggleSpot(this)">
         <div class="time-label">下午<br>12:00</div>
         <div class="spot-card">
           <div class="spot-header">
@@ -2884,6 +2884,21 @@ function deleteShopItem(index) {
 
 // ── 頁面載入 ──
 document.addEventListener('DOMContentLoaded', () => {
+// ── Google Maps 按鈕 ──
+  document.querySelectorAll('.time-block[data-map]').forEach(block => {
+    const query = block.getAttribute('data-map');
+    const url = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(query);
+    const inner = block.querySelector('.spot-body-inner');
+    if (!inner) return;
+    const btn = document.createElement('a');
+    btn.href = url;
+    btn.target = '_blank';
+    btn.innerHTML = '🗺️ 在 Google Maps 開啟';
+    btn.style.cssText = 'display:inline-block;margin-top:.8rem;padding:.4rem .9rem;background:var(--deep);color:#fff;font-size:.78rem;text-decoration:none;letter-spacing:.05em;';
+    btn.onclick = e => e.stopPropagation();
+    inner.appendChild(btn);
+  });
+
   // 恢復行李清單勾選狀態
   const packChecked = JSON.parse(localStorage.getItem('pack-checked') || '{}');
   document.querySelectorAll('#page-pack .pack-item').forEach(el => {

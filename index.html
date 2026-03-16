@@ -1650,6 +1650,31 @@ body{
         </div>
       </div>
     </div>
+    <!-- Day 1 花費紀錄 -->
+<div class="food-section" style="margin-top:2rem;">
+  <div class="food-title">💴 當日花費紀錄</div>
+  <div id="expense-day1-list"></div>
+  <div style="display:flex;flex-wrap:nowrap;gap:.6rem;margin-top:.8rem;">
+    <input id="expense-day1-name" type="text" placeholder="項目（例：午餐）"
+      style="flex:2;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
+             font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
+             color:var(--ink);background:var(--frost);outline:none;"/>
+    <input id="expense-day1-price" type="number" placeholder="¥"
+      style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
+             font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
+             color:var(--ink);background:var(--frost);outline:none;"/>
+    <button onclick="addExpense('day1')"
+      style="flex-shrink:0;padding:.5rem 1.2rem;background:var(--deep);color:#fff;border:none;
+             cursor:pointer;font-size:.8rem;letter-spacing:.1em;">
+      新增
+    </button>
+  </div>
+  <div style="margin-top:1rem;padding:.8rem;background:var(--frost);border:1px solid rgba(141,191,206,.3);
+              display:flex;justify-content:space-between;align-items:center;">
+    <span style="font-size:.85rem;color:var(--mid);">當日合計</span>
+    <span id="expense-day1-total" style="font-size:1.1rem;font-weight:600;color:var(--deep);">¥ 0</span>
+  </div>
+</div>
     <div class="day-nav-bottom">
       <button class="day-nav-btn" onclick="showPage('metro')">← 地鐵圖</button>
       <button class="day-nav-btn next" onclick="showPage('day2')">Day 2 · 谷中銀座 →</button>
@@ -1902,6 +1927,31 @@ body{
       </div>
     </div>
 
+    <!-- Day 2 花費紀錄 -->
+<div class="food-section" style="margin-top:2rem;">
+  <div class="food-title">💴 當日花費紀錄</div>
+  <div id="expense-day2-list"></div>
+  <div style="display:flex;flex-wrap:nowrap;gap:.6rem;margin-top:.8rem;">
+    <input id="expense-day2-name" type="text" placeholder="項目（例：午餐）"
+      style="flex:2;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
+             font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
+             color:var(--ink);background:var(--frost);outline:none;"/>
+    <input id="expense-day2-price" type="number" placeholder="¥"
+      style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
+             font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
+             color:var(--ink);background:var(--frost);outline:none;"/>
+    <button onclick="addExpense('day2')"
+      style="flex-shrink:0;padding:.5rem 1.2rem;background:var(--deep);color:#fff;border:none;
+             cursor:pointer;font-size:.8rem;letter-spacing:.1em;">
+      新增
+    </button>
+  </div>
+  <div style="margin-top:1rem;padding:.8rem;background:var(--frost);border:1px solid rgba(141,191,206,.3);
+              display:flex;justify-content:space-between;align-items:center;">
+    <span style="font-size:.85rem;color:var(--mid);">當日合計</span>
+    <span id="expense-day2-total" style="font-size:1.1rem;font-weight:600;color:var(--deep);">¥ 0</span>
+  </div>
+</div>
     <div class="day-nav-bottom">
       <button class="day-nav-btn" onclick="showPage('day1')">← Day 1 · 淺草</button>
       <button class="day-nav-btn next" onclick="showPage('day3')">Day 3 · 原宿新宿 →</button>
@@ -2135,6 +2185,31 @@ body{
       </div>
     </div>
 
+    <!-- Day 3 花費紀錄 -->
+<div class="food-section" style="margin-top:2rem;">
+  <div class="food-title">💴 當日花費紀錄</div>
+  <div id="expense-day3-list"></div>
+  <div style="display:flex;flex-wrap:nowrap;gap:.6rem;margin-top:.8rem;">
+    <input id="expense-day3-name" type="text" placeholder="項目（例：午餐）"
+      style="flex:2;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
+             font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
+             color:var(--ink);background:var(--frost);outline:none;"/>
+    <input id="expense-day3-price" type="number" placeholder="¥"
+      style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
+             font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
+             color:var(--ink);background:var(--frost);outline:none;"/>
+    <button onclick="addExpense('day3')"
+      style="flex-shrink:0;padding:.5rem 1.2rem;background:var(--deep);color:#fff;border:none;
+             cursor:pointer;font-size:.8rem;letter-spacing:.1em;">
+      新增
+    </button>
+  </div>
+  <div style="margin-top:1rem;padding:.8rem;background:var(--frost);border:1px solid rgba(141,191,206,.3);
+              display:flex;justify-content:space-between;align-items:center;">
+    <span style="font-size:.85rem;color:var(--mid);">當日合計</span>
+    <span id="expense-day3-total" style="font-size:1.1rem;font-weight:600;color:var(--deep);">¥ 0</span>
+  </div>
+</div>
     <div class="day-nav-bottom">
       <button class="day-nav-btn" onclick="showPage('day2')">← Day 2 · 上野銀座</button>
       <button class="day-nav-btn next" onclick="showPage('day4')">Day 4 · 中目黑澀谷原宿 →</button>
@@ -2328,6 +2403,31 @@ body{
       </div>
     </div>
 
+    <!-- Day 4 花費紀錄 -->
+<div class="food-section" style="margin-top:2rem;">
+  <div class="food-title">💴 當日花費紀錄</div>
+  <div id="expense-day4-list"></div>
+  <div style="display:flex;flex-wrap:nowrap;gap:.6rem;margin-top:.8rem;">
+    <input id="expense-day4-name" type="text" placeholder="項目（例：午餐）"
+      style="flex:2;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
+             font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
+             color:var(--ink);background:var(--frost);outline:none;"/>
+    <input id="expense-day4-price" type="number" placeholder="¥"
+      style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
+             font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
+             color:var(--ink);background:var(--frost);outline:none;"/>
+    <button onclick="addExpense('day4')"
+      style="flex-shrink:0;padding:.5rem 1.2rem;background:var(--deep);color:#fff;border:none;
+             cursor:pointer;font-size:.8rem;letter-spacing:.1em;">
+      新增
+    </button>
+  </div>
+  <div style="margin-top:1rem;padding:.8rem;background:var(--frost);border:1px solid rgba(141,191,206,.3);
+              display:flex;justify-content:space-between;align-items:center;">
+    <span style="font-size:.85rem;color:var(--mid);">當日合計</span>
+    <span id="expense-day4-total" style="font-size:1.1rem;font-weight:600;color:var(--deep);">¥ 0</span>
+  </div>
+</div>
     <div class="day-nav-bottom">
       <button class="day-nav-btn" onclick="showPage('day3')">← Day 3 · 築地皇居新宿</button>
       <button class="day-nav-btn next" onclick="showPage('day5')">Day 5 · 淺草 返程 →</button>
@@ -2490,6 +2590,31 @@ body{
       </button>
     </div>
 
+    <!-- Day 5 花費紀錄 -->
+<div class="food-section" style="margin-top:2rem;">
+  <div class="food-title">💴 當日花費紀錄</div>
+  <div id="expense-day5-list"></div>
+  <div style="display:flex;flex-wrap:nowrap;gap:.6rem;margin-top:.8rem;">
+    <input id="expense-day5-name" type="text" placeholder="項目（例：午餐）"
+      style="flex:2;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
+             font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
+             color:var(--ink);background:var(--frost);outline:none;"/>
+    <input id="expense-day5-price" type="number" placeholder="¥"
+      style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
+             font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
+             color:var(--ink);background:var(--frost);outline:none;"/>
+    <button onclick="addExpense('day5')"
+      style="flex-shrink:0;padding:.5rem 1.2rem;background:var(--deep);color:#fff;border:none;
+             cursor:pointer;font-size:.8rem;letter-spacing:.1em;">
+      新增
+    </button>
+  </div>
+  <div style="margin-top:1rem;padding:.8rem;background:var(--frost);border:1px solid rgba(141,191,206,.3);
+              display:flex;justify-content:space-between;align-items:center;">
+    <span style="font-size:.85rem;color:var(--mid);">當日合計</span>
+    <span id="expense-day5-total" style="font-size:1.1rem;font-weight:600;color:var(--deep);">¥ 0</span>
+  </div>
+</div>
    <div class="day-nav-bottom">
       <button class="day-nav-btn" onclick="showPage('day4')">← Day 4 · 中目黑澀谷原宿表參道</button>
       <button class="day-nav-btn next" onclick="showPage('shop')">購物清單 →</button>
@@ -2882,6 +3007,55 @@ function deleteShopItem(index) {
   updateShopProgress();
 }
 
+// ── 花費紀錄器 ──
+function addExpense(day) {
+  const nameEl = document.getElementById('expense-'+day+'-name');
+  const priceEl = document.getElementById('expense-'+day+'-price');
+  const name = nameEl.value.trim();
+  const price = parseInt(priceEl.value);
+  if (!name || isNaN(price) || price < 0) return;
+  const items = getExpenses(day);
+  items.push({ name, price });
+  saveExpenses(day, items);
+  renderExpenses(day);
+  nameEl.value = '';
+  priceEl.value = '';
+}
+function getExpenses(day) {
+  return JSON.parse(localStorage.getItem('expense-'+day) || '[]');
+}
+function saveExpenses(day, items) {
+  localStorage.setItem('expense-'+day, JSON.stringify(items));
+}
+function renderExpenses(day) {
+  const list = document.getElementById('expense-'+day+'-list');
+  const totalEl = document.getElementById('expense-'+day+'-total');
+  if (!list || !totalEl) return;
+  const items = getExpenses(day);
+  list.innerHTML = '';
+  let total = 0;
+  items.forEach((item, index) => {
+    total += item.price;
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px solid rgba(141,191,206,.2);font-size:.85rem;';
+    row.innerHTML = `
+      <span style="color:var(--ink);">${item.name}</span>
+      <span style="display:flex;align-items:center;gap:.8rem;">
+        <span style="color:var(--deep);font-weight:500;">¥ ${item.price.toLocaleString()}</span>
+        <span onclick="deleteExpense('${day}',${index})" style="cursor:pointer;color:var(--mid);font-size:.8rem;">✕</span>
+      </span>
+    `;
+    list.appendChild(row);
+  });
+  totalEl.textContent = '¥ ' + total.toLocaleString();
+}
+function deleteExpense(day, index) {
+  const items = getExpenses(day);
+  items.splice(index, 1);
+  saveExpenses(day, items);
+  renderExpenses(day);
+}
+
 // ── 頁面載入 ──
 document.addEventListener('DOMContentLoaded', () => {
 // ── Google Maps 按鈕 ──
@@ -2917,6 +3091,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderPackItems();
   updateShopProgress();
   updatePackProgress();
+  ['day1','day2','day3','day4','day5'].forEach(day => renderExpenses(day));
 });
 
 // ── Initialize ──

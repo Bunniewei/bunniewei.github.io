@@ -993,6 +993,24 @@ body{
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">小筆記本 / 原子筆</span></div>
       </div>
 
+      <!-- 自訂清單 -->
+      <div class="pack-category" style="grid-column:1/-1;">
+        <div class="pack-cat-title">✏️ 自訂清單</div>
+        <div id="pack-custom-list"></div>
+        <div style="display:flex;flex-wrap:nowrap;gap:.6rem;margin-top:.8rem;">
+          <input id="pack-input" type="text" placeholder="輸入想帶的東西…"
+            style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
+                   font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
+                   color:var(--ink);background:var(--frost);outline:none;"
+            onkeydown="if(event.key==='Enter')addPackItem()"/>
+          <button onclick="addPackItem()"
+            style="flex-shrink:0;padding:.5rem 1.2rem;background:var(--deep);color:#fff;border:none;
+                   cursor:pointer;font-size:.8rem;letter-spacing:.1em;">
+            新增
+          </button>
+        </div>
+      </div>
+
     </div>
     <div style="max-width:900px;margin:2rem auto 0;display:flex;justify-content:space-between;gap:1rem;">
       <button class="day-nav-btn" onclick="showPage('decl')">← 旅遊聲明書</button>
@@ -1379,6 +1397,7 @@ body{
            style="width:100%;border-radius:6px;margin:.5rem 0;object-fit:cover;"
            onerror="this.style.display='none'"/>
       <div class="tips-card-body"><ul>
+        <li>可事先存於手機wallet</li>
         <li>預付式 IC 卡，感應進出站自動扣款</li>
         <li>可搭 JR、地鐵、巴士，幾乎全日本通用</li>
         <li>便利商店、超市、自動販賣機都可使用</li>
@@ -2596,10 +2615,67 @@ function togglePack(item){
   const checked = JSON.parse(localStorage.getItem('pack-checked') || '{}');
   checked[label] = item.classList.contains('checked');
   localStorage.setItem('pack-checked', JSON.stringify(checked));
-  const all=document.querySelectorAll('.pack-item');
-  const done=[...all].filter(i=>i.classList.contains('checked')).length;
-  document.getElementById('pack-count').textContent=done+' / '+all.length;
-  document.getElementById('pack-bar').style.width=(done/all.length*100)+'%';
+  updatePackProgress();
+}
+function updatePackProgress(){
+  const all = document.querySelectorAll('#page-pack .pack-item');
+  const done = [...all].filter(i=>i.classList.contains('checked')).length;
+  document.getElementById('pack-count').textContent = done+' / '+all.length;
+  document.getElementById('pack-bar').style.width = (all.length ? done/all.length*100 : 0)+'%';
+}
+
+// ── 行李自訂清單 ──
+function addPackItem() {
+  const input = document.getElementById('pack-input');
+  const text = input.value.trim();
+  if (!text) return;
+  const items = getPackItems();
+  items.push({ text: text, checked: false });
+  savePackItems(items);
+  renderPackItems();
+  input.value = '';
+  updatePackProgress();
+}
+function getPackItems() {
+  return JSON.parse(localStorage.getItem('pack-custom') || '[]');
+}
+function savePackItems(items) {
+  localStorage.setItem('pack-custom', JSON.stringify(items));
+}
+function renderPackItems() {
+  const list = document.getElementById('pack-custom-list');
+  const items = getPackItems();
+  list.innerHTML = '';
+  items.forEach((item, index) => {
+    const div = document.createElement('div');
+    div.className = 'pack-item' + (item.checked ? ' checked' : '');
+    div.innerHTML = `
+      <div class="pack-checkbox">✓</div>
+      <span class="pack-label">${item.text}</span>
+      <span onclick="deletePackItem(${index})"
+        style="margin-left:auto;cursor:pointer;color:var(--mid);font-size:.85rem;padding:0 .3rem;">✕</span>
+    `;
+    div.onclick = (e) => {
+      if (e.target.tagName !== 'SPAN' || !e.target.onclick) {
+        togglePackCustom(index);
+      }
+    };
+    list.appendChild(div);
+  });
+}
+function togglePackCustom(index) {
+  const items = getPackItems();
+  items[index].checked = !items[index].checked;
+  savePackItems(items);
+  renderPackItems();
+  updatePackProgress();
+}
+function deletePackItem(index) {
+  const items = getPackItems();
+  items.splice(index, 1);
+  savePackItems(items);
+  renderPackItems();
+  updatePackProgress();
 }
 
 // ── Food item toggle ──
@@ -2611,8 +2687,6 @@ function toggleFood(item){
 }
 
 // ── Page navigation ──
-
-// Metro map zoom
 let metroScale = 1;
 function metroZoom(factor){
   metroScale = Math.min(Math.max(metroScale*factor, 0.5), 4);
@@ -2636,7 +2710,7 @@ function showPage(id){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ── Spot card toggle（修復：展開後自動捲動到可見區域）──
+// ── Spot card toggle ──
 function toggleSpot(block){
   const wasOpen=block.classList.contains('open');
   block.closest('.day-timeline').querySelectorAll('.time-block').forEach(b=>{
@@ -2646,7 +2720,6 @@ function toggleSpot(block){
   });
   if(!wasOpen){
     block.classList.add('open');
-    // 修復：展開後自動捲動，讓展開內容進入視野（考慮固定 nav 高度）
     setTimeout(()=>{
       const navH = document.getElementById('topnav').offsetHeight + 8;
       const rect = block.getBoundingClientRect();
@@ -2677,7 +2750,6 @@ function showTip(tag, text){
   tag.classList.add('active');
   tip.textContent=text;
   tip.classList.add('show');
-  // 修復：顯示提示後確保其可見
   setTimeout(()=>{
     const tipRect=tip.getBoundingClientRect();
     if(tipRect.bottom > window.innerHeight){
@@ -2751,53 +2823,42 @@ function toggleShop(el){
   updateShopProgress();
 }
 function updateShopProgress(){
-  const all  = document.querySelectorAll('#page-shop .pack-item');
+  const all = document.querySelectorAll('#page-shop .pack-item');
   const done = [...all].filter(i=>i.classList.contains('checked')).length;
   document.getElementById('shop-bar').style.width = (all.length ? done/all.length*100 : 0)+'%';
   document.getElementById('shop-count').textContent = done+' / '+all.length;
 }
-
 function updateShopBar() { updateShopProgress(); }
 
-// 新增自訂購物項目
+// ── 購物自訂清單 ──
 function addShopItem() {
   const input = document.getElementById('shop-input');
   const text = input.value.trim();
   if (!text) return;
-
-  // 存入 localStorage
   const items = getShopItems();
   items.push({ text: text, checked: false });
   saveShopItems(items);
-
   renderShopItems();
   input.value = '';
-  updateShopBar();
+  updateShopProgress();
 }
-
-// 讀取 localStorage
 function getShopItems() {
   return JSON.parse(localStorage.getItem('shop-custom') || '[]');
 }
-
-// 寫入 localStorage
 function saveShopItems(items) {
   localStorage.setItem('shop-custom', JSON.stringify(items));
 }
-
-// 渲染自訂清單
 function renderShopItems() {
   const list = document.getElementById('shop-custom-list');
   const items = getShopItems();
   list.innerHTML = '';
-
   items.forEach((item, index) => {
     const div = document.createElement('div');
     div.className = 'pack-item' + (item.checked ? ' checked' : '');
     div.innerHTML = `
       <div class="pack-checkbox">✓</div>
       <span class="pack-label">${item.text}</span>
-      <span onclick="deleteShopItem(${index})" 
+      <span onclick="deleteShopItem(${index})"
         style="margin-left:auto;cursor:pointer;color:var(--mid);font-size:.85rem;padding:0 .3rem;">✕</span>
     `;
     div.onclick = (e) => {
@@ -2808,26 +2869,22 @@ function renderShopItems() {
     list.appendChild(div);
   });
 }
-
-// 勾選 / 取消勾選
 function toggleShopCustom(index) {
   const items = getShopItems();
   items[index].checked = !items[index].checked;
   saveShopItems(items);
   renderShopItems();
-  updateShopBar();
+  updateShopProgress();
 }
-
-// 刪除項目
 function deleteShopItem(index) {
   const items = getShopItems();
   items.splice(index, 1);
   saveShopItems(items);
   renderShopItems();
-  updateShopBar();
+  updateShopProgress();
 }
 
-// 頁面載入時自動讀取
+// ── 頁面載入 ──
 document.addEventListener('DOMContentLoaded', () => {
   // 恢復行李清單勾選狀態
   const packChecked = JSON.parse(localStorage.getItem('pack-checked') || '{}');
@@ -2844,14 +2901,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   renderShopItems();
+  renderPackItems();
   updateShopProgress();
+  updatePackProgress();
 });
-updateShopProgress();
-  
+
 // ── Initialize ──
 checkAllAgreed();
 (function(){
-  const all=document.querySelectorAll('.pack-item');
+  const all=document.querySelectorAll('#page-pack .pack-item');
   document.getElementById('pack-count').textContent='0 / '+all.length;
 })();
 </script>

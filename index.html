@@ -993,24 +993,6 @@ body{
         <div class="pack-item" onclick="togglePack(this)"><div class="pack-checkbox">✓</div><span class="pack-label">小筆記本 / 原子筆</span></div>
       </div>
 
-      <!-- 自訂清單 -->
-      <div class="pack-category" style="grid-column:1/-1;">
-        <div class="pack-cat-title">✏️ 自訂清單</div>
-        <div id="pack-custom-list"></div>
-        <div style="display:flex;flex-wrap:nowrap;gap:.6rem;margin-top:.8rem;">
-          <input id="pack-input" type="text" placeholder="輸入想帶的東西…"
-            style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
-                   font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
-                   color:var(--ink);background:var(--frost);outline:none;"
-            onkeydown="if(event.key==='Enter')addPackItem()"/>
-          <button onclick="addPackItem()"
-            style="flex-shrink:0;padding:.5rem 1.2rem;background:var(--deep);color:#fff;border:none;
-                   cursor:pointer;font-size:.8rem;letter-spacing:.1em;">
-            新增
-          </button>
-        </div>
-      </div>
-
     </div>
     <div style="max-width:900px;margin:2rem auto 0;display:flex;justify-content:space-between;gap:1rem;">
       <button class="day-nav-btn" onclick="showPage('decl')">← 旅遊聲明書</button>
@@ -1397,7 +1379,6 @@ body{
            style="width:100%;border-radius:6px;margin:.5rem 0;object-fit:cover;"
            onerror="this.style.display='none'"/>
       <div class="tips-card-body"><ul>
-        <li>可事先存於手機wallet</li>
         <li>預付式 IC 卡，感應進出站自動扣款</li>
         <li>可搭 JR、地鐵、巴士，幾乎全日本通用</li>
         <li>便利商店、超市、自動販賣機都可使用</li>
@@ -1556,7 +1537,7 @@ body{
     </div>
     <div class="day-timeline">
 
-      <div class="time-block" data-map="羽田機場" onclick="toggleSpot(this)">
+      <div class="time-block" onclick="toggleSpot(this)">
         <div class="time-label">下午<br>16:00左右<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -1674,7 +1655,7 @@ body{
     </div>
     <div class="day-timeline">
 
-      <div class="time-block featured" data-map="谷中銀座 東京" onclick="toggleSpot(this)">
+      <div class="time-block featured" onclick="toggleSpot(this)">
         <div class="time-label">上午<br>10:00<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -1694,6 +1675,7 @@ body{
               <span class="spot-tag" onclick="showTip(this,'☕ CIBI：咖啡簡餐，有賣杯子與器具。')">☕ CIBI</span>
               <span class="spot-tag" onclick="showTip(this,'🧸 Biscuit：昭和風格的中古玩具店。')">🧸 Biscuit</span>
             </div>
+            <!-- 修復：原本路線提示1是獨立的，路線提示2誤嵌套在其中導致HTML破損，現已拆成兩個獨立 route-section -->
             <div class="spot-tip"></div>
             <div class="route-section">
               <div class="route-title">🗺 路線提示(不搭公車方案)</div>
@@ -1714,7 +1696,7 @@ body{
         </div>
       </div>
 
-      <div class="time-block" data-map="上野 国立西洋美術館 東京" onclick="toggleSpot(this)">
+      <div class="time-block" onclick="toggleSpot(this)">
         <div class="time-label">下午<br>12:30<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -1731,6 +1713,7 @@ body{
               <span class="spot-tag" onclick="showTip(this,'🚉 上野車站：至附近國立西洋美術館及東京都美術館參觀，享受文藝氣息!')">🚉 上野車站</span>
               <span class="spot-tag" onclick="showTip(this,'🤖 Yamashiroya玩具店：上野人氣玩具店，公仔模型應有盡有！')">🤖 Yamashiroya玩具店</span>
             </div>
+            <!-- 修復：原本兩個 route-section 嵌套，導致外層未關閉。現拆為兩個獨立區塊 -->
             <div class="spot-tip"></div>
             <div class="route-section">
               <div class="route-title">🗺 路線提示1</div>
@@ -1756,7 +1739,7 @@ body{
         </div>
       </div>
 
-      <div class="time-block featured" data-map="銀座 東京" onclick="toggleSpot(this)">
+      <div class="time-block featured" onclick="toggleSpot(this)">
         <div class="time-label">傍晚<br>17:00<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -1790,7 +1773,7 @@ body{
         </div>
       </div>
 
-      <div class="time-block" data-map="Central Square Life 押上店 東京" onclick="toggleSpot(this)">
+      <div class="time-block" onclick="toggleSpot(this)">
         <div class="time-label">晚上<br>21:30</div>
         <div class="spot-card">
           <div class="spot-header">
@@ -1807,6 +1790,7 @@ body{
               <span class="spot-tag" onclick="showTip(this,'🛒 推薦：Central Square Life 押上店，打烊時間00:00。')">🛒 超市推薦</span>
             </div>
             <div class="spot-tip"></div>
+            <!-- 修復：原本兩個 route-section 嵌套，現拆為三個獨立區塊 -->
             <div class="route-section">
               <div class="route-title">🗺 路線提示(去超市)</div>
               <div class="route-steps">
@@ -1817,7 +1801,7 @@ body{
               </div>
             </div>
             <div class="route-section">
-              <div class="route-title">🗺 路線提示(回飯店)</div>
+              <div class="route-title">🗺 路線提示(回飯店1/2)</div>
               <div class="route-steps">
                 <span class="route-step">💎 G09銀座/A11東銀座</span><span class="route-arrow">→</span>
                 <span class="route-step">🚇 G 銀座線(橘色) 往淺草 / A 淺草線(珊瑚粉) 往青砥</span><span class="route-arrow">→</span>
@@ -1899,6 +1883,7 @@ body{
         </div>
       </div>
     </div>
+
     <div class="day-nav-bottom">
       <button class="day-nav-btn" onclick="showPage('day1')">← Day 1 · 淺草</button>
       <button class="day-nav-btn next" onclick="showPage('day3')">Day 3 · 原宿新宿 →</button>
@@ -1922,7 +1907,7 @@ body{
     </div>
     <div class="day-timeline">
 
-      <div class="time-block featured" data-map="築地市場 東京" onclick="toggleSpot(this)">
+      <div class="time-block featured" onclick="toggleSpot(this)">
         <div class="time-label">上午<br>9:30<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -1939,8 +1924,8 @@ body{
               <span class="spot-tag" onclick="showTip(this,'🍵 Matcha Stand Maruni Tokyo Tsukiji：築地的一家抹茶專賣咖啡小店，以現點現打的抹茶拿鐵最受歡迎，是築地必訪的特色茶飲地點之一。')">🍵 Matcha Stand Maruni Tokyo Tsukiji</span>
               <span class="spot-tag" onclick="showTip(this,'🍓 Solatsuki：以草莓為主題的各式甜品聞名，像是草莓大福、草莓軟冰淇淋與糖葫蘆等多樣甜點。')">🍓 Solatsuki</span>
               <span class="spot-tag" onclick="showTip(this,'🍣 黑銀鮪屋：築地的知名鮪魚專賣店，以超新鮮的藍鰭鮪魚生魚片與壽司聞名，店家每天現場切割各種鮪魚部位。')">🍣 黑銀鮪屋</span>
-              <span class="spot-tag" onclick="showTip(this,'🥔 築地可樂餅：以綿密馬鈴薯泥混合肉末或海鮮餡料，外裹麵衣油炸至金黃酥脆。')">🥔 築地可樂餅</span>
-              <span class="spot-tag" onclick="showTip(this,'🍤 江之島丸燒：以整顆章魚或其他海鮮包裹麵糊烘烤成圓形串燒。外層酥脆、內餡多汁鮮美。')">🍤 江之島丸燒</span>
+              <span class="spot-tag" onclick="showTip(this,'🥔 築地可樂餅：以綿密馬鈴薯泥混合肉末或海鮮餡料，外裹麵衣油炸至金黃酥脆。外酥內軟的口感搭配獨特醬料，是不可錯過的美食之一。')">🥔 築地可樂餅</span>
+              <span class="spot-tag" onclick="showTip(this,'🍤 江之島丸燒：以整顆章魚或其他海鮮包裹麵糊烘烤成圓形串燒。外層酥脆、內餡多汁鮮美，常搭配醬汁、海苔粉或柴魚片。')">🍤 江之島丸燒</span>
               <span class="spot-tag" onclick="showTip(this,'🍙 丸豐：人氣飯糰專賣店，以大顆、料多豐富的手握飯糰聞名。')">🍙 丸豐</span>
             </div>
             <div class="spot-tip"></div>
@@ -1951,16 +1936,18 @@ body{
                 <span class="route-step">🚶 步行 15分鐘</span><span class="route-arrow">→</span>
                 <span class="route-step">🚇 A18淺草(A5進站)</span><span class="route-arrow">→</span>
                 <span class="route-step">🚇 A 淺草線(珊瑚粉) 往西馬込</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 經7站(11分)</span><span class="route-arrow">→</span>
                 <span class="route-step">🚇 A11東銀座(6出站)</span><span class="route-arrow">→</span>
                 <span class="route-step">🚶 步行 11分鐘</span><span class="route-arrow">→</span>
                 <span class="route-step">🍢 築地市場</span>
               </div>
             </div>
+            
           </div></div>
         </div>
       </div>
 
-      <div class="time-block" data-map="東京駅" onclick="toggleSpot(this)">
+      <div class="time-block" onclick="toggleSpot(this)">
         <div class="time-label">下午<br>12:00<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -1975,25 +1962,28 @@ body{
             <div class="spot-desc">東京車站紅磚地標與周邊商圈地下街，漫步皇居外苑廣闊庭園，櫻花盛開(如果還開著)，景色迷人。</div>
             <div class="spot-tags">
               <span class="spot-tag" onclick="showTip(this,'🧸 吉伊卡哇/Jump SHOP商店：還有很多三麗鷗、米飛等官方周邊商店，販售各式角色商品與限定伴手禮。')">🧸 吉伊卡哇</span>
-              <span class="spot-tag" onclick="showTip(this,'🎁 車站內伴手禮：推薦YOKU MOKU/Brulee Merize/Pista&Tokyo。')">🎁 車站伴手禮</span>
-              <span class="spot-tag" onclick="showTip(this,'🌺 皇居外苑櫻花：春季櫻花盛開，粉色花海與寬廣草地相映成景。')">🌺 皇居外苑</span>
+              <span class="spot-tag" onclick="showTip(this,'🎁 車站內伴手禮：推薦YOKU MOKU/Brulee Merize/Pista&Tokyo (阿砂糖樹不知道為啥關了)。')">🎁 車站伴手禮</span>
+              <span class="spot-tag" onclick="showTip(this,'🌺 皇居外苑櫻花：春季櫻花盛開，粉色花海與寬廣草地相映成景。環境寧靜開闊，是散步、拍照與賞櫻的熱門地點。')">🌺 皇居外苑</span>
             </div>
             <div class="spot-tip"></div>
             <div class="route-section">
               <div class="route-label">🚇 交通路線</div>
               <div class="route-steps">
                 <span class="route-step">🍢 H11築地(進站)</span><span class="route-arrow">→</span>
-                <span class="route-step">🚇 H 日比谷線 往中目黑方向</span><span class="route-arrow">→</span>
-                <span class="route-step">🚇 H09銀座 轉M線</span><span class="route-arrow">→</span>
-                <span class="route-step">🚇 M 丸之內線(紅色) 往池袋</span><span class="route-arrow">→</span>
-                <span class="route-step">🚉 M17東京車站</span>
+                <span class="route-step">🚇 H 日比谷線(灰色) 往中目黑方向</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 H09銀座(轉承M線!!)</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 M11銀座</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 M 丸之內線(紅色) 往池袋方向</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 M17東京車站</span><span class="route-arrow">→</span>
+                <span class="route-step">🚉 東京車站</span>
               </div>
             </div>
+            
           </div></div>
         </div>
       </div>
 
-      <div class="time-block featured" data-map="新宿 東京" onclick="toggleSpot(this)">
+      <div class="time-block featured" onclick="toggleSpot(this)">
         <div class="time-label">傍晚<br>17:30<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -2009,23 +1999,26 @@ body{
             <div class="spot-tags">
               <span class="spot-tag" onclick="showTip(this,'🧸百貨和西村購買部：西村讚 西村有新品。')">🧸 西村購買部 </span>
               <span class="spot-tag" onclick="showTip(this,'🍺黃金街：迷宮般的小巷裡有200多家特色小酒吧，每間各有主題。')">🍺 黃金街 </span>
-              <span class="spot-tag" onclick="showTip(this,'💊藥妝店：知名的購物商圈，聚集許多大型藥妝店。')">💊 藥妝店 </span>
-              <span class="spot-tag" onclick="showTip(this,'🦖3D貓貓跟哥吉拉：貓貓大螢幕與東寶大樓8樓的哥吉拉頭夜晚會亮燈。')">🦖 3D貓貓跟哥吉拉 </span>
+              <span class="spot-tag" onclick="showTip(this,'💊藥妝店 ：知名的購物商圈，聚集許多大型藥妝店，販售化妝品、保養品、藥品與日用品。')">💊 藥妝店 </span>
+              <span class="spot-tag" onclick="showTip(this,'🦖3D貓貓跟哥吉拉 ：貓貓大螢幕與東寶大樓8樓的哥吉拉頭夜晚會亮燈。')">🦖 3D貓貓跟哥吉拉 </span>
             </div>
             <div class="spot-tip"></div>
             <div class="route-section">
               <div class="route-label">🚇 交通路線</div>
               <div class="route-steps">
-                <span class="route-step">🚉 東京車站</span><span class="route-arrow">→</span>
-                <span class="route-step">🚇 M 丸之內線(紅色) 往方南町</span><span class="route-arrow">→</span>
-                <span class="route-step">🦖 M08新宿</span>
+                <span class="route-step">🚉 東京車站 </span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 M17東京車站</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 M 丸之內線(紅色) 往方南町方向</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 M08新宿</span><span class="route-arrow">→</span>
+                <span class="route-step">🦖 新宿</span>
               </div>
             </div>
+            
           </div></div>
         </div>
       </div>
 
-      <div class="time-block featured" data-map="Gyu Tongue Lemon Shinjuku 新宿" onclick="toggleSpot(this)">
+      <div class="time-block featured" onclick="toggleSpot(this)">
         <div class="time-label">晚上<br>18:30</div>
         <div class="spot-card">
           <div class="spot-header">
@@ -2039,17 +2032,18 @@ body{
           <div class="spot-body"><div class="spot-body-inner">
             <div class="spot-desc">西新宿的燒肉餐廳，以炭火烤製的厚切牛舌（gyutan）為主打，肉質鮮嫩多汁、風味濃厚，搭配清爽的檸檬風味飲品非常合拍。</div>
             <div class="spot-tags">
-              <span class="spot-tag" onclick="showTip(this,'🍋 特色亮點：厚切炭火烤牛舌，香氣十足/配套餐含飯、湯、配菜等完整料理。')">🍋 Gyu Tongue Lemon</span>
+              <span class="spot-tag" onclick="showTip(this,'🍋 特色亮點：厚切炭火烤牛舌，香氣十足/配套餐含飯、湯、配菜等完整料理/清爽檸檬飲（檸檬沙瓦 / 檸檬梳打）是招牌飲品。')">🍋 Gyu Tongue Lemon</span>
             </div>
             <div class="spot-tip"></div>
             <div class="route-section">
               <div class="route-label">🚇 交通路線</div>
               <div class="route-steps">
-                <span class="route-step">🦖 新宿區</span><span class="route-arrow">→</span>
+                <span class="route-step">🦖 新宿區(看到時候逛到哪)</span><span class="route-arrow">→</span>
                 <span class="route-step">🚶 步行</span><span class="route-arrow">→</span>
                 <span class="route-step">🍋 Gyu Tongue Lemon Shinjuku (B1)</span>
               </div>
             </div>
+            
           </div></div>
         </div>
       </div>
@@ -2062,13 +2056,13 @@ body{
         <div class="food-item" onclick="toggleFood(this)">
           <span class="food-emoji">🍵</span>
           <div class="food-name">築地市場</div>
-          <div class="food-note">Matcha Stand Maruni Tokyo Tsukiji</div>
+          <div class="food-note"> Matcha Stand Maruni Tokyo Tsukiji</div>
           <div class="food-detail"><div class="food-detail-inner">
-            <p>築地的一家抹茶專賣咖啡小店，以現點現打的抹茶拿鐵最受歡迎。</p>
+            <p>築地的一家抹茶專賣咖啡小店，以現點現打的抹茶拿鐵最受歡迎，是築地必訪的特色茶飲地點之一。</p>
             <div class="food-meta">
               <span class="food-meta-tag">📍 築地市場內部</span>
               <span class="food-meta-tag">💴 約 ¥700～1000</span>
-              <span class="food-meta-tag">⏰ 9:00~15:00</span>
+              <span class="food-meta-tag">⏰ 9：00~15：00</span>
             </div>
           </div></div>
         </div>
@@ -2077,7 +2071,7 @@ body{
           <div class="food-name">築地市場</div>
           <div class="food-note">黑銀鮪屋</div>
           <div class="food-detail"><div class="food-detail-inner">
-            <p>築地的知名鮪魚專賣店，以超新鮮的藍鰭鮪魚生魚片與壽司聞名。</p>
+            <p>築地的知名鮪魚專賣店，以超新鮮的藍鰭鮪魚生魚片與壽司聞名，店家每天現場切割各種鮪魚部位。</p>
             <div class="food-meta">
               <span class="food-meta-tag">📍 築地市場內部</span>
               <span class="food-meta-tag">💴 約 ¥2000～7000</span>
@@ -2094,7 +2088,7 @@ body{
             <div class="food-meta">
               <span class="food-meta-tag">📍 新宿站周邊(B1)</span>
               <span class="food-meta-tag">💴 約 ¥1000～4000</span>
-              <span class="food-meta-tag">⏰ 已預約：18:30</span>
+              <span class="food-meta-tag">⏰ 已預約：18:30 (再確認)</span>
             </div>
           </div></div>
         </div>
@@ -2104,6 +2098,14 @@ body{
     <div class="reserve-section">
       <div class="reserve-title">🎫 今日有預約的行程</div>
       <div class="reserve-grid">
+        <div class="reserve-item">
+          <div class="reserve-icon">🏛</div>
+          <div>
+            <div class="reserve-name">表參道Hills / 安藤忠雄建築</div>
+            <div class="reserve-detail">免費入場，無需預約</div>
+            <span class="reserve-status confirmed">✓ 免預約</span>
+          </div>
+        </div>
         <div class="reserve-item">
           <div class="reserve-icon">🆓</div>
           <div>
@@ -2138,7 +2140,7 @@ body{
     </div>
     <div class="day-timeline">
 
-      <div class="time-block featured" data-map="中目黒 東京" onclick="toggleSpot(this)">
+      <div class="time-block featured" onclick="toggleSpot(this)">
         <div class="time-label">上午<br>09:30<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -2152,8 +2154,8 @@ body{
           <div class="spot-body"><div class="spot-body-inner">
             <div class="spot-desc">以目黑川河岸櫻花聞名，每到春季吸引大量賞花遊客。區內小店林立，咖啡廳、雜貨店與設計品牌和香水，氛圍悠閒且充滿藝術氣息。</div>
             <div class="spot-tags">
-              <span class="spot-tag" onclick="showTip(this,'☕ Sidewalk Stand：以簡約風格手沖咖啡與輕食為特色。')">☕ Sidewalk Stand</span>
-              <span class="spot-tag" onclick="showTip(this,'🍐 neel：以洋梨作為Logo標誌，店內提供手沖咖啡、拿鐵與輕食。')">🍐 neel </span>
+              <span class="spot-tag" onclick="showTip(this,'☕ Sidewalk Stand：以簡約風格手沖咖啡與輕食為特色，強調在城市街道與戶外座位間享受悠閒時光。')">☕ Sidewalk Stand</span>
+              <span class="spot-tag" onclick="showTip(this,'🍐 neel：以洋梨作為Logo標誌，店內提供手沖咖啡、拿鐵與輕食，特色是外酥內軟的可麗餅、厚切三明治與新鮮飲品。')">🍐 neel </span>
               <span class="spot-tag" onclick="showTip(this,'🥐 有DOLCE TACUBO(泡芙)與AUX PARADIS(香水)。')">🥐 往代官山方向 </span>
             </div>
             <div class="spot-tip"></div>
@@ -2161,17 +2163,21 @@ body{
               <div class="route-label">🚇 交通路線</div>
               <div class="route-steps">
                 <span class="route-step">🏨 飯店</span><span class="route-arrow">→</span>
-                <span class="route-step">🚇 G19淺草 → G 銀座線往澀谷</span><span class="route-arrow">→</span>
-                <span class="route-step">🚇 G09銀座 轉H日比谷線</span><span class="route-arrow">→</span>
-                <span class="route-step">🚇 H 日比谷線往中目黑</span><span class="route-arrow">→</span>
-                <span class="route-step">📸 H01中目黑</span>
+                <span class="route-step">🚇 G19淺草(8進站)</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 G 銀座線(橘色)往澀谷方向</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 G09 銀座 (轉乘H日比谷線)</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 H09銀座 </span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 H 日比谷線(灰色)往中目黑方向</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 H01中目黑</span><span class="route-arrow">→</span>
+                <span class="route-step">📸 中目黑</span>
               </div>
             </div>
+            
           </div></div>
         </div>
       </div>
 
-      <div class="time-block" data-map="皇居東御苑 東京" onclick="toggleSpot(this)">
+      <div class="time-block" onclick="toggleSpot(this)">
         <div class="time-label">下午<br>12:00<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -2185,23 +2191,24 @@ body{
           <div class="spot-body"><div class="spot-body-inner">
             <div class="spot-desc">日本天皇居所，東御苑對外開放免費參觀。廣大的日式庭園裡有古老城牆遺址，在高樓環繞的東京市中心感受難得的寧靜與歷史感。二重橋前廣場是最知名的拍照地點。</div>
             <div class="spot-tags">
-              <span class="spot-tag" onclick="showTip(this,'📷 二重橋：皇居最著名的景點，搭配護城河與古松拍照，免費參觀，週一週五休園。')">📷 二重橋</span>
+              <span class="spot-tag" onclick="showTip(this,'📷 二重橋：皇居最著名的景點，搭配護城河與古松拍照，是代表性的東京風景。免費參觀，週一週五休園。')">📷 二重橋</span>
             </div>
             <div class="spot-tip"></div>
             <div class="route-section">
               <div class="route-label">🚇 交通路線</div>
               <div class="route-steps">
                 <span class="route-step">🎮 秋葉原 JY03</span><span class="route-arrow">→</span>
-                <span class="route-step">🚇 JR山手線(外環) → JY01東京</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 JR山手線(外環) → JY01 東京</span><span class="route-arrow">→</span>
                 <span class="route-step">🚶 步行 15分鐘</span><span class="route-arrow">→</span>
                 <span class="route-step">🌿 皇居東御苑</span>
               </div>
             </div>
+            
           </div></div>
         </div>
       </div>
 
-      <div class="time-block featured" data-map="teamLab Planets TOKYO 豊洲" onclick="toggleSpot(this)">
+      <div class="time-block featured" onclick="toggleSpot(this)">
         <div class="time-label">傍晚<br>18:00</div>
         <div class="spot-card">
           <div class="spot-header">
@@ -2213,7 +2220,7 @@ body{
             <div class="spot-toggle">▼</div>
           </div>
           <div class="spot-body"><div class="spot-body-inner">
-            <div class="spot-desc">teamLab Planets 是東京最驚艷的沉浸式數位藝術展，赤腳走在反射水面上，四周全是無邊際的花朵與光影。這是全球最受歡迎的藝術體驗之一，強烈推薦！</div>
+            <div class="spot-desc">teamLab Planets 是東京最驚艷的沉浸式數位藝術展，赤腳走在反射水面上，四周全是無邊際的花朵與光影。這是全球最受歡迎的藝術體驗之一，強烈推薦！六本木Hills也有森美術館可一併參觀。</div>
             <div class="spot-tags">
               <span class="spot-tag" onclick="showTip(this,'🎫 teamLab票價：¥3,200，官網預購較便宜且可省排隊時間，建議提前1-2週購票。')">🎫 票價</span>
               <span class="spot-tag" onclick="showTip(this,'👗 穿著建議：需赤腳入場，建議穿短褲或容易收起褲管的服裝，白色衣物效果最好。')">👗 穿著建議</span>
@@ -2223,12 +2230,13 @@ body{
               <div class="route-label">🚇 交通路線</div>
               <div class="route-steps">
                 <span class="route-step">🌿 東京站</span><span class="route-arrow">→</span>
-                <span class="route-step">🚇 日比谷線 H18日比谷</span><span class="route-arrow">→</span>
-                <span class="route-step">🚇 H04六本木站</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 日比谷線 H18 日比谷</span><span class="route-arrow">→</span>
+                <span class="route-step">🚇 H04 六本木站</span><span class="route-arrow">→</span>
                 <span class="route-step">🚶 步行 5分鐘</span><span class="route-arrow">→</span>
                 <span class="route-step">🎨 teamLab Planets</span>
               </div>
             </div>
+            
           </div></div>
         </div>
       </div>
@@ -2243,7 +2251,7 @@ body{
           <div class="food-name">澀谷 午餐</div>
           <div class="food-note">EDW yellow Shibuya</div>
           <div class="food-detail"><div class="food-detail-inner">
-            <p>以蛋包飯與舒芙蕾鬆餅聞名。氛圍舒適，是澀谷人氣美食地點。聽說店員很帥</p>
+            <p>以蛋包飯與舒芙蕾鬆餅聞名。氛圍舒適，適合午餐、下午茶或輕鬆聚餐，是澀谷人氣美食地點。聽說店員很帥</p>
             <div class="food-meta">
               <span class="food-meta-tag">📍 澀谷站周邊</span>
               <span class="food-meta-tag">💴 約 ¥2000～3000</span>
@@ -2256,7 +2264,7 @@ body{
           <div class="food-name">皇居咖啡</div>
           <div class="food-note">附近Café休息</div>
           <div class="food-detail"><div class="food-detail-inner">
-            <p>皇居外苑附近的 Café 可稍作休息。推薦走到丸之內區的咖啡廳，稍微充電再出發。</p>
+            <p>皇居外苑附近的 Café 可稍作休息。推薦走到丸之內區的咖啡廳，在摩登大樓間享受一杯咖啡與精緻甜點，稍微充電再出發。</p>
             <div class="food-meta">
               <span class="food-meta-tag">📍 丸之內 / 大手町一帶</span>
               <span class="food-meta-tag">💴 約 ¥700～1,200</span>
@@ -2269,7 +2277,7 @@ body{
           <div class="food-name">六本木晚餐</div>
           <div class="food-note">和牛燒肉・壽司</div>
           <div class="food-detail"><div class="food-detail-inner">
-            <p>六本木是東京高端餐廳的聚集地。看 teamLab 前後在附近享用和牛燒肉或精緻壽司。</p>
+            <p>六本木是東京高端餐廳的聚集地。看 teamLab 前後在附近享用和牛燒肉或精緻壽司，人均約 ¥3,000～5,000，是犒賞自己的好機會！</p>
             <div class="food-meta">
               <span class="food-meta-tag">📍 六本木Hills周邊</span>
               <span class="food-meta-tag">💴 約 ¥2,500～5,000</span>
@@ -2325,7 +2333,7 @@ body{
     </div>
     <div class="day-timeline">
 
-      <div class="time-block featured" data-map="浅草寺 東京" onclick="toggleSpot(this)">
+      <div class="time-block featured" onclick="toggleSpot(this)">
         <div class="time-label">上午<br>09:30<div class="time-line-v"></div></div>
         <div class="spot-card">
           <div class="spot-header">
@@ -2337,10 +2345,10 @@ body{
             <div class="spot-toggle">▼</div>
           </div>
           <div class="spot-body"><div class="spot-body-inner">
-            <div class="spot-desc">以雷門大燈籠聞名，寺前的仲見世商店街販售傳統小吃與紀念品。</div>
+            <div class="spot-desc">以雷門大燈籠聞名，寺前的仲見世商店街販售傳統小吃與紀念品。。</div>
             <div class="spot-tags">
               <span class="spot-tag" onclick="showTip(this,'📍 淺草文化觀光中心：展望台(免費），可觀賞淺草寺與五重塔。')">📍 淺草文化觀光中心</span>
-              <span class="spot-tag" onclick="showTip(this,'🍡仲見世商店街：全長約250公尺，兩側排列約90間商店。')">🍡仲見世商店街</span>
+              <span class="spot-tag" onclick="showTip(this,'🍡仲見世商店街：全長約250公尺，兩側排列約90間商店，販售傳統零食、手信、紀念品與工藝品。')">🍡仲見世商店街</span>
               <span class="spot-tag" onclick="showTip(this,'🎀三麗鷗專賣店：就是三麗鷗。')">🎀 三麗鷗專賣店</span>
             </div>
             <div class="spot-tip"></div>
@@ -2352,11 +2360,12 @@ body{
                 <span class="route-step">🏮 淺草寺</span>
               </div>
             </div>
+            
           </div></div>
         </div>
       </div>
 
-      <div class="time-block" data-map="成田国際空港 第一ターミナル" onclick="toggleSpot(this)">
+      <div class="time-block" onclick="toggleSpot(this)">
         <div class="time-label">下午<br>12:00</div>
         <div class="spot-card">
           <div class="spot-header">
@@ -2370,8 +2379,8 @@ body{
           <div class="spot-body"><div class="spot-body-inner">
             <div class="spot-desc">東京到成田機場需預留至少3小時（搭車約60-75分鐘 + 辦理登機）。建議最晚下午12：30點出發，在機場吃午餐，逛免稅商店，輕鬆告別東京。</div>
             <div class="spot-tags">
-              <span class="spot-tag" onclick="showTip(this,'⏰ 時間提醒：國際線建議出發前3小時到機場。')">⏰ 時間提醒</span>
-              <span class="spot-tag" onclick="showTip(this,'🍱 機場最後一餐：成田T2的「喜多方拉麵」是最多人選擇的最後一餐！')">🍱 最後一餐</span>
+              <span class="spot-tag" onclick="showTip(this,'⏰ 時間提醒：國際線建議出發前3小時到機場。成田機場有世界級的免稅店與餐廳，早點到也不無聊！')">⏰ 時間提醒</span>
+              <span class="spot-tag" onclick="showTip(this,'🍱 機場最後一餐：成田T2的「喜多方拉麵」是最多人選擇的最後一餐，在東京的最後一碗麵，留下美好印象！')">🍱 最後一餐</span>
             </div>
             <div class="spot-tip"></div>
             <div class="route-section">
@@ -2384,6 +2393,7 @@ body{
                 <span class="route-step">✈️ 成田機場 第一航廈</span>
               </div>
             </div>
+            
           </div></div>
         </div>
       </div>
@@ -2399,7 +2409,7 @@ body{
           <div class="food-name">淺草炸肉餅</div>
           <div class="food-note">肉餅・很燙</div>
           <div class="food-detail"><div class="food-detail-inner">
-            <p>位於東京淺草的經典街頭小吃，以牛豬混合肉餡裹上麵包粉油炸而成，外皮金黃酥脆、內餡多汁香濃。</p>
+            <p>位於東京淺草的經典街頭小吃，以牛豬混合肉餡裹上麵包粉油炸而成，外皮金黃酥脆、內餡多汁香濃，通常現炸現吃。</p>
             <div class="food-meta">
               <span class="food-meta-tag">📍 淺草 仲見世商店街</span>
               <span class="food-meta-tag">💴 約 ¥400</span>
@@ -2425,7 +2435,7 @@ body{
           <div class="food-name">成田機場最後一餐</div>
           <div class="food-note">喜多方拉麵・機場美食</div>
           <div class="food-detail"><div class="food-detail-inner">
-            <p>成田 T2 的「坂內食堂」喜多方拉麵是最多旅客選擇的最後一餐（約¥1,000）。</p>
+            <p>成田 T2 的「坂內食堂」喜多方拉麵是最多旅客選擇的最後一餐（約¥1,000）。也可在出境後免稅區吃壽司或定食，為旅程畫下美味句點。</p>
             <div class="food-meta">
               <span class="food-meta-tag">📍 成田機場 T2</span>
               <span class="food-meta-tag">💴 約 ¥1,000～1,800</span>
@@ -2439,7 +2449,7 @@ body{
     <div class="reserve-section">
       <div class="reserve-title">🎫 今日有預約的行程</div>
       <div class="reserve-grid">
-        <div class="reserve-item">
+       <div class="reserve-item">
           <div class="reserve-icon">✈️</div>
           <div>
             <div class="reserve-name">成田機場 出境航班</div>
@@ -2449,8 +2459,6 @@ body{
         </div>
       </div>
     </div>
-  </div>
-</div>
 
     <!-- Final Message -->
     <div class="food-section" style="text-align:center;padding:3rem;">
@@ -2464,7 +2472,7 @@ body{
       </button>
     </div>
 
-    <div class="day-nav-bottom">
+   <div class="day-nav-bottom">
       <button class="day-nav-btn" onclick="showPage('day4')">← Day 4 · 中目黑澀谷原宿表參道</button>
       <button class="day-nav-btn next" onclick="showPage('shop')">購物清單 →</button>
     </div>
@@ -2588,67 +2596,10 @@ function togglePack(item){
   const checked = JSON.parse(localStorage.getItem('pack-checked') || '{}');
   checked[label] = item.classList.contains('checked');
   localStorage.setItem('pack-checked', JSON.stringify(checked));
-  updatePackProgress();
-}
-function updatePackProgress(){
-  const all = document.querySelectorAll('#page-pack .pack-item');
-  const done = [...all].filter(i=>i.classList.contains('checked')).length;
-  document.getElementById('pack-count').textContent = done+' / '+all.length;
-  document.getElementById('pack-bar').style.width = (all.length ? done/all.length*100 : 0)+'%';
-}
-
-// ── 行李自訂清單 ──
-function addPackItem() {
-  const input = document.getElementById('pack-input');
-  const text = input.value.trim();
-  if (!text) return;
-  const items = getPackItems();
-  items.push({ text: text, checked: false });
-  savePackItems(items);
-  renderPackItems();
-  input.value = '';
-  updatePackProgress();
-}
-function getPackItems() {
-  return JSON.parse(localStorage.getItem('pack-custom') || '[]');
-}
-function savePackItems(items) {
-  localStorage.setItem('pack-custom', JSON.stringify(items));
-}
-function renderPackItems() {
-  const list = document.getElementById('pack-custom-list');
-  const items = getPackItems();
-  list.innerHTML = '';
-  items.forEach((item, index) => {
-    const div = document.createElement('div');
-    div.className = 'pack-item' + (item.checked ? ' checked' : '');
-    div.innerHTML = `
-      <div class="pack-checkbox">✓</div>
-      <span class="pack-label">${item.text}</span>
-      <span onclick="deletePackItem(${index})"
-        style="margin-left:auto;cursor:pointer;color:var(--mid);font-size:.85rem;padding:0 .3rem;">✕</span>
-    `;
-    div.onclick = (e) => {
-      if (e.target.tagName !== 'SPAN' || !e.target.onclick) {
-        togglePackCustom(index);
-      }
-    };
-    list.appendChild(div);
-  });
-}
-function togglePackCustom(index) {
-  const items = getPackItems();
-  items[index].checked = !items[index].checked;
-  savePackItems(items);
-  renderPackItems();
-  updatePackProgress();
-}
-function deletePackItem(index) {
-  const items = getPackItems();
-  items.splice(index, 1);
-  savePackItems(items);
-  renderPackItems();
-  updatePackProgress();
+  const all=document.querySelectorAll('.pack-item');
+  const done=[...all].filter(i=>i.classList.contains('checked')).length;
+  document.getElementById('pack-count').textContent=done+' / '+all.length;
+  document.getElementById('pack-bar').style.width=(done/all.length*100)+'%';
 }
 
 // ── Food item toggle ──
@@ -2660,6 +2611,8 @@ function toggleFood(item){
 }
 
 // ── Page navigation ──
+
+// Metro map zoom
 let metroScale = 1;
 function metroZoom(factor){
   metroScale = Math.min(Math.max(metroScale*factor, 0.5), 4);
@@ -2683,7 +2636,7 @@ function showPage(id){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ── Spot card toggle ──
+// ── Spot card toggle（修復：展開後自動捲動到可見區域）──
 function toggleSpot(block){
   const wasOpen=block.classList.contains('open');
   block.closest('.day-timeline').querySelectorAll('.time-block').forEach(b=>{
@@ -2693,6 +2646,7 @@ function toggleSpot(block){
   });
   if(!wasOpen){
     block.classList.add('open');
+    // 修復：展開後自動捲動，讓展開內容進入視野（考慮固定 nav 高度）
     setTimeout(()=>{
       const navH = document.getElementById('topnav').offsetHeight + 8;
       const rect = block.getBoundingClientRect();
@@ -2723,6 +2677,7 @@ function showTip(tag, text){
   tag.classList.add('active');
   tip.textContent=text;
   tip.classList.add('show');
+  // 修復：顯示提示後確保其可見
   setTimeout(()=>{
     const tipRect=tip.getBoundingClientRect();
     if(tipRect.bottom > window.innerHeight){
@@ -2796,42 +2751,53 @@ function toggleShop(el){
   updateShopProgress();
 }
 function updateShopProgress(){
-  const all = document.querySelectorAll('#page-shop .pack-item');
+  const all  = document.querySelectorAll('#page-shop .pack-item');
   const done = [...all].filter(i=>i.classList.contains('checked')).length;
   document.getElementById('shop-bar').style.width = (all.length ? done/all.length*100 : 0)+'%';
   document.getElementById('shop-count').textContent = done+' / '+all.length;
 }
+
 function updateShopBar() { updateShopProgress(); }
 
-// ── 購物自訂清單 ──
+// 新增自訂購物項目
 function addShopItem() {
   const input = document.getElementById('shop-input');
   const text = input.value.trim();
   if (!text) return;
+
+  // 存入 localStorage
   const items = getShopItems();
   items.push({ text: text, checked: false });
   saveShopItems(items);
+
   renderShopItems();
   input.value = '';
-  updateShopProgress();
+  updateShopBar();
 }
+
+// 讀取 localStorage
 function getShopItems() {
   return JSON.parse(localStorage.getItem('shop-custom') || '[]');
 }
+
+// 寫入 localStorage
 function saveShopItems(items) {
   localStorage.setItem('shop-custom', JSON.stringify(items));
 }
+
+// 渲染自訂清單
 function renderShopItems() {
   const list = document.getElementById('shop-custom-list');
   const items = getShopItems();
   list.innerHTML = '';
+
   items.forEach((item, index) => {
     const div = document.createElement('div');
     div.className = 'pack-item' + (item.checked ? ' checked' : '');
     div.innerHTML = `
       <div class="pack-checkbox">✓</div>
       <span class="pack-label">${item.text}</span>
-      <span onclick="deleteShopItem(${index})"
+      <span onclick="deleteShopItem(${index})" 
         style="margin-left:auto;cursor:pointer;color:var(--mid);font-size:.85rem;padding:0 .3rem;">✕</span>
     `;
     div.onclick = (e) => {
@@ -2842,38 +2808,27 @@ function renderShopItems() {
     list.appendChild(div);
   });
 }
+
+// 勾選 / 取消勾選
 function toggleShopCustom(index) {
   const items = getShopItems();
   items[index].checked = !items[index].checked;
   saveShopItems(items);
   renderShopItems();
-  updateShopProgress();
+  updateShopBar();
 }
+
+// 刪除項目
 function deleteShopItem(index) {
   const items = getShopItems();
   items.splice(index, 1);
   saveShopItems(items);
   renderShopItems();
-  updateShopProgress();
+  updateShopBar();
 }
 
-// ── 頁面載入 ──
+// 頁面載入時自動讀取
 document.addEventListener('DOMContentLoaded', () => {
-// ── Google Maps 按鈕 ──
-  document.querySelectorAll('.time-block[data-map]').forEach(block => {
-    const query = block.getAttribute('data-map');
-    const url = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(query);
-    const inner = block.querySelector('.spot-body-inner');
-    if (!inner) return;
-    const btn = document.createElement('a');
-    btn.href = url;
-    btn.target = '_blank';
-    btn.innerHTML = '🗺️ 在 Google Maps 開啟';
-    btn.style.cssText = 'display:inline-block;margin-top:.8rem;padding:.4rem .9rem;background:var(--deep);color:#fff;font-size:.78rem;text-decoration:none;letter-spacing:.05em;';
-    btn.onclick = e => e.stopPropagation();
-    inner.appendChild(btn);
-  });
-
   // 恢復行李清單勾選狀態
   const packChecked = JSON.parse(localStorage.getItem('pack-checked') || '{}');
   document.querySelectorAll('#page-pack .pack-item').forEach(el => {
@@ -2889,15 +2844,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   renderShopItems();
-  renderPackItems();
   updateShopProgress();
-  updatePackProgress();
 });
-
+updateShopProgress();
+  
 // ── Initialize ──
 checkAllAgreed();
 (function(){
-  const all=document.querySelectorAll('#page-pack .pack-item');
+  const all=document.querySelectorAll('.pack-item');
   document.getElementById('pack-count').textContent='0 / '+all.length;
 })();
 </script>

@@ -3140,14 +3140,53 @@ function deleteShopItem(index) {
 function addCatItem(input, catId) {
   const val = input.value.trim();
   if (!val) return;
-  const list = document.getElementById('custom-' + catId);
-  const item = document.createElement('div');
-  item.className = 'pack-item';
-  item.onclick = function(){ toggleShop(this); };
-  item.innerHTML = '<div class="pack-checkbox">✓</div><span class="pack-label">' + val + '</span>';
-  list.appendChild(item);
+  const items = getCatItems(catId);
+  items.push({ text: val, checked: false });
+  saveCatItems(catId, items);
+  renderCatItems(catId);
   input.value = '';
   updateShopProgress();
+}
+function getCatItems(catId) {
+  return JSON.parse(localStorage.getItem('cat-custom-' + catId) || '[]');
+}
+function saveCatItems(catId, items) {
+  localStorage.setItem('cat-custom-' + catId, JSON.stringify(items));
+}
+function renderCatItems(catId) {
+  const list = document.getElementById('custom-' + catId);
+  if (!list) return;
+  const items = getCatItems(catId);
+  list.innerHTML = '';
+  items.forEach((item, index) => {
+    const div = document.createElement('div');
+    div.className = 'pack-item' + (item.checked ? ' checked' : '');
+    div.innerHTML = `
+      <div class="pack-checkbox">✓</div>
+      <span class="pack-label">${item.text}</span>
+      <span onclick="deleteCatItem('${catId}',${index})"
+        style="margin-left:auto;cursor:pointer;color:var(--mid);font-size:.85rem;padding:0 .3rem;">✕</span>
+    `;
+    div.onclick = (e) => {
+      if (e.target.tagName !== 'SPAN' || !e.target.onclick) {
+        toggleCatCustom(catId, index);
+      }
+    };
+    list.appendChild(div);
+  });
+  updateShopProgress();
+}
+function toggleCatCustom(catId, index) {
+  const items = getCatItems(catId);
+  items[index].checked = !items[index].checked;
+  saveCatItems(catId, items);
+  renderCatItems(catId);
+}
+function deleteCatItem(catId, index) {
+  const items = getCatItems(catId);
+  items.splice(index, 1);
+  saveCatItems(catId, items);
+  renderCatItems(catId);
 }
 
 // ── 花費紀錄器 ──
@@ -3232,6 +3271,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderShopItems();
   renderPackItems();
+  ['藥妝','娃娃周邊','零食伴手禮','生活雜貨','時尚服飾'].forEach(cat => renderCatItems(cat));
   updateShopProgress();
   updatePackProgress();
   ['day1','day2','day3','day4','day5'].forEach(day => renderExpenses(day));

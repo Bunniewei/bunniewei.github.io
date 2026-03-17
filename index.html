@@ -3292,17 +3292,39 @@ function exportData() {
         output += `  [${item.checked ? '✓' : '　'}] ${item.label}\n`;
       });
     }
-    const customItems = getCatItems(cat);
-    customItems.forEach(item => {
-      output += `  [${item.checked ? '✓' : '　'}] ${item.text}（自訂）\n`;
-    });
+   const customItems = getCatItems(cat);
+    if (customItems.length > 0) {
+      customItems.forEach(item => {
+        output += `  [${item.checked ? '✓' : '　'}] ${item.text}（自訂）\n`;
+      });
+    } else {
+      const catCustomEl = document.getElementById('custom-' + cat);
+      if (catCustomEl) {
+        catCustomEl.querySelectorAll('.pack-item').forEach(el => {
+          const label = el.querySelector('.pack-label')?.textContent.trim();
+          if (label) output += `  [${el.classList.contains('checked') ? '✓' : '　'}] ${label}（自訂）\n`;
+        });
+      }
+    }
   });
-  const shopCustom = getShopItems();
+const shopCustom = getShopItems();
   if (shopCustom.length > 0) {
     output += '\n✏️ 其他自訂：\n';
     shopCustom.forEach(item => {
       output += `  [${item.checked ? '✓' : '　'}] ${item.text}\n`;
     });
+  } else {
+    const shopEl = document.getElementById('shop-custom-list');
+    if (shopEl) {
+      const domItems = shopEl.querySelectorAll('.pack-item');
+      if (domItems.length > 0) {
+        output += '\n✏️ 其他自訂：\n';
+        domItems.forEach(el => {
+          const label = el.querySelector('.pack-label')?.textContent.trim();
+          if (label) output += `  [${el.classList.contains('checked') ? '✓' : '　'}] ${label}\n`;
+        });
+      }
+    }
   }
 
   output += '\n=== 匯出時間：' + new Date().toLocaleString('zh-TW') + ' ===';

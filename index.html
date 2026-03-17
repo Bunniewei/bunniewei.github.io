@@ -3269,18 +3269,37 @@ function exportData() {
   });
   output += `\n全程總計：¥${grandTotal.toLocaleString()}\n`;
 
-  output += '\n【購物清單自訂項目】\n';
+  output += '\n【購物清單】\n';
+  const catTitles = {
+    '藥妝': '💊 藥妝',
+    '娃娃周邊': '🧸 娃娃/周邊',
+    '零食伴手禮': '🍬 零食伴手禮',
+    '生活雜貨': '🧴 生活雜貨',
+    '時尚服飾': '👗 時尚服飾'
+  };
   ['藥妝','娃娃周邊','零食伴手禮','生活雜貨','時尚服飾'].forEach(cat => {
-    const items = getCatItems(cat);
-    if (items.length === 0) return;
-    output += `\n${cat}：\n`;
-    items.forEach(item => {
-      output += `  [${item.checked ? '✓' : '　'}] ${item.text}\n`;
+    output += `\n${catTitles[cat]}：\n`;
+    const catEl = document.getElementById('custom-' + cat);
+    if (catEl) {
+      let prev = catEl.previousElementSibling;
+      const fixedItems = [];
+      while (prev && prev.classList.contains('pack-item')) {
+        const label = prev.querySelector('.pack-label')?.textContent.trim();
+        if (label) fixedItems.unshift({ label, checked: prev.classList.contains('checked') });
+        prev = prev.previousElementSibling;
+      }
+      fixedItems.forEach(item => {
+        output += `  [${item.checked ? '✓' : '　'}] ${item.label}\n`;
+      });
+    }
+    const customItems = getCatItems(cat);
+    customItems.forEach(item => {
+      output += `  [${item.checked ? '✓' : '　'}] ${item.text}（自訂）\n`;
     });
   });
   const shopCustom = getShopItems();
   if (shopCustom.length > 0) {
-    output += '\n其他：\n';
+    output += '\n✏️ 其他自訂：\n';
     shopCustom.forEach(item => {
       output += `  [${item.checked ? '✓' : '　'}] ${item.text}\n`;
     });

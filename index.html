@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>咕咕雞 · 東京篇</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet"/>
 <style>
@@ -2852,6 +2852,16 @@ body{
 
     </div>
 
+<!-- 匯出紀錄按鈕 -->
+    <div style="max-width:1000px;margin:1.5rem auto 0;text-align:center;">
+      <button onclick="exportData()"
+        style="padding:.7rem 2rem;background:var(--deep);color:#fff;border:none;
+               cursor:pointer;font-size:.8rem;letter-spacing:.1em;
+               font-family:'Noto Sans TC',sans-serif;">
+        📋 匯出所有紀錄
+      </button>
+    </div>
+
     <div class="day-nav-bottom">
       <button class="day-nav-btn" onclick="showPage('day5')">← Day 5 · 淺草</button>
       <button class="day-nav-btn next" onclick="showPage('cover')">回到封面 →</button>
@@ -3236,6 +3246,73 @@ function deleteExpense(day, index) {
   items.splice(index, 1);
   saveExpenses(day, items);
   renderExpenses(day);
+}
+
+// ── 匯出資料 ──
+function exportData() {
+  let output = '=== 咕咕雞東京旅遊紀錄 ===\n\n';
+
+  const dayNames = { day1:'Day1', day2:'Day2', day3:'Day3', day4:'Day4', day5:'Day5' };
+  let grandTotal = 0;
+  output += '【花費紀錄】\n';
+  ['day1','day2','day3','day4','day5'].forEach(day => {
+    const items = getExpenses(day);
+    if (items.length === 0) return;
+    let dayTotal = 0;
+    output += `\n${dayNames[day]}：\n`;
+    items.forEach(item => {
+      output += `  ${item.name}　¥${item.price.toLocaleString()}\n`;
+      dayTotal += item.price;
+    });
+    output += `  小計：¥${dayTotal.toLocaleString()}\n`;
+    grandTotal += dayTotal;
+  });
+  output += `\n全程總計：¥${grandTotal.toLocaleString()}\n`;
+
+  output += '\n【購物清單自訂項目】\n';
+  ['藥妝','娃娃周邊','零食伴手禮','生活雜貨','時尚服飾'].forEach(cat => {
+    const items = getCatItems(cat);
+    if (items.length === 0) return;
+    output += `\n${cat}：\n`;
+    items.forEach(item => {
+      output += `  [${item.checked ? '✓' : '　'}] ${item.text}\n`;
+    });
+  });
+  const shopCustom = getShopItems();
+  if (shopCustom.length > 0) {
+    output += '\n其他：\n';
+    shopCustom.forEach(item => {
+      output += `  [${item.checked ? '✓' : '　'}] ${item.text}\n`;
+    });
+  }
+
+  output += '\n【行李清單自訂項目】\n';
+  const packCustom = getPackItems();
+  if (packCustom.length > 0) {
+    packCustom.forEach(item => {
+      output += `  [${item.checked ? '✓' : '　'}] ${item.text}\n`;
+    });
+  } else {
+    output += '  （無自訂項目）\n';
+  }
+
+  output += '\n=== 匯出時間：' + new Date().toLocaleString('zh-TW') + ' ===';
+
+  navigator.clipboard.writeText(output).then(() => {
+    alert('✓ 已複製到剪貼簿！可貼到記事本或 Line 儲存。');
+  }).catch(() => {
+    const area = document.createElement('textarea');
+    area.value = output;
+    area.style.cssText = 'position:fixed;top:10%;left:5%;width:90%;height:70%;font-size:.75rem;padding:1rem;z-index:9999;border:2px solid var(--deep);outline:none;font-family:monospace;';
+    document.body.appendChild(area);
+    area.focus();
+    area.select();
+    const close = document.createElement('button');
+    close.textContent = '✕ 關閉';
+    close.style.cssText = 'position:fixed;top:calc(10% - 2rem);right:5%;z-index:9999;padding:.4rem 1rem;background:var(--deep);color:#fff;border:none;cursor:pointer;font-size:.8rem;';
+    close.onclick = () => { document.body.removeChild(area); document.body.removeChild(close); };
+    document.body.appendChild(close);
+  });
 }
 
 // ── 頁面載入 ──

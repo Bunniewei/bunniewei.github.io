@@ -1770,6 +1770,8 @@ body{
             <div class="spot-tags">
               <span class="spot-tag" onclick="showTip(this,'🚉 上野車站：至附近國立西洋美術館及東京都美術館參觀，享受文藝氣息!')">🚉 上野車站</span>
               <span class="spot-tag" onclick="showTip(this,'🤖 Yamashiroya玩具店：上野人氣玩具店，公仔模型應有盡有！')">🤖 Yamashiroya玩具店</span>
+              <span class="spot-tag" onclick="showTip(this,'💊 阿美橫町藥妝店：這裡的藥妝店比較便宜！')">💊 阿美橫丁藥妝店</span>
+            </div>
             </div>
             <!-- 修復：原本兩個 route-section 嵌套，導致外層未關閉。現拆為兩個獨立區塊 -->
             <div class="spot-tip"></div>
@@ -1934,7 +1936,7 @@ body{
         <div class="reserve-item">
           <div class="reserve-icon">➕</div>
           <div>
-            <div class="reserve-name">（點此新增預約項目）</div>
+            <div class="reserve-name">（新增預約項目）</div>
             <div class="reserve-detail">可自行修改此欄位</div>
             <span class="reserve-status pending">待確認</span>
           </div>
@@ -2357,7 +2359,7 @@ body{
               <span class="spot-tag" onclick="showTip(this,'💸 3coins：生活雜貨旗艦店，主打約300日圓商品 的高CP值小物。店內商品種類繁多，包括生活用品、美妝小物、廚房雜貨與創意零食。')">💸 3coins</span>
               <span class="spot-tag" onclick="showTip(this,'🍬 number sugar：手工牛奶糖專賣店，以手工焦糖牛奶糖為主，口味多樣（如香草、鹽味、巧克力、覆盆子等）。')">🍬 number sugar</span>
               <span class="spot-tag" onclick="showTip(this,'🏬 東急plaza：原宿表參道的時尚購物中心，屋頂有知名的萬花筒鏡面入口，集結日本潮流品牌與咖啡廳。')">🏬 東急plaza</span>
-              <span class="spot-tag" onclick="showTip(this,'🎪 Laforet原宿： 原宿潮流聖地，匯聚前衛設計師品牌與地下文化，從地下室到頂樓每層風格截然不同。')">🎪 Laforet原宿d</span>
+              <span class="spot-tag" onclick="showTip(this,'🎪 Laforet原宿： 原宿潮流聖地，匯聚前衛設計師品牌與地下文化，從地下室到頂樓每層風格截然不同。')">🎪 Laforet原宿</span>
               <span class="spot-tag" onclick="showTip(this,'🥞 bills表參道： 來自澳洲雪梨的人氣早午餐名店，以鬆軟厚實的舒芙蕾鬆餅聞名全球。')">🥞 bills表參道</span>
               <span class="spot-tag" onclick="showTip(this,'🧴 retaW store HARAJUKU：日本原創香氛生活品牌，以獨特的香味蠟燭、洗髮精與身體保養品聞名。')">🧴 retaW store HARAJUKU</span>
               <span class="spot-tag" onclick="showTip(this,'🗺️ 其餘GOOGLE MAP存或隨意逛：這一條可以逛很久。')">🗺️ 其餘GOOGLE MAP存或隨意逛</span>
@@ -2603,14 +2605,14 @@ body{
         </div>
         <div class="food-item" onclick="toggleFood(this)">
           <span class="food-emoji">🍜</span>
-          <div class="food-name">(待建)</div>
-          <div class="food-note">(待建)</div>
+          <div class="food-name">麵包冰淇淋</div>
+          <div class="food-note">淺草 花月堂</div>
           <div class="food-detail"><div class="food-detail-inner">
             <p>。</p>
             <div class="food-meta">
-              <span class="food-meta-tag">📍 </span>
-              <span class="food-meta-tag">💴 </span>
-              <span class="food-meta-tag">✈️ </span>
+              <span class="food-meta-tag">📍 仲見世商店街內</span>
+              <span class="food-meta-tag">💴 約 ¥300～1000</span>
+              <span class="food-meta-tag">⏰ 09:00~16:30 </span>
             </div>
           </div></div>
         </div>
@@ -2676,7 +2678,7 @@ body{
   </div>
 </div>
 
-  <div class="page pack-page" id="page-shop">
+<div class="page pack-page" id="page-shop">
   <div class="pack-inner">
 
     <div class="page-header">
@@ -2698,19 +2700,60 @@ body{
       <div class="pack-category">
         <div class="pack-cat-title">💊 藥妝</div>
         <div class="pack-item" onclick="toggleShop(this)">
-          <div class="pack-checkbox">✓</div><span class="pack-label">肌研極潤玻尿酸化妝水</span>
+          <div class="pack-checkbox">✓</div><span class="pack-label">肌</span>
         </div>
         <div class="pack-item" onclick="toggleShop(this)">
-          <div class="pack-checkbox">✓</div><span class="pack-label">MINON 氨基酸保濕面膜</span>
+          <div class="pack-checkbox">✓</div><span class="pack-label">MINON</span>
         </div>
         <div class="pack-item" onclick="toggleShop(this)">
-          <div class="pack-checkbox">✓</div><span class="pack-label">小林製藥退熱貼</span>
+          <div class="pack-checkbox">✓</div><span class="pack-label">小林</span>
         </div>
         <div class="pack-item" onclick="toggleShop(this)">
-          <div class="pack-checkbox">✓</div><span class="pack-label">龍角散潤喉糖</span>
+          <div class="pack-checkbox">✓</div><span class="pack-label">龍角</span>
         </div>
         <div class="pack-item" onclick="toggleShop(this)">
-          <div class="pack-checkbox">✓</div><span class="pack-label">樂敦 V 眼藥水</span>
+          <div class="pack-checkbox">✓</div><span class="pack-label">樂敦</span>
+        </div>
+        <div class="cat-custom-list" id="custom-藥妝"></div>
+        <div style="display:flex;gap:.4rem;margin-top:.6rem;">
+          <input type="text" placeholder="新增項目…"
+            style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.4);padding:.35rem .6rem;
+                   font-size:.78rem;font-family:'Noto Sans TC',sans-serif;
+                   color:var(--ink);background:var(--frost);outline:none;"
+            onkeydown="if(event.key==='Enter')addCatItem(this,'藥妝')"/>
+          <button onclick="addCatItem(this.previousElementSibling,'藥妝')"
+            style="flex-shrink:0;padding:.35rem .7rem;background:var(--deep);color:#fff;border:none;
+                   cursor:pointer;font-size:.72rem;">＋</button>
+        </div>
+      </div>
+
+      <div class="pack-category">
+        <div class="pack-cat-title">🧸 娃娃/周邊</div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">白熊</span>
+        </div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">吉伊卡哇</span>
+        </div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">Kiddy Land</span>
+        </div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">三麗鷗</span>
+        </div>
+        <div class="pack-item" onclick="toggleShop(this)">
+          <div class="pack-checkbox">✓</div><span class="pack-label">其餘周邊</span>
+        </div>
+        <div class="cat-custom-list" id="custom-娃娃周邊"></div>
+        <div style="display:flex;gap:.4rem;margin-top:.6rem;">
+          <input type="text" placeholder="新增項目…"
+            style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.4);padding:.35rem .6rem;
+                   font-size:.78rem;font-family:'Noto Sans TC',sans-serif;
+                   color:var(--ink);background:var(--frost);outline:none;"
+            onkeydown="if(event.key==='Enter')addCatItem(this,'娃娃周邊')"/>
+          <button onclick="addCatItem(this.previousElementSibling,'娃娃周邊')"
+            style="flex-shrink:0;padding:.35rem .7rem;background:var(--deep);color:#fff;border:none;
+                   cursor:pointer;font-size:.72rem;">＋</button>
         </div>
       </div>
 
@@ -2720,20 +2763,31 @@ body{
           <div class="pack-checkbox">✓</div><span class="pack-label">東京香蕉 Tokyo Banana</span>
         </div>
         <div class="pack-item" onclick="toggleShop(this)">
-          <div class="pack-checkbox">✓</div><span class="pack-label">抹茶 KitKat</span>
+          <div class="pack-checkbox">✓</div><span class="pack-label">砂糖樹餅乾</span>
         </div>
         <div class="pack-item" onclick="toggleShop(this)">
-          <div class="pack-checkbox">✓</div><span class="pack-label">ROYCE 生巧克力</span>
+          <div class="pack-checkbox">✓</div><span class="pack-label"> </span>
         </div>
         <div class="pack-item" onclick="toggleShop(this)">
           <div class="pack-checkbox">✓</div><span class="pack-label">白色戀人餅乾</span>
+        </div>
+        <div class="cat-custom-list" id="custom-零食伴手禮"></div>
+        <div style="display:flex;gap:.4rem;margin-top:.6rem;">
+          <input type="text" placeholder="新增項目…"
+            style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.4);padding:.35rem .6rem;
+                   font-size:.78rem;font-family:'Noto Sans TC',sans-serif;
+                   color:var(--ink);background:var(--frost);outline:none;"
+            onkeydown="if(event.key==='Enter')addCatItem(this,'零食伴手禮')"/>
+          <button onclick="addCatItem(this.previousElementSibling,'零食伴手禮')"
+            style="flex-shrink:0;padding:.35rem .7rem;background:var(--deep);color:#fff;border:none;
+                   cursor:pointer;font-size:.72rem;">＋</button>
         </div>
       </div>
 
       <div class="pack-category">
         <div class="pack-cat-title">🧴 生活雜貨</div>
         <div class="pack-item" onclick="toggleShop(this)">
-          <div class="pack-checkbox">✓</div><span class="pack-label">無印良品收納盒</span>
+          <div class="pack-checkbox">✓</div><span class="pack-label">無印良品</span>
         </div>
         <div class="pack-item" onclick="toggleShop(this)">
           <div class="pack-checkbox">✓</div><span class="pack-label">Daiso 廚房小物</span>
@@ -2741,42 +2795,63 @@ body{
         <div class="pack-item" onclick="toggleShop(this)">
           <div class="pack-checkbox">✓</div><span class="pack-label">和紙膠帶</span>
         </div>
+        <div class="cat-custom-list" id="custom-生活雜貨"></div>
+        <div style="display:flex;gap:.4rem;margin-top:.6rem;">
+          <input type="text" placeholder="新增項目…"
+            style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.4);padding:.35rem .6rem;
+                   font-size:.78rem;font-family:'Noto Sans TC',sans-serif;
+                   color:var(--ink);background:var(--frost);outline:none;"
+            onkeydown="if(event.key==='Enter')addCatItem(this,'生活雜貨')"/>
+          <button onclick="addCatItem(this.previousElementSibling,'生活雜貨')"
+            style="flex-shrink:0;padding:.35rem .7rem;background:var(--deep);color:#fff;border:none;
+                   cursor:pointer;font-size:.72rem;">＋</button>
+        </div>
       </div>
 
       <div class="pack-category">
         <div class="pack-cat-title">👗 時尚服飾</div>
         <div class="pack-item" onclick="toggleShop(this)">
-          <div class="pack-checkbox">✓</div><span class="pack-label">GU 當季新品</span>
+          <div class="pack-checkbox">✓</div><span class="pack-label">GU</span>
         </div>
         <div class="pack-item" onclick="toggleShop(this)">
-          <div class="pack-checkbox">✓</div><span class="pack-label">UNIQLO 日本限定款</span>
+          <div class="pack-checkbox">✓</div><span class="pack-label">UNIQLO</span>
         </div>
         <div class="pack-item" onclick="toggleShop(this)">
           <div class="pack-checkbox">✓</div><span class="pack-label">古著店挖寶</span>
         </div>
+        <div class="cat-custom-list" id="custom-時尚服飾"></div>
+        <div style="display:flex;gap:.4rem;margin-top:.6rem;">
+          <input type="text" placeholder="新增項目…"
+            style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.4);padding:.35rem .6rem;
+                   font-size:.78rem;font-family:'Noto Sans TC',sans-serif;
+                   color:var(--ink);background:var(--frost);outline:none;"
+            onkeydown="if(event.key==='Enter')addCatItem(this,'時尚服飾')"/>
+          <button onclick="addCatItem(this.previousElementSibling,'時尚服飾')"
+            style="flex-shrink:0;padding:.35rem .7rem;background:var(--deep);color:#fff;border:none;
+                   cursor:pointer;font-size:.72rem;">＋</button>
+        </div>
       </div>
 
-      <!-- 自訂清單 -->
+      <!-- 其他自訂清單 -->
       <div class="pack-category" style="grid-column:1/-1;">
-        <div class="pack-cat-title">✏️ 自訂清單</div>
+        <div class="pack-cat-title">✏️ 其他自訂清單</div>
         <div id="shop-custom-list"></div>
-<div style="display:flex;flex-wrap:nowrap;gap:.6rem;margin-top:.8rem;">
-  <input id="shop-input" type="text" placeholder="輸入想買的東西…"
-    style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
-           font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
-           color:var(--ink);background:var(--frost);outline:none;"
-    onkeydown="if(event.key==='Enter')addShopItem()"/>
-  <button onclick="addShopItem()"
-    style="flex-shrink:0;padding:.5rem 1.2rem;background:var(--deep);color:#fff;border:none;
-           cursor:pointer;font-size:.8rem;letter-spacing:.1em;">
-    新增
-  </button>
-</div>
+        <div style="display:flex;flex-wrap:nowrap;gap:.6rem;margin-top:.8rem;">
+          <input id="shop-input" type="text" placeholder="輸入想買的東西…"
+            style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.5);padding:.5rem .8rem;
+                   font-size:.85rem;font-family:'Noto Sans TC',sans-serif;
+                   color:var(--ink);background:var(--frost);outline:none;"
+            onkeydown="if(event.key==='Enter')addShopItem()"/>
+          <button onclick="addShopItem()"
+            style="flex-shrink:0;padding:.5rem 1.2rem;background:var(--deep);color:#fff;border:none;
+                   cursor:pointer;font-size:.8rem;letter-spacing:.1em;">
+            新增
+          </button>
+        </div>
       </div>
 
     </div>
 
-    <!-- 下方導航 -->
     <div class="day-nav-bottom">
       <button class="day-nav-btn" onclick="showPage('day5')">← Day 5 · 淺草</button>
       <button class="day-nav-btn next" onclick="showPage('cover')">回到封面 →</button>
@@ -3058,6 +3133,20 @@ function deleteShopItem(index) {
   items.splice(index, 1);
   saveShopItems(items);
   renderShopItems();
+  updateShopProgress();
+}
+
+// ── 各分類自訂新增 ──
+function addCatItem(input, catId) {
+  const val = input.value.trim();
+  if (!val) return;
+  const list = document.getElementById('custom-' + catId);
+  const item = document.createElement('div');
+  item.className = 'pack-item';
+  item.onclick = function(){ toggleShop(this); };
+  item.innerHTML = '<div class="pack-checkbox">✓</div><span class="pack-label">' + val + '</span>';
+  list.appendChild(item);
+  input.value = '';
   updateShopProgress();
 }
 

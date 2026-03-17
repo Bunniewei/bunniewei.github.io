@@ -50,7 +50,6 @@ body{
   color:var(--deep);letter-spacing:.05em;cursor:pointer;
   flex-shrink:0;
 }
-/* 修復：手機版 nav-links 橫向捲動，不擠成多行 */
 .nav-links{
   display:flex;gap:.3rem;
   overflow-x:auto;
@@ -349,7 +348,6 @@ body{
   font-size:.7rem;color:var(--mid);flex-shrink:0;margin-left:1rem;
   transition:all .3s;
 }
-/* 修復：增大 max-height，防止手機上內容被裁切 */
 .spot-body{max-height:0;overflow:hidden;transition:max-height .5s ease,opacity .3s;opacity:0;}
 .time-block.open .spot-body{max-height:2000px;opacity:1;}
 .time-block.open .spot-toggle{background:var(--deep);color:#fff;border-color:var(--deep);transform:rotate(180deg);}
@@ -383,7 +381,6 @@ body{
 .food-emoji{font-size:2rem;display:block;margin-bottom:.4rem;}
 .food-name{font-size:.8rem;font-weight:500;color:var(--deep);}
 .food-note{font-size:.7rem;color:var(--mid);margin-top:.2rem;}
-/* 修復：food-detail 增大 max-height */
 .food-detail{
   max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .3s;
   opacity:0;text-align:left;
@@ -532,7 +529,8 @@ body{
   font-size:.7rem;color:var(--mid);margin-top:.4rem;
   font-style:italic;
 }
-  /* ════ 水印 ════ */
+
+/* ════ 水印 ════ */
 .day-page::after,
 .cover::after,
 .toc-page::after,
@@ -587,7 +585,6 @@ body{
 @media(max-width:640px){
   .day-hero{grid-template-columns:1fr;}
   .day-number-big{font-size:5rem;}
-  /* 修復：手機版時間軸窄一點 */
   .time-block{grid-template-columns:56px 1fr;gap:.6rem;}
   .time-label{font-size:.68rem;}
   .time-label::after{right:-1.1rem;}
@@ -595,15 +592,33 @@ body{
   .decl-doc{padding:2rem 1.5rem;}
   .nav-link{padding:.3rem .6rem;font-size:.65rem;}
   .topnav{padding:.6rem 1rem;}
-  /* 修復：手機食物卡片展開時佔滿整行 */
   .food-grid{grid-template-columns:1fr;}
   .flight-grid{grid-template-columns:1fr!important;}
-  /* 修復：手機版路線步驟文字縮小讓換行不那麼嚴重 */
   .route-step{font-size:.7rem;padding:.2rem .5rem;}
-  /* 修復：手機版確保 spot-body 展開夠高 */
   .time-block.open .spot-body{max-height:3000px;}
+
+  /* ✦ 新增修復 ✦ */
+
+  /* 導航按鈕改垂直排列，避免長文字擠爆 */
+  .day-nav-bottom{flex-direction:column;}
+  .day-nav-btn{justify-content:center;font-size:.75rem;padding:.8rem;text-align:center;}
+  .day-nav-btn.next{justify-content:center;}
+
+  /* food-section / reserve-section 縮小左右 padding */
+  .food-section{padding:1.5rem 1rem;}
+  .reserve-section{padding:1.2rem 1rem;}
+
+  /* wakeup-row 允許換行，不超出螢幕 */
+  .wakeup-row{white-space:normal;line-height:1.6;display:flex;flex-wrap:wrap;}
+
+  /* spot-card 縮小左右 padding */
+  .spot-card{padding:1rem 1rem;}
+
+  /* day-page 縮小左右 padding */
+  .day-page{padding:5rem 1rem;}
 }
-  /* 水印 */
+
+/* 水印（單獨補強，避免被覆蓋） */
 .day-page::after {
   content: '© 2026 咕咕雞旅遊企劃 · Design By Wei · All Rights Reserved';
   display: block;
@@ -612,8 +627,8 @@ body{
   color: #ccc;
   letter-spacing: 0.1em;
   padding: 1.5rem 0 2rem;
-  white-space: nowrap;      /* ← 強制單行 */
-  overflow: hidden;          /* ← 超出就隱藏 */
+  white-space: nowrap;
+  overflow: hidden;
 }
 </style>
 </head>

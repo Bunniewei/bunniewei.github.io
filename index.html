@@ -3310,17 +3310,18 @@ function exportData() {
   navigator.clipboard.writeText(output).then(() => {
     alert('✓ 已複製到剪貼簿！可貼到記事本或 Line 儲存。');
   }).catch(() => {
-    const area = document.createElement('textarea');
-    area.value = output;
-    area.style.cssText = 'position:fixed;top:10%;left:5%;width:90%;height:70%;font-size:.75rem;padding:1rem;z-index:9999;border:2px solid var(--deep);outline:none;font-family:monospace;';
-    document.body.appendChild(area);
-    area.focus();
-    area.select();
-    const close = document.createElement('button');
-    close.textContent = '✕ 關閉';
-    close.style.cssText = 'position:fixed;top:calc(10% - 2rem);right:5%;z-index:9999;padding:.4rem 1rem;background:var(--deep);color:#fff;border:none;cursor:pointer;font-size:.8rem;';
-    close.onclick = () => { document.body.removeChild(area); document.body.removeChild(close); };
-    document.body.appendChild(close);
+   // 直接顯示 textarea，電腦手機行為一致
+  const area = document.createElement('textarea');
+  area.value = output;
+  area.style.cssText = 'position:fixed;top:10%;left:5%;width:90%;height:70%;font-size:.75rem;padding:1rem;z-index:9999;border:2px solid var(--deep);outline:none;font-family:monospace;';
+  document.body.appendChild(area);
+  area.focus();
+  area.select();
+  const close = document.createElement('button');
+  close.textContent = '✕ 關閉';
+  close.style.cssText = 'position:fixed;top:calc(10% - 2rem);right:5%;z-index:9999;padding:.4rem 1rem;background:var(--deep);color:#fff;border:none;cursor:pointer;font-size:.8rem;';
+  close.onclick = () => { document.body.removeChild(area); document.body.removeChild(close); };
+  document.body.appendChild(close);
   });
 }
 

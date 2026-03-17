@@ -3305,16 +3305,6 @@ function exportData() {
     });
   }
 
-  output += '\n【行李清單自訂項目】\n';
-  const packCustom = getPackItems();
-  if (packCustom.length > 0) {
-    packCustom.forEach(item => {
-      output += `  [${item.checked ? '✓' : '　'}] ${item.text}\n`;
-    });
-  } else {
-    output += '  （無自訂項目）\n';
-  }
-
   output += '\n=== 匯出時間：' + new Date().toLocaleString('zh-TW') + ' ===';
 
   navigator.clipboard.writeText(output).then(() => {

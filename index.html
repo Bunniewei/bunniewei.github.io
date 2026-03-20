@@ -2886,6 +2886,21 @@ body{
                    cursor:pointer;font-size:.72rem;">＋</button>
         </div>
       </div>
+      <div class="pack-category">
+        <div class="pack-cat-title">🍽 必吃必買</div>
+        <div class="cat-custom-list" id="custom-必吃必買"></div>
+        <div style="display:flex;gap:.4rem;margin-top:.6rem;">
+          <input type="text" placeholder="新增項目…"
+            style="flex:1;min-width:0;border:1px solid rgba(141,191,206,.4);padding:.35rem .6rem;
+                   font-size:.78rem;font-family:'Noto Sans TC',sans-serif;
+                   color:var(--ink);background:var(--frost);outline:none;"
+            onkeydown="if(event.key==='Enter')addCatItem(this,'必吃必買')"/>
+          <button onclick="addCatItem(this.previousElementSibling,'必吃必買')"
+            style="flex-shrink:0;padding:.35rem .7rem;background:var(--deep);color:#fff;border:none;
+                   cursor:pointer;font-size:.72rem;">＋</button>
+        </div>
+      </div>
+      
 
       <!-- 其他自訂清單 -->
       <div class="pack-category" style="grid-column:1/-1;">
@@ -3330,9 +3345,10 @@ function exportData() {
     '娃娃周邊': '🧸 娃娃/周邊',
     '零食伴手禮': '🍬 零食伴手禮',
     '生活雜貨': '🧴 生活雜貨',
-    '時尚服飾': '👗 時尚服飾'
+    '時尚服飾': '👗 時尚服飾',
+    '必吃必買': '🍽 必吃必買'
   };
-  ['藥妝','娃娃周邊','零食伴手禮','生活雜貨','時尚服飾'].forEach(cat => {
+  ['藥妝','娃娃周邊','零食伴手禮','生活雜貨','時尚服飾','必吃必買'].forEach(cat => {
     output += `\n${catTitles[cat]}：\n`;
     const catEl = document.getElementById('custom-' + cat);
     if (catEl) {
@@ -3435,7 +3451,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderShopItems();
   renderPackItems();
-  ['藥妝','娃娃周邊','零食伴手禮','生活雜貨','時尚服飾'].forEach(cat => renderCatItems(cat));
+  ['藥妝','娃娃周邊','零食伴手禮','生活雜貨','時尚服飾','必吃必買'].forEach(cat => renderCatItems(cat));
   updateShopProgress();
   updatePackProgress();
   ['day1','day2','day3','day4','day5'].forEach(day => renderExpenses(day));
